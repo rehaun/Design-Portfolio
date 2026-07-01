@@ -1,10 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Design Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ray | Product Designer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Portfolio coming soon...</h1>
+
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="avatar" aria-label="Home">
+        <img src="https://www.figma.com/api/mcp/asset/66b40921-f5db-4730-b14f-87c2840c256f" alt="Ray avatar">
+      </a>
+      <nav class="nav">
+        <a href="#works" class="nav-link">Works</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#play" class="nav-link">Play</a>
+        <a href="#resume" class="nav-link">Resume</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="hero-title">Hey! I&rsquo;m Ray <span class="emoji">☀️</span></h1>
+      <p class="hero-subtitle">That Teammate You Are Looking For!</p>
+      <p class="hero-desc" id="about">
+        I&rsquo;m known for being <strong>responsible</strong>, a <strong>team player</strong>
+        with a strong sense of <strong>empathy</strong>. I <strong>learn</strong> new things
+        <strong>quickly</strong> and I&rsquo;m eager to contribute to meaningful product
+        <strong>impact</strong>.
+      </p>
+    </section>
+
+    <div class="content-wrap">
+
+      <!-- Case Studies -->
+      <section class="section" id="works">
+        <button class="section-title" aria-expanded="true">
+          <span>Case studies</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="projects">
+
+          <!-- Project 1 -->
+          <article class="project">
+            <div class="thumb thumb-1">
+              <img class="thumb-img thumb-img--a" src="https://www.figma.com/api/mcp/asset/48fbea69-44bb-4dec-9fea-14c5ff2a208e" alt="">
+              <img class="thumb-img thumb-img--b" src="https://www.figma.com/api/mcp/asset/66f5c75e-2fc7-4fe7-bb6b-d004b2320277" alt="">
+            </div>
+            <div class="project-info">
+              <span class="project-date">2023 SEP</span>
+              <p class="project-category">UX Design</p>
+              <p class="project-desc">Improved <strong>Navigation</strong>: Gamified and User-Friendly, Leading to <strong>Increased Sales</strong></p>
+              <div class="tags">
+                <span class="tag">Visual Design</span>
+                <span class="tag">Desk Research</span>
+              </div>
+              <a href="#" class="cta">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project">
+            <div class="thumb thumb-2">
+              <img class="thumb-img thumb-img--wide" src="https://www.figma.com/api/mcp/asset/2c578ea9-284a-4c4d-9332-09136fee66ef" alt="">
+            </div>
+            <div class="project-info">
+              <span class="project-date">2024 JUN</span>
+              <p class="project-category">UX Research</p>
+              <p class="project-desc"><strong>AI</strong> Opportunities and Challenges for Postgraduate CS Students Abroad</p>
+              <div class="tags">
+                <span class="tag">User Interview</span>
+                <span class="tag">Affinity Diagram</span>
+              </div>
+              <a href="#" class="cta">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project">
+            <div class="thumb thumb-3">
+              <img class="thumb-img thumb-img--wide" src="https://www.figma.com/api/mcp/asset/e0c78d67-dc52-45fd-8959-5de3b08f795b" alt="">
+            </div>
+            <div class="project-info">
+              <span class="project-date">2024 APR</span>
+              <p class="project-category">UX Design</p>
+              <p class="project-desc">Enhancing <strong>User Satisfaction</strong> through Dashboard Redesign</p>
+              <div class="tags">
+                <span class="tag">Visual Design</span>
+                <span class="tag">wireframe</span>
+                <span class="tag">User-Centered-Design</span>
+              </div>
+              <a href="#" class="cta">View Case Study</a>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project">
+            <div class="thumb thumb-4">
+              <img class="thumb-img thumb-img--a" src="https://www.figma.com/api/mcp/asset/ed945f1c-2cd5-4a07-825c-61739a0f3f6c" alt="">
+            </div>
+            <div class="project-info">
+              <span class="project-date">2024 SEP</span>
+              <p class="project-category">UX Design</p>
+              <p class="project-desc">Enhancing <strong>Job-Seeking Experience</strong> on LinkedIn through Redesign</p>
+              <div class="tags">
+                <span class="tag">User-Centered Design</span>
+                <span class="tag">wireframe</span>
+                <span class="tag">Collaboration</span>
+              </div>
+              <p class="project-status"><strong>Case Study:</strong> Coming Soon</p>
+              <a href="https://www.figma.com/board/tPEeXa7DLmdvYz9R7OxjQt/Team-23---LinkedIn-Job-Seeking-Process--Copy-?node-id=0-1" class="cta cta--underline" target="_blank" rel="noopener">View Fig Jam Board</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Experiences -->
+      <section class="section">
+        <button class="section-title" aria-expanded="true">
+          <span>Experiences</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <ul class="experiences">
+          <li class="experience">
+            <div class="experience-row">
+              <div>
+                <p class="experience-role">Classeh</p>
+                <p class="experience-title">Product Designer</p>
+              </div>
+              <span class="experience-date">2023 - 2024</span>
+            </div>
+            <hr>
+          </li>
+          <li class="experience">
+            <div class="experience-row">
+              <div>
+                <p class="experience-role">Freelancer</p>
+                <p class="experience-title">UI/UX Designer</p>
+              </div>
+              <span class="experience-date">2022 - 2023</span>
+            </div>
+            <hr>
+          </li>
+          <li class="experience">
+            <div class="experience-row">
+              <div>
+                <p class="experience-role">Part Software Group</p>
+                <p class="experience-title">UI/UX Designer</p>
+              </div>
+              <span class="experience-date">2021 - 2022</span>
+            </div>
+            <hr>
+          </li>
+          <li class="experience">
+            <div class="experience-row">
+              <div>
+                <p class="experience-role">Diaco Software Group</p>
+                <p class="experience-title">UI Design Intern</p>
+              </div>
+              <span class="experience-date">2021 - 2021</span>
+            </div>
+            <hr>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Visual Showcase -->
+      <section class="section section--center" id="play">
+        <button class="section-title" aria-expanded="true">
+          <span>Visual Showcase</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <a href="https://dribbble.com/rehaun" target="_blank" rel="noopener" class="dribbble-card">
+          <img src="https://www.figma.com/api/mcp/asset/76ae54ac-d8eb-4cfb-a6c5-e1a575d65fbe" alt="Dribbble showcase preview">
+          <span class="dribbble-label">Dribbble Profile</span>
+        </a>
+      </section>
+
+      <!-- Quote / Contact -->
+      <section class="quote-section" id="resume">
+        <blockquote class="quote">
+          <p class="quote-text">&ldquo;Good Design is Invisible&rdquo;</p>
+          <cite class="quote-author">- Dieter Rams | Industrial Designer</cite>
+        </blockquote>
+
+        <div class="contact-block">
+          <p class="contact-heading">Let&rsquo;s Design Invisibles; The Experience!</p>
+          <a href="mailto:Re.davarpanah@gmail.com" class="contact-link">
+            <svg viewBox="0 0 12 12" fill="none" class="contact-icon"><path d="M2 3l4 3 4-3" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="2" width="10" height="8" rx="1" stroke="currentColor" stroke-width="0.8"/></svg>
+            Re.davarpanah@gmail.com
+          </a>
+          <a href="tel:+989331717302" class="contact-link">
+            <svg viewBox="0 0 12 12" fill="none" class="contact-icon"><path d="M2.5 1.5c-.6 0-1 .5-1 1 0 4.4 3.6 8 8 8 .5 0 1-.4 1-1v-1.3c0-.3-.2-.5-.4-.6l-1.8-.6c-.2-.1-.5 0-.6.2l-.6.7c-1.1-.6-2-1.5-2.6-2.6l.7-.6c.2-.1.3-.4.2-.6l-.6-1.8c-.1-.2-.3-.4-.6-.4H2.5z" stroke="currentColor" stroke-width="0.8" stroke-linejoin="round"/></svg>
+            +98 933 1717 302
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p class="footer-thanks">Thanks for stopping by :)</p>
+    <div class="footer-texts">
+      <p>© 2024 by Reyhane Davarpanah</p>
+      <p>Iteration no.4</p>
+    </div>
+  </footer>
+
 </body>
 </html>
