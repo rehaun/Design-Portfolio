@@ -141,6 +141,17 @@ button {
   font-weight: 500;
 }
 
+/* ===== Highlighted hero words (from Figma Colored Block components) ===== */
+.hl {
+  padding: 0 4px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.hl:hover {
+  background-color: var(--hl-color);
+}
+
 /* ===== Section titles ===== */
 .section-title {
   display: flex;
@@ -219,8 +230,12 @@ button {
   transform: translate(24%, -6%) rotate(6deg);
 }
 
-.thumb-4 .thumb-img--a {
+.thumb-4 .thumb-img--solo {
   width: 42%;
+}
+
+.project:hover .thumb-img--solo {
+  transform: scale(1.08);
 }
 
 .project-info {
@@ -344,24 +359,43 @@ button {
   overflow: hidden;
   border: 1px solid #000;
   box-shadow: 0 24px 60px -30px rgba(15, 41, 117, 0.25);
-  transition: transform 0.25s ease;
 }
 
-.dribbble-card:hover {
-  transform: translateY(-4px);
+.dribbble-frame {
+  overflow: hidden;
 }
 
-.dribbble-card img {
+.dribbble-frame img {
   width: 100%;
   height: auto;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dribbble-card:hover .dribbble-frame img {
+  transform: scale(1.08) rotate(3deg);
 }
 
 .dribbble-label {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   text-align: center;
   font-size: 13px;
   font-weight: 300;
   padding: 12px 0 4px;
+}
+
+.dribbble-arrow {
+  display: inline-block;
+  opacity: 0;
+  transform: translate(-4px, 4px);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.dribbble-card:hover .dribbble-arrow {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 /* ===== Quote / Contact ===== */
@@ -489,28 +523,14 @@ button {
 
 .nav-link {
   position: relative;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  transition: border-color 0.25s ease;
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 2px;
-  height: 1.5px;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-
-.nav-link:hover::after,
-.nav-link.is-active::after {
-  transform: scaleX(1);
-}
-
+.nav-link:hover,
 .nav-link.is-active {
-  font-weight: 500;
+  border-color: #000;
 }
 
 /* ===== Chevron interactions ===== */
@@ -553,15 +573,15 @@ button {
 }
 
 .project:hover .thumb-img--a {
-  transform: translate(-26%, 4%) rotate(-8deg);
+  transform: translate(-28%, 5%) rotate(-7deg) scale(1.08);
 }
 
 .project:hover .thumb-img--b {
-  transform: translate(26%, -8%) rotate(8deg);
+  transform: translate(28%, -7%) rotate(7deg) scale(1.08);
 }
 
 .project:hover .thumb-img--wide {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 .tag {
@@ -575,19 +595,25 @@ button {
 
 .cta {
   position: relative;
+  transition: color 0.25s ease;
 }
 
 .cta::after {
-  content: "→";
+  content: "\2197";
   display: inline-block;
   margin-left: 6px;
-  transform: translateX(-4px);
+  transform: translate(-4px, 2px);
   opacity: 0;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+.cta:hover {
+  color: #3d3d38;
+  text-decoration: underline;
+}
+
 .cta:hover::after {
-  transform: translateX(0);
+  transform: translate(0, 0);
   opacity: 1;
 }
 
@@ -598,6 +624,20 @@ button {
 
 .experience:hover .experience-row {
   padding-left: 8px;
+}
+
+.experience:hover .experience-role,
+.experience:hover .experience-title,
+.experience:hover .experience-date {
+  transform: scale(1.02);
+}
+
+.experience-role,
+.experience-title,
+.experience-date {
+  display: inline-block;
+  transform-origin: left center;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .experience:hover .experience-role {
@@ -612,13 +652,27 @@ button {
   border-top-color: rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Avatar subtle interaction ===== */
-.avatar img {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+/* ===== Avatar face-swap on hover ===== */
+.avatar {
+  position: relative;
 }
 
-.avatar:hover img {
-  transform: rotate(-8deg) scale(1.05);
+.avatar-img {
+  transition: opacity 0.3s ease;
+}
+
+.avatar-img--hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.avatar:hover .avatar-img--default {
+  opacity: 0;
+}
+
+.avatar:hover .avatar-img--hover {
+  opacity: 1;
 }
 
 /* ===== Responsive ===== */
