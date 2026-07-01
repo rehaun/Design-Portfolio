@@ -443,6 +443,184 @@ button {
   gap: 3px;
 }
 
+/* ===== Scroll-reveal animation ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal[data-reveal-delay="1"] { transition-delay: 0.1s; }
+.reveal[data-reveal-delay="2"] { transition-delay: 0.2s; }
+
+.projects .project.reveal:nth-child(1) { transition-delay: 0s; }
+.projects .project.reveal:nth-child(2) { transition-delay: 0.08s; }
+.projects .project.reveal:nth-child(3) { transition-delay: 0.16s; }
+.projects .project.reveal:nth-child(4) { transition-delay: 0.24s; }
+
+.experiences .experience.reveal:nth-child(1) { transition-delay: 0s; }
+.experiences .experience.reveal:nth-child(2) { transition-delay: 0.06s; }
+.experiences .experience.reveal:nth-child(3) { transition-delay: 0.12s; }
+.experiences .experience.reveal:nth-child(4) { transition-delay: 0.18s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ===== Header scroll state ===== */
+.site-header {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-bottom-color: rgba(0, 0, 0, 0.15);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 2px;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+.nav-link.is-active {
+  font-weight: 500;
+}
+
+/* ===== Chevron interactions ===== */
+.chevron {
+  transition: transform 0.3s ease;
+}
+
+.section-title:hover .chevron {
+  transform: translateY(3px);
+}
+
+.chevron.bounce {
+  animation: chevron-bounce 0.5s ease;
+}
+
+@keyframes chevron-bounce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(6px); }
+  55%  { transform: translateY(-2px); }
+  80%  { transform: translateY(2px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== Enhanced project hover ===== */
+.project {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.thumb {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.project:hover .thumb {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.25);
+}
+
+.thumb-img {
+  transition: transform 0.4s ease;
+}
+
+.project:hover .thumb-img--a {
+  transform: translate(-26%, 4%) rotate(-8deg);
+}
+
+.project:hover .thumb-img--b {
+  transform: translate(26%, -8%) rotate(8deg);
+}
+
+.project:hover .thumb-img--wide {
+  transform: scale(1.04);
+}
+
+.tag {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tag:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: #999;
+}
+
+.cta {
+  position: relative;
+}
+
+.cta::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 6px;
+  transform: translateX(-4px);
+  opacity: 0;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.cta:hover::after {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* ===== Experience row hover ===== */
+.experience-row {
+  transition: padding-left 0.25s ease;
+}
+
+.experience:hover .experience-row {
+  padding-left: 8px;
+}
+
+.experience:hover .experience-role {
+  color: #000;
+}
+
+.experience hr {
+  transition: border-color 0.25s ease;
+}
+
+.experience:hover hr {
+  border-top-color: rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Avatar subtle interaction ===== */
+.avatar img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.avatar:hover img {
+  transform: rotate(-8deg) scale(1.05);
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 720px) {
   .header-inner {
