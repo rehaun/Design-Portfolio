@@ -80,15 +80,14 @@ button {
 .avatar {
   width: 54px;
   height: 54px;
-  border-radius: 50%;
-  overflow: hidden;
   flex-shrink: 0;
 }
 
 .avatar img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  transform: scaleX(-1);
 }
 
 .nav {
@@ -211,7 +210,6 @@ button {
 
 .thumb-img {
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .thumb-img--wide {
@@ -358,7 +356,6 @@ button {
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid #000;
-  box-shadow: 0 24px 60px -30px rgba(15, 41, 117, 0.25);
 }
 
 .dribbble-frame {
@@ -477,47 +474,12 @@ button {
   gap: 3px;
 }
 
-/* ===== Scroll-reveal animation ===== */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal[data-reveal-delay="1"] { transition-delay: 0.1s; }
-.reveal[data-reveal-delay="2"] { transition-delay: 0.2s; }
-
-.projects .project.reveal:nth-child(1) { transition-delay: 0s; }
-.projects .project.reveal:nth-child(2) { transition-delay: 0.08s; }
-.projects .project.reveal:nth-child(3) { transition-delay: 0.16s; }
-.projects .project.reveal:nth-child(4) { transition-delay: 0.24s; }
-
-.experiences .experience.reveal:nth-child(1) { transition-delay: 0s; }
-.experiences .experience.reveal:nth-child(2) { transition-delay: 0.06s; }
-.experiences .experience.reveal:nth-child(3) { transition-delay: 0.12s; }
-.experiences .experience.reveal:nth-child(4) { transition-delay: 0.18s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-}
-
 /* ===== Header scroll state ===== */
 .site-header {
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .site-header.is-scrolled {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border-bottom-color: rgba(0, 0, 0, 0.15);
 }
 
@@ -559,12 +521,11 @@ button {
 }
 
 .thumb {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project:hover .thumb {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.25);
 }
 
 .thumb-img {
@@ -651,18 +612,24 @@ button {
   border-top-color: rgba(0, 0, 0, 0.4);
 }
 
-/* ===== Avatar face-swap on hover ===== */
+/* ===== Avatar hover — face swap using exact Figma component assets ===== */
 .avatar {
   position: relative;
 }
 
 .avatar-img {
-  transition: opacity 0.3s ease;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.avatar-img--default {
+  opacity: 1;
 }
 
 .avatar-img--hover {
-  position: absolute;
-  inset: 0;
   opacity: 0;
 }
 
