@@ -55,26 +55,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Nav active link highlight on scroll ---------- */
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = Array.from(navLinks)
-    .map((link) => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-
-  if (sections.length && 'IntersectionObserver' in window) {
-    const navObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const id = '#' + entry.target.id;
-        const link = document.querySelector(`.nav-link[href="${id}"]`);
-        if (!link) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach((l) => l.classList.remove('is-active'));
-          link.classList.add('is-active');
-        }
-      });
-    }, { threshold: 0.4 });
-
-    sections.forEach((sec) => navObserver.observe(sec));
-  }
-
 });
