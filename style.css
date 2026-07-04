@@ -503,18 +503,6 @@ button {
   transform: translateY(3px);
 }
 
-.chevron.bounce {
-  animation: chevron-bounce 0.5s ease;
-}
-
-@keyframes chevron-bounce {
-  0%   { transform: translateY(0); }
-  30%  { transform: translateY(6px); }
-  55%  { transform: translateY(-2px); }
-  80%  { transform: translateY(2px); }
-  100% { transform: translateY(0); }
-}
-
 /* ===== Enhanced project hover ===== */
 .project {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
