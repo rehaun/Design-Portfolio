@@ -8,14 +8,15 @@ export default function Home() {
   return (
     <>
       <Nav lang="en" />
-      <Ribbons />
-
-      <div className="hero">
-        <Reveal>
-          <img src={images.heroUnderConstruction} alt="" />
-          <h1>Under construction, for now!</h1>
-          <p>Explore what's already up:</p>
-        </Reveal>
+      <div className="hero-wrap">
+        <Ribbons />
+        <div className="hero">
+          <Reveal>
+            <img src={images.heroUnderConstruction} alt="" />
+            <h1>Under construction, for now!</h1>
+            <p>Explore what's already up:</p>
+          </Reveal>
+        </div>
       </div>
 
       <div className="container cards">
