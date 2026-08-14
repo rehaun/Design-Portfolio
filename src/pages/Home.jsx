@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
-import Marquee from '../components/Marquee';
+import Ribbons from '../components/Ribbons';
 import Reveal from '../components/Reveal';
 import { images } from '../data/images';
 
@@ -8,6 +8,8 @@ export default function Home() {
   return (
     <>
       <Nav lang="en" />
+      <Ribbons />
+
       <div className="hero">
         <Reveal>
           <img src={images.heroUnderConstruction} alt="" />
@@ -19,36 +21,46 @@ export default function Home() {
       <div className="container cards">
         <Reveal delay={0.05}>
           <Link to="/classeh-games" className="card">
-            <div className="card-eyebrow">Product Design Case Study</div>
-            <div className="card-title">
-              A shorter path, a longer smile from the sales team.
+            <div className="card-image">
+              <img src={images.gamesHero} alt="Classeh Games" loading="lazy" />
             </div>
-            <div className="card-view">View →</div>
+            <div className="card-body">
+              <p className="card-title">
+                A shorter path, a longer smile from the sales team.
+              </p>
+              <span className="card-view">View</span>
+            </div>
           </Link>
         </Reveal>
 
         <Reveal delay={0.1}>
           <Link to="/ux-research" className="card">
-            <div className="card-eyebrow">UX Research Case Study</div>
-            <div className="card-title">
-              They studied AI for years. Now it's rewriting how they work.
+            <div className="card-image">
+              <img src={images.uxHero} alt="UX Research" loading="lazy" />
             </div>
-            <div className="card-view">View →</div>
+            <div className="card-body">
+              <p className="card-title">
+                They studied AI for years. Now it's rewriting how they work.
+              </p>
+              <span className="card-view">View</span>
+            </div>
           </Link>
         </Reveal>
 
         <Reveal delay={0.15}>
           <Link to="/classeh-dashboard" className="card">
-            <div className="card-eyebrow">Product Design Case Study</div>
-            <div className="card-title">
-              Same login, three views, one happy support team.
+            <div className="card-image">
+              <img src={images.dashHero} alt="Classeh Dashboard" loading="lazy" />
             </div>
-            <div className="card-view">View →</div>
+            <div className="card-body">
+              <p className="card-title">
+                Same login, three views, one happy support team.
+              </p>
+              <span className="card-view">View</span>
+            </div>
           </Link>
         </Reveal>
       </div>
-
-      <Marquee />
 
       <div className="footer">Made by Davarpanah</div>
     </>

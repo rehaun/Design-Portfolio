@@ -5,7 +5,7 @@
   --line: #e6e6e6;
   --accent: #ffcc00;
   --maxw: 860px;
-  --font-en: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-en: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --font-fa: 'Vazirmatn', Tahoma, sans-serif;
 }
 
@@ -62,73 +62,127 @@ a { color: inherit; text-decoration: none; }
 }
 .nav-lang:hover { background: #f4f4f4; }
 
-/* ---------- Marquee ---------- */
-.marquee {
+/* ---------- Warning ribbons (top corners, diagonal, crossing) ---------- */
+.ribbon-wrap {
+  position: relative;
+  height: 70px;
   overflow: hidden;
+}
+.ribbon {
+  position: absolute;
+  top: -8px;
+  width: 160%;
   white-space: nowrap;
-  background: #111;
-  color: var(--accent);
-  padding: 10px 0;
-  font-size: 13px;
-  font-weight: 700;
+  background: repeating-linear-gradient(
+    -45deg,
+    #111 0 18px,
+    var(--accent) 18px 36px
+  );
+  color: #111;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: 0.08em;
+  padding: 7px 0;
+  overflow: hidden;
 }
-.marquee-track {
+.ribbon span {
   display: inline-block;
-  padding-left: 100%;
-  animation: marquee 18s linear infinite;
+  color: #111;
+  background: transparent;
 }
-body[dir='rtl'] .marquee-track {
-  padding-left: 0;
-  padding-right: 100%;
-  animation-name: marquee-rtl;
-}
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-@keyframes marquee-rtl {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
-}
+.ribbon.tl { left: -35%; transform: rotate(-7deg); transform-origin: left top; }
+.ribbon.tr { right: -35%; transform: rotate(7deg); transform-origin: right top; }
 
 /* ---------- Hero ---------- */
 .hero {
   text-align: center;
-  padding: 90px 24px 60px;
+  padding: 40px 24px 60px;
 }
-.hero img { margin: 0 auto 28px; max-width: 320px; }
-.hero h1 { font-size: 28px; margin: 0 0 6px; }
-.hero p { color: var(--muted); margin: 0 0 40px; }
+.hero img { margin: 0 auto 28px; max-width: 280px; }
+.hero h1 { font-size: 30px; margin: 0 0 6px; font-weight: 800; }
+.hero p { color: var(--muted); margin: 0 0 40px; font-size: 17px; }
 
 /* ---------- Case study cards on home ---------- */
 .cards {
   display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 0 0 90px;
 }
+@media (max-width: 720px) {
+  .cards { grid-template-columns: 1fr; }
+}
 .card {
-  display: block;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 22px;
-  transition: border-color 0.15s ease, transform 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
-.card:hover { border-color: #ccc; transform: translateY(-2px); }
-.card-eyebrow {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  margin-bottom: 8px;
+/* Dim sibling cards while any card in the row is hovered; the
+   hovered one itself is brought back to full opacity below. */
+.cards:hover .card { opacity: 0.55; }
+.cards .card:hover { opacity: 1; }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
 }
-.card-title { font-size: 18px; font-weight: 600; margin-bottom: 14px; }
-.card-view {
-  font-size: 13px;
+.card-image {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.35s ease;
+}
+.card:hover .card-image img { transform: scale(1.04); }
+.card-body {
+  padding: 18px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.card-title {
+  font-size: 16px;
   font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+}
+.card-view {
+  align-self: flex-start;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #fff;
+  color: #111;
+  border: 1.5px solid #111;
+  padding: 9px 18px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.card-view::after {
+  content: '↗';
+  font-size: 13px;
+  transition: opacity 0.15s ease;
+}
+.card:hover .card-view {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+.card:hover .card-view::after {
+  opacity: 0;
+  width: 0;
 }
 
 /* ---------- Case study page ---------- */
