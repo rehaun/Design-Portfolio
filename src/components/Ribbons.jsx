@@ -7,6 +7,7 @@ export default function Ribbons() {
     <div className="ribbon-wrap">
       <div className="ribbon tl"><RibbonText /></div>
       <div className="ribbon tr"><RibbonText /></div>
+      <div className="ribbon horizontal"><RibbonText /></div>
     </div>
   );
 }
