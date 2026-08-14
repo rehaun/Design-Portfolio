@@ -1,7 +1,7 @@
 :root {
-  --bg: #ffffff;
-  --fg: #111111;
-  --muted: #6b6b6b;
+  --bg: #fefcf6;
+  --fg: #141414;
+  --muted: #8f8f8f;
   --line: #e6e6e6;
   --accent: #ffcc00;
   --maxw: 860px;
@@ -90,8 +90,8 @@ a { color: inherit; text-decoration: none; }
   color: #111;
   background: transparent;
 }
-.ribbon.tl { left: -35%; transform: rotate(-7deg); transform-origin: left top; }
-.ribbon.tr { right: -35%; transform: rotate(7deg); transform-origin: right top; }
+.ribbon.tl { left: -35%; transform: rotate(-26deg); transform-origin: left top; }
+.ribbon.tr { right: -35%; transform: rotate(26deg); transform-origin: right top; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -99,8 +99,8 @@ a { color: inherit; text-decoration: none; }
   padding: 40px 24px 60px;
 }
 .hero img { margin: 0 auto 28px; max-width: 280px; }
-.hero h1 { font-size: 30px; margin: 0 0 6px; font-weight: 800; }
-.hero p { color: var(--muted); margin: 0 0 40px; font-size: 17px; }
+.hero h1 { font-size: 30px; margin: 0 0 6px; font-weight: 700; color: var(--fg); }
+.hero p { color: var(--fg); margin: 0 0 40px; font-size: 20px; font-weight: 400; }
 
 /* ---------- Case study cards on home ---------- */
 .cards {
@@ -115,74 +115,71 @@ a { color: inherit; text-decoration: none; }
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 /* Dim sibling cards while any card in the row is hovered; the
    hovered one itself is brought back to full opacity below. */
 .cards:hover .card { opacity: 0.55; }
 .cards .card:hover { opacity: 1; }
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
-}
 .card-image {
   aspect-ratio: 4 / 3;
   overflow: hidden;
+  border-radius: 16px;
 }
 .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0;
+  border-radius: 16px;
   transition: transform 0.35s ease;
 }
-.card:hover .card-image img { transform: scale(1.04); }
-.card-body {
-  padding: 18px 18px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  flex: 1;
-}
+.card:hover .card-image img { transform: scale(1.03); }
 .card-title {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
+  color: var(--fg);
+  margin: 16px 0 0;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 25px;
+}
+.card-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
   margin: 0;
 }
 .card-view {
-  align-self: flex-start;
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: #fff;
-  color: #111;
-  border: 1.5px solid #111;
-  padding: 9px 18px;
-  border-radius: 999px;
-  transition: background 0.15s ease, color 0.15s ease;
+  font-size: 14px;
+  font-weight: 500;
+  background: #333;
+  color: #e6e6e6;
+  border: 1.5px solid #333;
+  padding: 8px 18px;
+  border-radius: 12px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 .card-view::after {
-  content: '↗';
+  content: '';
   font-size: 13px;
   transition: opacity 0.15s ease;
 }
 .card:hover .card-view {
-  background: #111;
-  color: #fff;
-  border-color: #111;
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--fg);
 }
 .card:hover .card-view::after {
-  opacity: 0;
-  width: 0;
+  content: '↗';
 }
 
 /* ---------- Case study page ---------- */

@@ -24,11 +24,12 @@ export default function Home() {
             <div className="card-image">
               <img src={images.gamesHero} alt="Classeh Games" loading="lazy" />
             </div>
-            <div className="card-body">
-              <p className="card-title">
-                A shorter path, a longer smile from the sales team.
-              </p>
-              <span className="card-view">View</span>
+            <p className="card-title">
+              A shorter path, a longer smile from the sales team.
+            </p>
+            <div className="card-footer">
+              <p className="card-eyebrow">PRODUCT DESIGN CASE STUDY</p>
+              <span className="card-view">VIEW</span>
             </div>
           </Link>
         </Reveal>
@@ -38,11 +39,12 @@ export default function Home() {
             <div className="card-image">
               <img src={images.uxHero} alt="UX Research" loading="lazy" />
             </div>
-            <div className="card-body">
-              <p className="card-title">
-                They studied AI for years. Now it's rewriting how they work.
-              </p>
-              <span className="card-view">View</span>
+            <p className="card-title">
+              They studied AI for years. Now it's rewriting how they work.
+            </p>
+            <div className="card-footer">
+              <p className="card-eyebrow">UX RESEARCH CASE STUDY</p>
+              <span className="card-view">VIEW</span>
             </div>
           </Link>
         </Reveal>
@@ -52,11 +54,12 @@ export default function Home() {
             <div className="card-image">
               <img src={images.dashHero} alt="Classeh Dashboard" loading="lazy" />
             </div>
-            <div className="card-body">
-              <p className="card-title">
-                Same login, three views, one happy support team.
-              </p>
-              <span className="card-view">View</span>
+            <p className="card-title">
+              Same login, three views, one happy support team.
+            </p>
+            <div className="card-footer">
+              <p className="card-eyebrow">PRODUCT DESIGN CASE STUDY</p>
+              <span className="card-view">VIEW</span>
             </div>
           </Link>
         </Reveal>
