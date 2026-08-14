@@ -26,6 +26,7 @@ export default function Home() {
             <p className="card-title">
               A shorter path, a longer smile from the sales team.
             </p>
+            <div className="card-spacer" />
             <div className="card-footer">
               <p className="card-eyebrow">PRODUCT DESIGN CASE STUDY</p>
               <span className="card-view">VIEW</span>
@@ -41,6 +42,7 @@ export default function Home() {
             <p className="card-title">
               They studied AI for years. Now it's rewriting how they work.
             </p>
+            <div className="card-spacer" />
             <div className="card-footer">
               <p className="card-eyebrow">UX RESEARCH CASE STUDY</p>
               <span className="card-view">VIEW</span>
@@ -56,6 +58,7 @@ export default function Home() {
             <p className="card-title">
               Same login, three views, one happy support team.
             </p>
+            <div className="card-spacer" />
             <div className="card-footer">
               <p className="card-eyebrow">PRODUCT DESIGN CASE STUDY</p>
               <span className="card-view">VIEW</span>
