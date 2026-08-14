@@ -5,9 +5,9 @@ function RibbonText({ text = 'WARNING • DO NOT CROSS' }) {
 export default function Ribbons() {
   return (
     <div className="ribbon-wrap">
+      <div className="ribbon horizontal"><RibbonText /></div>
       <div className="ribbon tl"><RibbonText /></div>
       <div className="ribbon tr"><RibbonText /></div>
-      <div className="ribbon horizontal"><RibbonText /></div>
     </div>
   );
 }
