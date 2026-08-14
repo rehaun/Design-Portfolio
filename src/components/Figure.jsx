@@ -82,3 +82,15 @@ export function Section({ eyebrow, heading, children }) {
     </Reveal>
   );
 }
+
+// Big centered phase divider (e.g. "DISCOVERY", "IDEATION") with a line on
+// each side, marking a major phase break in the case study.
+export function PhaseDivider({ text }) {
+  return (
+    <Reveal className="phase-divider">
+      <span className="phase-divider-line" />
+      <span className="phase-divider-text">{text}</span>
+      <span className="phase-divider-line" />
+    </Reveal>
+  );
+}
