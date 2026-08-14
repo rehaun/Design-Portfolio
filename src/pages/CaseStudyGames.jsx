@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
 import Reveal from '../components/Reveal';
 import { Figure, TwoImages, BeforeAfter, Section } from '../components/Figure';
 import { images as img } from '../data/images';
@@ -7,12 +6,11 @@ import { images as img } from '../data/images';
 export default function CaseStudyGames() {
   return (
     <>
-      <Nav lang="en" langHref="/classeh-games/fa" langLabel="Read in Persian: FA" />
-
       <div className="container">
         <div className="cs-header">
           <Reveal>
             <div className="cs-eyebrow">Product Design Case Study</div>
+            <Link to="/classeh-games/fa" className="cs-lang-link">Read in Persian: 🇮🇷FA</Link>
             <h1 className="cs-title">Why Didn't Our Educational Game Feel Like a Game?</h1>
             <p className="cs-subtitle">The story of a game that had everything, except a way in.</p>
             <div className="meta-box">
