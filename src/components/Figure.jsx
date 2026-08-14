@@ -1,8 +1,8 @@
 import Reveal from './Reveal';
 
-export function Figure({ src, alt = '', label, caption }) {
+export function Figure({ src, alt = '', label, caption, width }) {
   return (
-    <Reveal className="figure">
+    <Reveal className="figure" style={width ? { maxWidth: width, marginLeft: 'auto', marginRight: 'auto' } : undefined}>
       {label && <span className="figure-label">{label}</span>}
       <img src={src} alt={alt} loading="lazy" />
       {caption && <div className="figure-caption">{caption}</div>}
@@ -57,14 +57,13 @@ export function ThreeImages({ a, b, c, altA = '', altB = '', altC = '' }) {
   );
 }
 
-export function BeforeAfter({ before, after, beforeCaption, afterCaption, beforeAlt = '', afterAlt = '' }) {
+export function BeforeAfter({ before, after, beforeCaption, afterCaption, beforeAlt = '', afterAlt = '', ratio = '1fr 1fr' }) {
   return (
-    <Reveal className="arrow-flow">
+    <Reveal className="arrow-flow" style={{ gridTemplateColumns: ratio }}>
       <div>
         <img src={before} alt={beforeAlt} loading="lazy" />
         {beforeCaption && <div className="figure-caption">{beforeCaption}</div>}
       </div>
-      <div className="arrow">→</div>
       <div>
         <img src={after} alt={afterAlt} loading="lazy" />
         {afterCaption && <div className="figure-caption">{afterCaption}</div>}
