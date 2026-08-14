@@ -96,7 +96,7 @@ a { color: inherit; text-decoration: none; }
 }
 .ribbon.tl { left: -11%; transform: rotate(-29deg); }
 .ribbon.tr { right: -12%; transform: rotate(21deg); }
-.ribbon.horizontal { left: -10%; top: -2px; transform: rotate(-3deg); }
+.ribbon.horizontal { left: -10%; top: 16px; transform: rotate(-3deg); }
 .hero { position: relative; z-index: 1; }
 
 /* ---------- Hero ---------- */
