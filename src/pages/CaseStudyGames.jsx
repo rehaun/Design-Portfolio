@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
-import { Figure, TwoImages, ThreeImages, BeforeAfter, Collage, Section } from '../components/Figure';
+import { Figure, TwoImages, ThreeImages, BeforeAfter, Collage, Section, PhaseDivider } from '../components/Figure';
 import { images as img } from '../data/images';
 
 export default function CaseStudyGames() {
@@ -72,7 +72,9 @@ export default function CaseStudyGames() {
           </p>
         </Section>
 
-        <Section eyebrow="Discovery" heading="Chasing Clues">
+        <PhaseDivider text="Discovery" />
+
+        <Section eyebrow="Evaluation & Research" heading="Chasing Clues">
           <p>
             Research wasn't yet a standard part of the process there, so I pulled together
             whatever signal I could get on my own. I ran a lightweight heuristic
@@ -86,8 +88,7 @@ export default function CaseStudyGames() {
             lessons back and forth as if they were re-checking something rather than
             choosing it. That's not what confident navigation looks like.
           </p>
-          <TwoImages left={img.gamesDiscovery1} right={img.gamesDiscovery2} />
-          <Figure src={img.gamesDiscovery3} />
+          <ThreeImages a={img.gamesDiscovery1} b={img.gamesDiscovery2} c={img.gamesDiscovery3} />
           <p>Two things kept surfacing:</p>
           <ul>
             <li>
@@ -134,7 +135,9 @@ export default function CaseStudyGames() {
           <Figure src={img.gamesCompetitive} />
         </Section>
 
-        <Section eyebrow="Ideation · HMW" heading="Finding the Right Question">
+        <PhaseDivider text="Ideation" />
+
+        <Section eyebrow="HMW" heading="Finding the Right Question">
           <p>
             Discovery had pointed to a clear cause. The next step was turning that into a
             question I could actually design against:
@@ -219,7 +222,9 @@ export default function CaseStudyGames() {
           </p>
         </Section>
 
-        <Section eyebrow="Design · Visual Identity" heading="Beezie Takes the Stage">
+        <PhaseDivider text="Design" />
+
+        <Section eyebrow="Visiual Identity" heading="Beezie Takes the Stage">
           <p>
             Beezie wasn't something I inherited — it's something I proposed adding to the
             game myself, and the work of bringing it to life was assigned to me. I
@@ -260,7 +265,9 @@ export default function CaseStudyGames() {
           />
         </Section>
 
-        <Section eyebrow="Reflection · Impact" heading="A Happy Sales Team">
+        <PhaseDivider text="Reflection" />
+
+        <Section eyebrow="Impact" heading="A Happy Sales Team">
           <p>
             We didn't run a formal post-launch study, so what I have isn't a number — it's
             a consistent signal from the team closest to the customers. Sales reported a
