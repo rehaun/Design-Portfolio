@@ -95,8 +95,8 @@ a { color: inherit; text-decoration: none; }
   background: transparent;
 }
 .ribbon.tl { left: -11%; transform: rotate(-29deg); }
-.ribbon.tr { right: -11%; transform: rotate(26deg); }
-.ribbon.horizontal { left: -10%; top: -6px; transform: rotate(-7deg); }
+.ribbon.tr { right: -12%; transform: rotate(21deg); }
+.ribbon.horizontal { left: -10%; top: -6px; transform: rotate(-3deg); }
 .hero { position: relative; z-index: 1; }
 
 /* ---------- Hero ---------- */
