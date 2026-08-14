@@ -122,15 +122,11 @@ a { color: inherit; text-decoration: none; }
 .card {
   display: flex;
   flex-direction: column;
+  height: 100%;
   box-sizing: border-box;
   padding: 8px;
   border: 1px solid #e3e3e3;
   border-radius: 20px;
-}
-.card-image {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 16px;
 }
 .card-image {
   aspect-ratio: 4 / 3;
@@ -206,6 +202,7 @@ a { color: inherit; text-decoration: none; }
   margin-left: 5px;
   opacity: 1;
 }
+
 /* ---------- Case study page ---------- */
 .cs-header { padding: 60px 24px 20px; }
 .cs-eyebrow {
