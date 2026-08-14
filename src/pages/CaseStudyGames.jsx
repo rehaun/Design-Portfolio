@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
-import { Figure, TwoImages, BeforeAfter, Section } from '../components/Figure';
+import { Figure, TwoImages, ThreeImages, BeforeAfter, Collage, Section } from '../components/Figure';
 import { images as img } from '../data/images';
 
 export default function CaseStudyGames() {
@@ -35,12 +35,25 @@ export default function CaseStudyGames() {
           </p>
         </Section>
 
-        <BeforeAfter
-          before={img.gamesBefore}
-          after={img.gamesAfter}
-          beforeCaption="Before"
-          afterCaption="After"
+        <Collage
+          aspect={941 / 297}
+          items={[
+            { src: img.gamesFlowBefore, left: 0, top: 0, width: 18.17, height: 100 },
+            { src: img.gamesFlowDivider, left: 18.38, top: 39.39, width: 81.83, height: 40.4 },
+          ]}
         />
+
+        <p style={{ textAlign: 'center', fontWeight: 700, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '30px 0' }}>Before</p>
+
+        <Collage
+          aspect={961 / 196}
+          items={[
+            { src: img.gamesBefore, left: 0, top: 1.53, width: 28.3, height: 98.47 },
+            { src: img.gamesAfter, left: 19.87, top: 0, width: 80.13, height: 77.04 },
+          ]}
+        />
+
+        <p style={{ textAlign: 'center', fontWeight: 700, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '30px 0' }}>After</p>
 
         <Section heading="A Game? Or a Table of Contents?">
           <p>
@@ -53,11 +66,10 @@ export default function CaseStudyGames() {
             around how a kid decides what to play next. And every one of those three
             decisions was a place a kid could give up before reaching anything fun.
           </p>
-          <TwoImages left={img.gamesFlow1} right={img.gamesFlow2} />
-          <Figure
-            src={img.gamesFlow3}
-            caption="The previous flow: subject, then chapter, then a list of games — and only then, a game."
-          />
+          <ThreeImages a={img.gamesFlow1} b={img.gamesFlow2} c={img.gamesFlow3} />
+          <p className="figure-caption">
+            The previous flow: subject, then chapter, then a list of games — and only then, a game.
+          </p>
         </Section>
 
         <Section eyebrow="Discovery" heading="Chasing Clues">
