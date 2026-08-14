@@ -301,15 +301,14 @@ a { color: inherit; text-decoration: none; }
 }
 
 .arrow-flow {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 24px;
   margin: 22px 0;
 }
-.arrow-flow > div { flex: 1; }
-.arrow-flow .arrow { font-size: 22px; color: var(--muted); flex: 0 0 auto; }
 @media (max-width: 640px) {
-  .arrow-flow { flex-direction: column; }
+  .arrow-flow { grid-template-columns: 1fr !important; }
 }
 
 blockquote {
