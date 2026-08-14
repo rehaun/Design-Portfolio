@@ -75,8 +75,7 @@ a { color: inherit; text-decoration: none; }
 }
 .ribbon {
   position: absolute;
-  left: 50%;
-  width: 250vw;
+  width: 87.2vw;
   white-space: nowrap;
   background: repeating-linear-gradient(
     -45deg,
@@ -88,14 +87,15 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.08em;
   padding: 7px 0;
   overflow: hidden;
+  top: -4.2vw;
 }
 .ribbon span {
   display: inline-block;
   color: #111;
   background: transparent;
 }
-.ribbon.tl { top: 40px; transform: translateX(-50%) rotate(-26deg); }
-.ribbon.tr { top: 40px; transform: translateX(-50%) rotate(26deg); }
+.ribbon.tl { left: -11%; transform: rotate(-26deg); }
+.ribbon.tr { right: -11%; transform: rotate(26deg); }
 .hero { position: relative; z-index: 1; }
 
 /* ---------- Hero ---------- */
