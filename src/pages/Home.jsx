@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Nav from '../components/Nav';
 import Ribbons from '../components/Ribbons';
 import Reveal from '../components/Reveal';
 import { images } from '../data/images';
@@ -7,7 +6,6 @@ import { images } from '../data/images';
 export default function Home() {
   return (
     <>
-      <Nav lang="en" />
       <div className="hero-wrap">
         <Ribbons />
         <div className="hero">
