@@ -102,7 +102,7 @@ export default function CaseStudyGames() {
               immersion we wanted.
             </li>
           </ul>
-          <Figure src={img.gamesVisualLang} />
+          <Figure src={img.gamesVisualLang} width={400} />
         </Section>
 
         <Section eyebrow="Competitive Analysis" heading="The App Should've Thought Ahead">
@@ -120,11 +120,11 @@ export default function CaseStudyGames() {
             the app, and it already knows your next step. No need to remember where you
             were, it just picks up for you.
           </p>
-          <Figure src={img.gamesBussuScreen} />
+          <Figure src={img.gamesBussuScreen} width={539} />
 
           <div className="competitor"><img src={img.gamesBussuLogo} alt="" />Bussu</div>
           <p>Units instead of levels, same idea: pick up right where you left off.</p>
-          <Figure src={img.gamesKhanScreen} />
+          <Figure src={img.gamesKhanScreen} width={558} />
 
           <div className="competitor"><img src={img.gamesKhanLogo} alt="" />Khan Academy Kids</div>
           <p>
@@ -132,7 +132,7 @@ export default function CaseStudyGames() {
             and what they want to play. Categories are still there, just as a shortcut up
             top, not a gate.
           </p>
-          <Figure src={img.gamesCompetitive} />
+          <Figure src={img.gamesCompetitive} width={558} />
         </Section>
 
         <PhaseDivider text="Ideation" />
@@ -190,7 +190,7 @@ export default function CaseStudyGames() {
             Early hand-drawn sketches of the screens the new flow would require, before
             any high-fidelity design.
           </p>
-          <Figure src={img.gamesSketch} />
+          <Figure src={img.gamesSketch} width={712} />
         </Section>
 
         <Section eyebrow="Information Architecture" heading="Stepping on Backend's Turf">
@@ -231,7 +231,7 @@ export default function CaseStudyGames() {
             brought on a freelance illustrator to design the character, and stayed closely
             involved throughout that process. She delivered the base character.
           </p>
-          <Figure src={img.gamesBeezie} caption="Beezie, Classeh's mascot." />
+          <Figure src={img.gamesBeezie} caption="Beezie, Classeh's mascot." width={602} />
           <p>
             Once the new roadmap structure was in place, the work went beyond the mascot
             itself. I designed the visual elements for each of the eight segments, and
@@ -256,12 +256,14 @@ export default function CaseStudyGames() {
             after={img.gamesFinalAfter1}
             beforeCaption="Before: users had to go through all four categories to play."
             afterCaption="After: now, they only need to be in one category (levels) at a time."
+            ratio="203fr 441fr"
           />
           <BeforeAfter
             before={img.gamesFinalBefore2}
             after={img.gamesFinalAfter2}
             beforeCaption="Before: users could only see games from one subject."
             afterCaption="After: now they can view all games from a specific learning period."
+            ratio="203fr 441fr"
           />
         </Section>
 
@@ -275,7 +277,7 @@ export default function CaseStudyGames() {
             the redesign. I can't put a metric next to that, but the signal was clear and
             repeated.
           </p>
-          <Figure src={img.gamesImpact} />
+          <Figure src={img.gamesImpact} width={176} />
         </Section>
 
         <Section eyebrow="Takeaway" heading="Great Ideas Need the Whole Team">
