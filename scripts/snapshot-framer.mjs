@@ -5,6 +5,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 
 const ROOT = 'https://re-davarpanah.framer.website';
 const OUT = 'framer-snapshot';
+// v2: full text + html
 mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch();
@@ -43,10 +44,11 @@ for (const p of paths) {
       const tag = n.tagName.toLowerCase();
       const y = Math.round(r.top + scrollY), x = Math.round(r.left), w = Math.round(r.width), h = Math.round(r.height);
       if (tag === 'img') {
-        out.push({ type: 'img', file: (n.currentSrc || n.src).split('/').pop().split('?')[0], x, y, w, h });
+        out.push({ type: 'img', file: (n.currentSrc || n.src).split('/').pop().split('?')[0], alt: n.alt, x, y, w, h, fit: getComputedStyle(n).objectFit });
       } else if (/^(h[1-6]|p|li|blockquote)$/.test(tag)) {
         const text = n.innerText.trim().replace(/\s+/g, ' ');
-        if (text) out.push({ type: tag, text: text.slice(0, 140), x, y, w, h, size: getComputedStyle(n).fontSize, weight: getComputedStyle(n).fontWeight });
+        const cs = getComputedStyle(n);
+        if (text) out.push({ type: tag, text, html: n.innerHTML, x, y, w, h, size: cs.fontSize, weight: cs.fontWeight, align: cs.textAlign, color: cs.color, transform: cs.textTransform, position: cs.position });
       }
     }
     return out.sort((a, b) => a.y - b.y || a.x - b.x);
