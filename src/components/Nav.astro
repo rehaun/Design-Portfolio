@@ -1,5 +1,6 @@
 ---
 import avatar from '../assets/brand/avatar.svg';
+import avatarHover from '../assets/brand/avatar-hover.svg';
 import { ui, url, localePath } from '../lib/i18n';
 
 // `altHref`: the same page in the other language, if it exists.
@@ -16,8 +17,11 @@ const links = [
 ---
 <header class="nav">
   <div class="nav-inner">
-    <a href={url('/')} class="nav-brand" aria-label={ui[lang].name}>
-      <img src={avatar.src} width={avatar.width} height={avatar.height} alt="" class="nav-avatar" />
+    <a href={url('/')} class="nav-brand" aria-label={ui[lang].name} data-avatar>
+      <span class="nav-avatar">
+        <img src={avatar.src} width={avatar.width} height={avatar.height} alt="" class="avatar-face" />
+        <img src={avatarHover.src} width={avatarHover.width} height={avatarHover.height} alt="" class="avatar-face avatar-happy" />
+      </span>
     </a>
     <nav class="nav-links">
       {links.map((l) => (
@@ -28,3 +32,29 @@ const links = [
   </div>
   {progress && <span class="nav-progress" data-progress aria-hidden="true"></span>}
 </header>
+
+<script>
+  // Avatar "happy" face (the Hover=On variant from Figma).
+  // Mouse: shown on hover via CSS. Touch: a tap shows it for a beat before
+  // navigating, and the avatar says hello once per visit when the page opens.
+  const brand = document.querySelector<HTMLAnchorElement>('[data-avatar]');
+  const touch = matchMedia('(hover: none)').matches;
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (brand && touch && !calm) {
+    const smile = (ms: number) => {
+      brand.classList.add('is-happy');
+      setTimeout(() => brand.classList.remove('is-happy'), ms);
+    };
+    brand.addEventListener('click', (e) => {
+      e.preventDefault();
+      smile(600);
+      setTimeout(() => (location.href = brand.href), 380);
+    });
+    let greeted = false;
+    try {
+      greeted = sessionStorage.getItem('avatar-hello') === '1';
+      sessionStorage.setItem('avatar-hello', '1');
+    } catch {}
+    if (!greeted) setTimeout(() => smile(1100), 700);
+  }
+</script>
