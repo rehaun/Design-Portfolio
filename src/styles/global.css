@@ -3,12 +3,7 @@
   --fg: #141414;
   --muted: #8f8f8f;
   --line: #e6e6e6;
-  --accent: #ffcc00;   /* original site accent (case study quotes) */
-  --warning: #ffcc00;  /* under-construction ribbons only */
-  /* Home palette: neutral for now, swap these once the colors are decided */
-  --surface: #ffffff;
-  --surface-soft: #f3f3f1;
-  --mark: var(--fg);
+  --accent: #ffcc00;
   --maxw: 860px;
   --font-en: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --font-fa: 'Estedad', Tahoma, sans-serif;
@@ -105,7 +100,7 @@ a { color: inherit; text-decoration: none; }
   background: repeating-linear-gradient(
     -45deg,
     #111 0 18px,
-    var(--warning) 18px 36px
+    var(--accent) 18px 36px
   );
   font-size: 11px;
   font-weight: 800;
@@ -410,7 +405,7 @@ blockquote {
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
-  background: var(--surface);
+  background: #fff;
 }
 .wave { display: inline-block; transform-origin: 70% 70%; animation: wave 2.4s ease-in-out 0.6s infinite; }
 @keyframes wave {
@@ -440,12 +435,11 @@ blockquote {
   justify-self: start;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
 }
-/* underline on the text itself (follows line wraps) */
+/* marker highlight under the text itself (follows line wraps) */
 .rotator .mark {
-  text-decoration: underline;
-  text-decoration-color: var(--mark);
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.16em;
+  background: linear-gradient(transparent 62%, var(--accent) 62%, var(--accent) 92%, transparent 92%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .rotator-word.is-active { opacity: 1; transform: none; }
 .rotator-word.is-leaving { opacity: 0; transform: translateY(-100%); }
@@ -471,12 +465,12 @@ blockquote {
   padding: 22px;
   border: 1px solid #e3e3e3;
   border-radius: 20px;
-  background: var(--surface);
+  background: #fff;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
 }
 .tile:hover { transform: translateY(-4px) rotate(-0.6deg); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06); }
 [dir='rtl'] .tile:hover { transform: translateY(-4px) rotate(0.6deg); }
-.tile-soft { background: var(--surface-soft); border-color: transparent; }
+.tile-soft { background: #fff8da; border-color: #f3e6a8; }
 .tile-icon { display: inline-block; font-size: 28px; margin-bottom: 10px; transition: transform 0.3s ease; }
 .tile:hover .tile-icon { transform: scale(1.15) rotate(-8deg); }
 .tile h3 { font-size: 17px; margin: 0 0 6px; }
@@ -488,14 +482,19 @@ blockquote {
   justify-content: space-between;
   gap: 24px;
   padding: 28px;
-  border: 1.5px dashed #cfcfcf;
   border-radius: 20px;
-  transition: border-color 0.3s ease;
+  background: repeating-linear-gradient(-45deg, #111 0 14px, var(--accent) 14px 28px);
+  position: relative;
 }
-.play-teaser:hover { border-color: var(--fg); }
+.play-teaser > div {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 18px 22px;
+}
 .play-teaser .home-h2 { margin-bottom: 4px; }
 .play-teaser p { margin: 0; color: #575757; }
-.play-teaser .hero-cta { margin: 0; flex: 0 0 auto; }
+.play-teaser .hero-cta { margin: 0; flex: 0 0 auto; background: var(--bg); color: var(--fg); }
+.play-teaser:hover .hero-cta { background: #fff; }
 @media (max-width: 640px) {
   .play-teaser { flex-direction: column; align-items: stretch; text-align: center; }
 }
