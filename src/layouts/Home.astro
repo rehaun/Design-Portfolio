@@ -1,0 +1,136 @@
+---
+import { getCollection } from 'astro:content';
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Reveal from '../components/Reveal.astro';
+import Img from '../components/Img.astro';
+import { images } from '../data/images';
+import { home } from '../data/home';
+import { ui, localePath, parseId } from '../lib/i18n';
+
+const { lang } = Astro.props;
+const t = home[lang];
+const otherLang = lang === 'fa' ? 'en' : 'fa';
+const work = (await getCollection('work', (e) => parseId(e.id).lang === lang)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+<Base lang={lang} title={`${ui[lang].brand} — ${lang === 'fa' ? 'طراح محصول' : 'Product Designer'}`} description={t.intro}>
+  {lang === 'en' && (
+    <script is:inline>
+      // Old links used hash routes (#/classeh-games, #/classeh-games/fa).
+      // Send them to the new real URLs.
+      (function () {
+        var m = location.hash.match(/^#\/([\w-]+)(\/fa)?\/?$/);
+        if (!m) return;
+        var base = location.pathname.replace(/\/?$/, '/');
+        location.replace(base + (m[2] ? 'fa/' : '') + m[1] + '/');
+      })();
+    </script>
+  )}
+
+  <Nav lang={lang} altHref={localePath(otherLang, '/')} />
+
+  <header class="home-hero container">
+    <Reveal>
+      <p class="home-greeting">{t.greeting} <span class="wave" aria-hidden="true">👋</span></p>
+      <h1 class="home-title">
+        {t.lead}{' '}
+        <span class="rotator" data-rotator>
+          {t.rotating.map((word, i) => (
+            <span class:list={['rotator-word', { 'is-active': i === 0 }]} aria-hidden={i === 0 ? undefined : 'true'}><span class="mark">{word}</span></span>
+          ))}
+        </span>{t.tail}
+      </h1>
+      <p class="home-intro">{t.intro}</p>
+    </Reveal>
+  </header>
+
+  <section class="container home-section">
+    <Reveal><h2 class="home-h2">{t.workTitle}</h2></Reveal>
+    <div class="cards">
+      {work.map((entry, i) => (
+        <Reveal delay={0.05 * (i + 1)}>
+          <a href={localePath(lang, `/${parseId(entry.id).slug}/`)} class="card">
+            <div class="card-image">
+              <Img src={images[entry.data.hero]} alt={entry.data.title} />
+            </div>
+            <p class="card-title">{entry.data.cardTitle ?? entry.data.title}</p>
+            <div class="card-spacer"></div>
+            <div class="card-footer">
+              <p class="card-eyebrow">{entry.data.eyebrow.toUpperCase()}</p>
+              <span class="card-view">{t.view}</span>
+            </div>
+          </a>
+        </Reveal>
+      ))}
+    </div>
+  </section>
+
+  <section class="container home-section">
+    <Reveal><h2 class="home-h2">{t.howTitle}</h2></Reveal>
+    <div class="tiles tiles-4">
+      {t.how.map((item, i) => (
+        <Reveal delay={0.05 * i} class="tile">
+          <span class="tile-icon" aria-hidden="true">{item.icon}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </Reveal>
+      ))}
+    </div>
+  </section>
+
+  <section class="container home-section">
+    <Reveal><h2 class="home-h2">{t.teamTitle}</h2></Reveal>
+    <div class="tiles tiles-3">
+      {t.team.map((item, i) => (
+        <Reveal delay={0.05 * i} class="tile tile-soft">
+          <span class="tile-icon" aria-hidden="true">{item.icon}</span>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </Reveal>
+      ))}
+    </div>
+  </section>
+
+  <section class="container home-section">
+    <Reveal>
+      <a href={localePath(lang, '/play/')} class="play-teaser">
+        <div>
+          <h2 class="home-h2">{t.playTitle}</h2>
+          <p>{t.playText}</p>
+        </div>
+        <span class="hero-cta">{t.playCta}</span>
+      </a>
+    </Reveal>
+  </section>
+
+  <section class="container home-end">
+    <Reveal>
+      <h2>{t.endTitle}</h2>
+      <a href={localePath(lang, '/about/')} class="hero-cta">{t.endCta}</a>
+    </Reveal>
+  </section>
+
+  <div class="footer">{t.footer}</div>
+
+  <script>
+    // Hero rotating word: cycles through the words every few seconds.
+    // Skipped when the visitor prefers reduced motion (first word stays).
+    const rotator = document.querySelector('[data-rotator]');
+    if (rotator && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const words = [...rotator.querySelectorAll('.rotator-word')];
+      let i = 0;
+      setInterval(() => {
+        const prev = words[i];
+        i = (i + 1) % words.length;
+        prev.classList.remove('is-active');
+        prev.classList.add('is-leaving');
+        prev.setAttribute('aria-hidden', 'true');
+        setTimeout(() => prev.classList.remove('is-leaving'), 500);
+        words[i].classList.add('is-active');
+        words[i].removeAttribute('aria-hidden');
+      }, 2600);
+    }
+  </script>
+</Base>
