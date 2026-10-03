@@ -1,0 +1,1050 @@
+[
+ {
+  "type": "p",
+  "text": "UX RESEARCH CASE STUDY",
+  "x": 170,
+  "y": 18,
+  "w": 165,
+  "h": 14,
+  "size": "12px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "FA",
+  "x": 295,
+  "y": 40,
+  "w": 22,
+  "h": 19,
+  "size": "16px",
+  "weight": "900"
+ },
+ {
+  "type": "p",
+  "text": "Read in Persian:",
+  "x": 170,
+  "y": 45,
+  "w": 97,
+  "h": 14,
+  "size": "12px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Confident, Fast, and Sometimes Wrong",
+  "x": 170,
+  "y": 84,
+  "w": 645,
+  "h": 38,
+  "size": "32px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "What AI actually changes in a student's life, and what still gets in the way.",
+  "x": 170,
+  "y": 154,
+  "w": 940,
+  "h": 29,
+  "size": "24px",
+  "weight": "500"
+ },
+ {
+  "type": "img",
+  "file": "72qbXE1k7uncCG04RbMhXKtRA.png",
+  "x": 264,
+  "y": 207,
+  "w": 752,
+  "h": 501
+ },
+ {
+  "type": "p",
+  "text": "Project type: UX research",
+  "x": 170,
+  "y": 732,
+  "w": 217,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Method: 6 semi-structured interviews, analyzed via affinity diagramming",
+  "x": 170,
+  "y": 775,
+  "w": 557,
+  "h": 19,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Audience: Postgraduate computer science students (master's and PhD, studying abroad)",
+  "x": 170,
+  "y": 811,
+  "w": 694,
+  "h": 19,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Instructor: Arghavan Saeidan",
+  "x": 170,
+  "y": 847,
+  "w": 229,
+  "h": 19,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "It's 11pm. A grad student is staring at a bug that won't die. The honest choice is three days of documentation, or one prompt into a chat wi",
+  "x": 168,
+  "y": 989,
+  "w": 944,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "lAT0fPQB6De3uMTmoHQ0MAVAgQ.png",
+  "x": 167,
+  "y": 1106,
+  "w": 945,
+  "h": 378
+ },
+ {
+  "type": "p",
+  "text": "They pick the chat window. This time, it works.",
+  "x": 168,
+  "y": 1524,
+  "w": 944,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Next time, the same confident tone hands them a completely wrong answer, and they don't catch it until it's too late.",
+  "x": 168,
+  "y": 1563,
+  "w": 944,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "a7oaGaLyYM906jIVWGSSIHN8lM.png",
+  "x": 292,
+  "y": 1629,
+  "w": 724,
+  "h": 243
+ },
+ {
+  "type": "p",
+  "text": "That gap — between getting help and getting fooled — is exactly where this research lives. Not whether grad students use AI. They all do. Bu",
+  "x": 168,
+  "y": 1912,
+  "w": 944,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "CONTEXT",
+  "x": 169,
+  "y": 2077,
+  "w": 67,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "h4",
+  "text": "Why Grad Students, of All People?",
+  "x": 169,
+  "y": 2110,
+  "w": 943,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "This started as a class project on how AI is reshaping different fields — each of us was assigned a segment to dig into. Mine was postgradua",
+  "x": 169,
+  "y": 2164,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "It turned out to be a good draw. This group is close to a best-case scenario for AI adoption — technically fluent, research-heavy workloads,",
+  "x": 169,
+  "y": 2229,
+  "w": 943,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "Cj4v0j7GZzSHmlyg8Sy4IDikYNw.png",
+  "x": 168,
+  "y": 2330,
+  "w": 944,
+  "h": 382
+ },
+ {
+  "type": "p",
+  "text": "METHOD",
+  "x": 169,
+  "y": 2826,
+  "w": 60,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "h4",
+  "text": "Chasing Experience, Not Numbers",
+  "x": 169,
+  "y": 2859,
+  "w": 428,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "What I needed wasn't a number. It was experience. Not just how often students use AI, but how it actually feels to use it: where it helps, w",
+  "x": 169,
+  "y": 2913,
+  "w": 943,
+  "h": 102,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "It's worth mentioning the framework for choosing a research method that my UX Research instructor(Arghavan Saeedan) developed. In this appro",
+  "x": 169,
+  "y": 3048,
+  "w": 943,
+  "h": 102,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "7YuZqtFhMibhFCtPlnH8stiSy0U.jpg",
+  "x": 441,
+  "y": 3182,
+  "w": 399,
+  "h": 354
+ },
+ {
+  "type": "p",
+  "text": "I started with a set of research questions I needed to answer, then worked backward from there: what data would actually answer them, what m",
+  "x": 169,
+  "y": 3568,
+  "w": 943,
+  "h": 102,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "O6uK2C36NSm5I0IeEP8W6aHJ3As.jpg",
+  "x": 300,
+  "y": 3703,
+  "w": 215,
+  "h": 241
+ },
+ {
+  "type": "img",
+  "file": "fdB5OQtGC2TcMA7Jka5yisHQa8A.jpg",
+  "x": 627,
+  "y": 3703,
+  "w": 353,
+  "h": 247
+ },
+ {
+  "type": "p",
+  "text": "→",
+  "x": 563,
+  "y": 3816,
+  "w": 16,
+  "h": 19,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Turn research questions into interview question list",
+  "x": 169,
+  "y": 3982,
+  "w": 943,
+  "h": 21,
+  "size": "13px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Once the questions held up, I ran the interviews with six students I already knew, which came with its own challenge: staying neutral with p",
+  "x": 169,
+  "y": 4034,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "I went through the transcripts twice. Once with an Affinity Diagram, letting patterns surface from the raw data on their own. Once going bac",
+  "x": 169,
+  "y": 4118,
+  "w": 943,
+  "h": 102,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "4vrr2TxU8keFgqrR9XK9mYWzY.jpg",
+  "x": 169,
+  "y": 4402,
+  "w": 943,
+  "h": 118
+ },
+ {
+  "type": "p",
+  "text": "FINDINGS",
+  "x": 169,
+  "y": 4509,
+  "w": 65,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "p",
+  "text": "affinity diagram - you can open this photo in a new tab to fully see the details",
+  "x": 169,
+  "y": 4520,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "h4",
+  "text": "Six Things I Didn't Expect to Hear So Clearly",
+  "x": 169,
+  "y": 4542,
+  "w": 541,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "Six themes came out of the affinity mapping, clear enough that I didn't have to squint to see them. Here's what grad students actually told ",
+  "x": 169,
+  "y": 4597,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🎯",
+  "x": 465,
+  "y": 4688,
+  "w": 30,
+  "h": 29,
+  "size": "24px",
+  "weight": "400"
+ },
+ {
+  "type": "h5",
+  "text": "1. Specific Tasks, Not General Chat",
+  "x": 169,
+  "y": 4689,
+  "w": 292,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "Every student I talked to used AI constantly, but not as a general chatbot. Their use cases were specific: paraphrasing dense text, debuggin",
+  "x": 169,
+  "y": 4733,
+  "w": 943,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ I often rely on AI to summarize articles or provide insights into complex topics, which saves me a lot of time.❞",
+  "x": 169,
+  "y": 4813,
+  "w": 943,
+  "h": 38,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "🪄",
+  "x": 541,
+  "y": 4892,
+  "w": 30,
+  "h": 29,
+  "size": "24px",
+  "weight": "400"
+ },
+ {
+  "type": "h5",
+  "text": "2. The time saved is not small. It's dramatic",
+  "x": 169,
+  "y": 4893,
+  "w": 368,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "This wasn't a marginal efficiency gain. Students described AI turning multi day problems into a matter of hours.",
+  "x": 169,
+  "y": 4937,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ Instead of spending several days reading through documentation, I can resolve problems in just a few hours with AI.❞",
+  "x": 169,
+  "y": 4966,
+  "w": 943,
+  "h": 64,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "This is the strongest, clearest value in the whole study, and also the highest bar anything else has to clear. Anything that adds friction i",
+  "x": 169,
+  "y": 5034,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🚧",
+  "x": 596,
+  "y": 5125,
+  "w": 30,
+  "h": 29,
+  "size": "24px",
+  "weight": "400"
+ },
+ {
+  "type": "h5",
+  "text": "3. Two very different walls: money and permission",
+  "x": 169,
+  "y": 5127,
+  "w": 423,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "The barriers weren't really technical. They were structural. Cost was one. Premium tools are expensive enough that students described poolin",
+  "x": 169,
+  "y": 5170,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ It's quite expensive, but we're considering sharing an account to make it more manageable.❞",
+  "x": 169,
+  "y": 5225,
+  "w": 943,
+  "h": 38,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "The other wall was institutional permission. Supervisors sometimes explicitly discouraged AI use, cutting students off from a tool they'd al",
+  "x": 169,
+  "y": 5268,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ My manager doesn't allow us to use AI tools for our projects, which makes it difficult for me to get help.❞",
+  "x": 169,
+  "y": 5323,
+  "w": 943,
+  "h": 38,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "Together, these describe a group that wants in, but is being priced or policy blocked out.",
+  "x": 169,
+  "y": 5365,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🧠",
+  "x": 686,
+  "y": 5431,
+  "w": 30,
+  "h": 29,
+  "size": "24px",
+  "weight": "400"
+ },
+ {
+  "type": "h5",
+  "text": "4. Underneath the enthusiasm, a quiet worry about learning",
+  "x": 169,
+  "y": 5433,
+  "w": 513,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "Not everything was positive. A few students voiced something easy to miss if you only look at usage numbers: the worry that leaning on AI fo",
+  "x": 169,
+  "y": 5476,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ I feel like I'm relying on AI for quick fixes rather than truly understanding the material.❞",
+  "x": 169,
+  "y": 5531,
+  "w": 943,
+  "h": 38,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "The fastest answer isn't always the one people actually want, especially when learning is the point.",
+  "x": 169,
+  "y": 5573,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "⚠️",
+  "x": 461,
+  "y": 5639,
+  "w": 30,
+  "h": 29,
+  "size": "24px",
+  "weight": "400"
+ },
+ {
+  "type": "li",
+  "text": "Sounding Sure Isn't Being Right",
+  "x": 169,
+  "y": 5641,
+  "w": 288,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "h5",
+  "text": "Sounding Sure Isn't Being Right",
+  "x": 191,
+  "y": 5641,
+  "w": 266,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "Students had learned, the hard way, that AI's tone has nothing to do with its accuracy.",
+  "x": 169,
+  "y": 5684,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ Sometimes, AI gives me confident answers that turn out to be completely wrong.❞",
+  "x": 169,
+  "y": 5713,
+  "w": 943,
+  "h": 38,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "They've already internalized the need to double check everything. But right now, they're doing all of that verification work alone, with no ",
+  "x": 169,
+  "y": 5756,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🤝",
+  "x": 606,
+  "y": 5847,
+  "w": 30,
+  "h": 29,
+  "size": "24px",
+  "weight": "400"
+ },
+ {
+  "type": "h5",
+  "text": "6. Worried about the job market, but not panicking",
+  "x": 169,
+  "y": 5849,
+  "w": 433,
+  "h": 26,
+  "size": "16px",
+  "weight": "700"
+ },
+ {
+  "type": "p",
+  "text": "Given how central AI already is to their work, I expected more anxiety about job security. What I found instead was a kind of measured confi",
+  "x": 169,
+  "y": 5892,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🗯️❝ While I think the way we approach our work may change, I'm sure there will always be a place for humans in the workforce.❞",
+  "x": 169,
+  "y": 5947,
+  "w": 943,
+  "h": 64,
+  "size": "16px",
+  "weight": "300"
+ },
+ {
+  "type": "p",
+  "text": "They expect their methods to shift. They don't expect to be replaced, and they still trust their own judgment more than the tool's.",
+  "x": 169,
+  "y": 6015,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "THROUGH LINE",
+  "x": 169,
+  "y": 6180,
+  "w": 103,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "h4",
+  "text": "What Do They Actually Want From AI?",
+  "x": 169,
+  "y": 6213,
+  "w": 477,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "Put these six things together and one pattern sits underneath all of them. Students don't want AI to think for them. They want it to take th",
+  "x": 169,
+  "y": 6267,
+  "w": 943,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "OPPORTUNITIES",
+  "x": 169,
+  "y": 6458,
+  "w": 110,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "h4",
+  "text": "Where the Real Opportunity Is",
+  "x": 169,
+  "y": 6491,
+  "w": 377,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "Take all six findings together, and the opportunity splits into three buckets: making access easier, making the tool a better partner in rea",
+  "x": 169,
+  "y": 6545,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🧱 Making access easier",
+  "x": 169,
+  "y": 6617,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "900"
+ },
+ {
+  "type": "li",
+  "text": "Cheaper or tiered access. Solves the cost barrier directly, instead of pushing students toward sharing accounts informally.",
+  "x": 169,
+  "y": 6656,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Cheaper or tiered access. Solves the cost barrier directly, instead of pushing students toward sharing accounts informally.",
+  "x": 189,
+  "y": 6656,
+  "w": 923,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "🤝 Making the tool a better partner",
+  "x": 169,
+  "y": 6727,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "900"
+ },
+ {
+  "type": "li",
+  "text": "AI that adapts to a specific person's history and feedback, instead of resetting every conversation, fixing a lot of the repeated friction s",
+  "x": 169,
+  "y": 6767,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "AI that adapts to a specific person's history and feedback, instead of resetting every conversation, fixing a lot of the repeated friction s",
+  "x": 189,
+  "y": 6767,
+  "w": 923,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "li",
+  "text": "Built in confidence and verification signals, flagging where an answer is uncertain instead of stating everything in the same tone.",
+  "x": 169,
+  "y": 6818,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Built in confidence and verification signals, flagging where an answer is uncertain instead of stating everything in the same tone.",
+  "x": 189,
+  "y": 6818,
+  "w": 923,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "✍🏻 Making it a partner in learning, not a shortcut around it",
+  "x": 169,
+  "y": 6889,
+  "w": 943,
+  "h": 26,
+  "size": "16px",
+  "weight": "900"
+ },
+ {
+  "type": "li",
+  "text": "Step by step problem solving, especially for coding and research, pushing back against the exact pattern students worried about: getting the",
+  "x": 169,
+  "y": 6929,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Step by step problem solving, especially for coding and research, pushing back against the exact pattern students worried about: getting the",
+  "x": 189,
+  "y": 6929,
+  "w": 923,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "li",
+  "text": "An \"explain it back\" check. Before moving to the next question, ask the student to summarize the answer in their own words, a quick way to c",
+  "x": 169,
+  "y": 6980,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "An \"explain it back\" check. Before moving to the next question, ask the student to summarize the answer in their own words, a quick way to c",
+  "x": 189,
+  "y": 6980,
+  "w": 923,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "li",
+  "text": "Progress tracking over time. Show which concepts a student still leans on AI for, versus which ones they've genuinely picked up.",
+  "x": 169,
+  "y": 7031,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Progress tracking over time. Show which concepts a student still leans on AI for, versus which ones they've genuinely picked up.",
+  "x": 189,
+  "y": 7031,
+  "w": 923,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "s93R2hJuiuocTPrjKpGoVwXqAM.png",
+  "x": 169,
+  "y": 7102,
+  "w": 942,
+  "h": 367
+ },
+ {
+  "type": "p",
+  "text": "The through line stays the same here too. None of this is about AI doing more of the thinking. It's about AI getting out of the way faster, ",
+  "x": 169,
+  "y": 7639,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "TAKE AWAY",
+  "x": 169,
+  "y": 7655,
+  "w": 81,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "h4",
+  "text": "What This Project Taught Me",
+  "x": 169,
+  "y": 7687,
+  "w": 365,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "Staying neutral is a skill, not a default. Interviewing people you already know takes more discipline than interviewing strangers, not less.",
+  "x": 169,
+  "y": 7742,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "A research question is only as good as your plan for answering it. Once I knew I needed experience, not numbers, everything else about the m",
+  "x": 169,
+  "y": 7807,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Saturation is something you feel. Watching the sixth interview reinforce the same six themes, not add new ones, was the clearest confirmatio",
+  "x": 169,
+  "y": 7872,
+  "w": 943,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "The finding I trusted least turned out to be true for me too. I did the theme extraction the traditional way: days of full time work, sortin",
+  "x": 169,
+  "y": 7963,
+  "w": 943,
+  "h": 102,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "AN UPDATE, MONTHS LATER",
+  "x": 168,
+  "y": 8179,
+  "w": 191,
+  "h": 17,
+  "size": "14px",
+  "weight": "500"
+ },
+ {
+  "type": "h4",
+  "text": "The Worry That Got an Answer!",
+  "x": 168,
+  "y": 8212,
+  "w": 396,
+  "h": 38,
+  "size": "24px",
+  "weight": "800"
+ },
+ {
+  "type": "p",
+  "text": "A few months after this research wrapped, one worry actually got an answer. OpenAI released Study Mode, a version of ChatGPT that asks guidi",
+  "x": 168,
+  "y": 8267,
+  "w": 943,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "img",
+  "file": "r00OL9ZmjteHqODIj8RUt9F696c.webp",
+  "x": 168,
+  "y": 8359,
+  "w": 330,
+  "h": 330
+ },
+ {
+  "type": "img",
+  "file": "nG3EuXhKJN9F39bLajipb5gszIg.png",
+  "x": 527,
+  "y": 8359,
+  "w": 585,
+  "h": 330
+ },
+ {
+  "type": "p",
+  "text": "Create a free website with Framer, the website builder loved by startups, designers and agencies.",
+  "x": 1190,
+  "y": 8823,
+  "w": 0,
+  "h": 0,
+  "size": "12px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "Neither was built because of this study, but they're aimed at exactly what participants were worried about: that leaning on AI for quick ans",
+  "x": 168,
+  "y": 8855,
+  "w": 943,
+  "h": 51,
+  "size": "16px",
+  "weight": "400"
+ },
+ {
+  "type": "p",
+  "text": "The other findings haven't aged the same way. The cost barrier is only partly lower, cheaper plans exist now, but so does account sharing, s",
+  "x": 168,
+  "y": 8921,
+  "w": 943,
+  "h": 77,
+  "size": "16px",
+  "weight": "400"
+ }
+]
