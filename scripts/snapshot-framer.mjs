@@ -5,7 +5,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 
 const ROOT = 'https://re-davarpanah.framer.website';
 const OUT = 'framer-snapshot';
-// v2: full text + html
+// v3: full text + html, DOM order
 mkdirSync(OUT, { recursive: true });
 
 const browser = await chromium.launch();
@@ -51,7 +51,7 @@ for (const p of paths) {
         if (text) out.push({ type: tag, text, html: n.innerHTML, x, y, w, h, size: cs.fontSize, weight: cs.fontWeight, align: cs.textAlign, color: cs.color, transform: cs.textTransform, position: cs.position });
       }
     }
-    return out.sort((a, b) => a.y - b.y || a.x - b.x);
+    return out; // DOM (reading) order
   });
   const name = p === '/' ? 'home' : p.replace(/^\/|\/$/g, '').replace(/\//g, '__');
   writeFileSync(`${OUT}/${name}.json`, JSON.stringify(items, null, 1));
