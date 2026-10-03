@@ -4,12 +4,14 @@ export const ui = {
   en: {
     brand: 'Davarpanah',
     about: 'About',
+    play: 'Play',
     backHome: '← Back to home',
     switchLang: 'Read in Persian: FA',
   },
   fa: {
     brand: 'داورپناه',
     about: 'درباره من',
+    play: 'Play',
     backHome: '→ بازگشت به صفحه اصلی',
     switchLang: 'Read in English EN',
   },

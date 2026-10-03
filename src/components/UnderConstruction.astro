@@ -1,0 +1,20 @@
+---
+// "Under construction" hero with the crossing warning ribbons behind it.
+// Anything passed as children renders under the text (e.g. a link).
+import Ribbons from './Ribbons.astro';
+import Reveal from './Reveal.astro';
+import { images } from '../data/images';
+
+const { title, text } = Astro.props;
+---
+<div class="hero-wrap">
+  <Ribbons />
+  <div class="hero">
+    <Reveal>
+      <img src={images.heroUnderConstruction} alt="" />
+      <h1>{title}</h1>
+      {text && <p>{text}</p>}
+      <slot />
+    </Reveal>
+  </div>
+</div>
