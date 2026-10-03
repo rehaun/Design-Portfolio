@@ -1,15 +1,14 @@
 ---
 import avatar from '../assets/brand/avatar.svg';
 import avatarHover from '../assets/brand/avatar-hover.svg';
-import { ui, url, localePath } from '../lib/i18n';
+import { ui, localePath } from '../lib/i18n';
 
 // `altHref`: the same page in the other language, if it exists.
 // `current`: which nav item to mark as the current page.
 // `progress`: show a reading-progress line along the bottom edge (case studies).
 const { lang = 'en', altHref, current, progress = false } = Astro.props;
-// There is no Persian home page yet, so "Works" always points at the English one.
 const links = [
-  { key: 'works', href: url('/') },
+  { key: 'works', href: localePath(lang, '/') },
   { key: 'about', href: localePath(lang, '/about/') },
   { key: 'play', href: localePath(lang, '/play/') },
   { key: 'resume', href: localePath(lang, '/resume/') },
@@ -17,7 +16,7 @@ const links = [
 ---
 <header class="nav">
   <div class="nav-inner">
-    <a href={url('/')} class="nav-brand" aria-label={ui[lang].name} data-avatar>
+    <a href={localePath(lang, '/')} class="nav-brand" aria-label={ui[lang].name} data-avatar>
       <span class="nav-avatar">
         <img src={avatar.src} width={avatar.width} height={avatar.height} alt="" class="avatar-face" />
         <img src={avatarHover.src} width={avatarHover.width} height={avatarHover.height} alt="" class="avatar-face avatar-happy" />

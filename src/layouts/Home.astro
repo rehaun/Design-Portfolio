@@ -1,0 +1,58 @@
+---
+// Temporary home (under construction + case study cards), in English and Persian.
+// The final home page will replace this once its design is ready.
+import Img from '../components/Img.astro';
+import { getCollection } from 'astro:content';
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import UnderConstruction from '../components/UnderConstruction.astro';
+import Reveal from '../components/Reveal.astro';
+import { images } from '../data/images';
+import { localePath, parseId } from '../lib/i18n';
+
+const { lang } = Astro.props;
+const otherLang = lang === 'fa' ? 'en' : 'fa';
+const copy = {
+  en: { title: 'Under construction, for now!', text: "Explore what's already up:", view: 'VIEW' },
+  fa: { title: 'فعلاً در دست ساخت!', text: 'چیزهایی که تا الان آماده است:', view: 'مشاهده' },
+}[lang];
+const work = (await getCollection('work', (e) => parseId(e.id).lang === lang)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+<Base lang={lang} altHref={localePath(otherLang, '/')}>
+  {lang === 'en' && (
+    <script is:inline>
+      // Old links used hash routes (#/classeh-games, #/classeh-games/fa).
+      // Send them to the new real URLs.
+      (function () {
+        var m = location.hash.match(/^#\/([\w-]+)(\/fa)?\/?$/);
+        if (!m) return;
+        var base = location.pathname.replace(/\/?$/, '/');
+        location.replace(base + (m[2] ? 'fa/' : '') + m[1] + '/');
+      })();
+    </script>
+  )}
+
+  <Nav lang={lang} current="works" altHref={localePath(otherLang, '/')} />
+
+  <UnderConstruction title={copy.title} text={copy.text} />
+
+  <div class="container cards">
+    {work.map((entry, i) => (
+      <Reveal delay={0.05 * (i + 1)}>
+        <a href={localePath(lang, `/${parseId(entry.id).slug}/`)} class="card">
+          <div class="card-image">
+            <Img src={images[entry.data.hero]} alt={entry.data.title} loading="lazy" />
+          </div>
+          <p class="card-title">{entry.data.cardTitle ?? entry.data.title}</p>
+          <div class="card-spacer"></div>
+          <div class="card-footer">
+            <p class="card-eyebrow">{lang === 'en' ? entry.data.eyebrow.toUpperCase() : entry.data.eyebrow}</p>
+            <span class="card-view">{copy.view}</span>
+          </div>
+        </a>
+      </Reveal>
+    ))}
+  </div>
+</Base>
