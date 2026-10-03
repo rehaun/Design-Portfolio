@@ -1,153 +1,220 @@
 ---
 title: "One Login, Three Different Jobs"
 subtitle: "How one dashboard learned to speak to three different users"
-eyebrow: "Product Design Case Study"
+eyebrow: "PRODUCT DESIGN CASE STUDY"
 hero: dashHero
 order: 3
 cardTitle: "Same login, three views, one happy support team."
 meta:
   - label: "Role"
-    value: "Product Designer; Research 🕵🏼‍♂️, Ideation ✨, Visual Design 🎨"
+    value: "Product Designer; Research🕵🏼‍♂️, Ideation✨, Visual Design🎨"
   - label: "Timeline"
     value: "4 weeks"
   - label: "Tools"
     value: "Figma, iPad Sketching"
   - label: "Product"
-    value: "Classeh"
+    value: "Classeh LMS"
 ---
 import { images as img } from '../../../data/images';
 
-<Section eyebrow="Context">
+<Section eyebrow="CONTEXT" heading="The Same Screen, Three Different People">
 
-Classeh is a school management platform used by different types of users, including students, parents, and teachers. In this case study, I walk through how we improved their dashboard experience.
+A teacher opens Classeh to assign homework and check who's falling behind.  A student opens it to *do* that homework, and maybe sneak in a game.  A parent opens it just to know: is my kid okay?
 
-<Figure src={img.dashBefore} label="Before" caption="All roles saw the same dashboard" />
+Three completely different reasons to log in. One identical dashboard greeted all of them — a flat grid of look-alike tiles, nothing prioritized, nothing personal. Whatever you actually came for, you had to go hunting for it.
 
-<TwoImages left={img.dashAfterStudent} right={img.dashAfterTeacher} />
+That grid is where this story starts.
 
-<Figure src={img.dashAfterParent} label="After" caption="Student, Teacher, and Parent views" />
-
-</Section>
-
-<Section eyebrow="Problem Statement">
-
-Teachers, students, and parents use Classeh for completely different reasons — teachers to assign and grade work, students to complete it, and parents to stay informed about their child's progress.
-
-Yet all three opened the exact same dashboard: a flat grid of identical module tiles, with nothing prioritized and nothing personalized. Finding the one thing they actually came for meant scanning through everything that didn't matter to them.
-
-<Figure src={img.dashOldGrid} caption="The old dashboard — the same cluttered grid for every role, with icons that were hard to tell apart at a glance." />
-
-</Section>
-
-<Section eyebrow="Discovery · Research" heading="Working From Assumptions First">
-
-Without direct access to users, I started from assumptions based on my own experience with the product:
-
-- Students come to do something (like homework, tests, play…)
-- Teachers come to assign and follow up
-- Parents come to stay informed
-
-I checked these assumptions against Microsoft Clarity's most-visited pages. The ranking — dashboard, messages, then homework-related pages — later shaped the structure of the bottom navigation itself, giving each of those a dedicated, easy-to-reach spot.
-
-<Figure src={img.dashClarity} caption="Microsoft Clarity's most-visited pages — later shaped which items got a more accessible spot in the navigation." />
-
-I interviewed the head of the support team as a user proxy — since I didn't have direct access to teachers, students, or parents, she was the best person available, hearing directly from users about their frustrations every day.
-
-<TwoImages left={img.dashSupportNotes1} right={img.dashSupportNotes2} />
-
-Both sources — Microsoft Clarity and the user proxy — pointed the same way.
+<Layout height={345} items={[
+  { html: "BEFORE", x: 49, y: 0, w: 66, h: 19, size: 16, weight: 700, align: "left" },
+  { img: img.dashBefore, x: 2, y: 44, w: 156, h: 279 },
+  { html: "All Roles", x: 53, y: 323, w: 58, h: 22, size: 14, weight: 400, align: "left" },
+  { html: "AFTER", x: 574, y: 0, w: 55, h: 19, size: 16, weight: 700, align: "left" },
+  { img: img.dashAfterStudent, x: 258, y: 44, w: 228, h: 280 },
+  { html: "Student View", x: 326, y: 323, w: 98, h: 22, size: 14, weight: 400, align: "left" },
+  { img: img.dashAfterTeacher, x: 486, y: 44, w: 228, h: 280 },
+  { html: "Teacher View", x: 553, y: 323, w: 101, h: 22, size: 14, weight: 400, align: "left" },
+  { img: img.dashAfterParent, x: 714, y: 44, w: 228, h: 280 },
+  { html: "Parent View", x: 787, y: 323, w: 87, h: 22, size: 14, weight: 400, align: "left" },
+]} />
 
 </Section>
 
-<Section eyebrow="Ideation · Wireframe" heading="Sketching Three Dashboards">
+<Section eyebrow="PROBLEM STATEMENT" heading="The Problem, In One Sentence">
 
-The sketches below were used to walk the Product Owner through how each dashboard would work.
+**Everyone had to dig through everything**, just to find the one thing that mattered to them.
 
-<TwoImages left={img.dashWireStudent} right={img.dashWireTeacher} />
+**Everyone had to dig through everything**, just to find the one thing that mattered to them. The icons didn't help either, **similar colors, busy shapes**, nothing you could recognize at a glance without stopping to read the label.
 
-<Figure src={img.dashWireParent} caption="Student, teacher, and parent wireframes — same layout structure, different priority modules for each role." />
-
-<ol class="numbered-list">
-  <li>Tasks &amp; Events that are close to their deadlines</li>
-  <li>Educational game — the most important feature of the product</li>
-  <li>Calendar to manage schedules</li>
-  <li>Items requiring attention which must be corrected</li>
-  <li>Toolbox — shortcuts for the actions a user wants to take</li>
-  <li>Bulletin to keep parents informed</li>
-</ol>
-
-With 17+ existing modules needing a home, the next question was how to group them. Working through it with the support team lead — using what her team heard from users — I grouped the tiles by what people were actually trying to accomplish, not by how the system happened to organize them internally.
-
-<TwoImages left={img.dashGrouping1} right={img.dashGrouping2} />
+<Figure src={img.dashOldGrid} caption="<strong>The old dashboard</strong> — the same cluttered grid for every role, with icons that were hard to tell apart at a glance." />
 
 </Section>
 
-<Section eyebrow="Design · Rapid Prototype" heading="An Idea That Got Cut in One Line">
+<PhaseDivider text="DISCOVERY" />
 
-My first bet was a sidebar — a rough version, shared with the team right away instead of polishing it alone.
+<Section eyebrow="RESEARCH" heading="Starting Without a Map">
 
-> "I know this sidebar model is outdated and won't work for us." — CTO
+Here's the catch: I didn't have direct access to students, teachers, or parents. No interviews, no surveys, no seat next to them while they worked. So I started with the only honest thing I could: my own assumptions, based on months of living inside this product:
 
-No detailed reasoning followed. The shortcuts inside it, though, were approved. So I kept what worked and changed where it lived.
+- **Students** come to *do* something, homework, tests, games.
+- **Teachers** come to *assign and follow up*.
+- **Parents** come to *stay informed*.
 
-<TwoImages left={img.dashSidebarProto1} right={img.dashSidebarProto2} />
+Assumptions aren't research, though. I needed something to check them against.
 
-<p class="figure-caption">The rejected sidebar prototype — the shortcuts idea survived, but not this layout.</p>
+**Microsoft Clarity** gave me the first signal, the real ranking of most-visited pages: dashboard, then messages, then homework. That order later became the backbone of the navigation itself.
 
-</Section>
+<Figure src={img.dashClarity} width={320} caption="Microsoft Clarity's most-visited pages — The most-visited pages I saw here later shaped which items got a more accessible spot in the navigation." />
 
-<Section eyebrow="Iteration" heading="Reworking the Tiles">
+Then I found a better proxy than any dataset: the **head of the support team**. She hears user frustration every single day, secondhand from the people I couldn't reach directly. I sat down with her, walked through my assumptions one by one, and let her tell me where I was right, and where I wasn't.
 
-I first reworked the tile icons — using distinct colors and simple, memorable shapes so users could recognize a module at a glance, without needing to read the label first.
+<Layout height={377} items={[
+  { img: img.dashSupportNotes1, x: 179, y: 0, w: 476, h: 210 },
+  { img: img.dashSupportNotes2, x: 545, y: 105, w: 220, h: 203 },
+  { html: "Raw notes from a call with the support team lead, comparing my assumptions against real user complaints", x: 142, y: 332, w: 700, h: 45, size: 14, weight: 400, align: "center" },
+]} />
 
-<Figure src={img.dashNewIcons} caption="Reworked icons — playful, colorful shapes for the student side, a more restrained style for teachers and parents." />
-
-<TwoImages left={img.dashOldIcons1EN} right={img.dashOldIcons2} />
-
-<p class="figure-caption">The old icons — similar colors and busy shapes made it hard to tell modules apart without reading the label.</p>
-
-Then brought the sidebar's categorization logic directly into the dashboard — now renamed the Hub — grouping modules by purpose instead of scattering them as identical tiles, with each role's top priority surfaced first.
-
-<TwoImages left={img.dashHub1} right={img.dashHub2} />
-
-<p class="figure-caption">The Hub — modules grouped by purpose, using the same categorization logic from the rejected sidebar.</p>
+Two very different sources, a behavioral dataset and a human on the front lines, and they pointed at the exact same thing. That's when I knew I had solid ground to design on.
 
 </Section>
 
-<Section eyebrow="Final Design" heading="Same Hub, Adapted to Each Role">
+<PhaseDivider text="IDEATION" />
 
-Here's how the same Hub adapts to each role — the first screen a user sees after logging into the system.
+<Section eyebrow="WIREFRAME" heading="Sketching the Shape of Three Dashboards">
 
-<Figure src={img.dashFinalTeacher} caption="As a teacher, I want to assign something to my students then check if they're doing it right." />
+With 17+ existing modules and three very different sets of priorities, the question wasn't *what* to build, it was *how to group it* so each role saw their world, not everyone else's.
 
-<Figure src={img.dashFinalStudent} caption="As a student, I want to do a task assigned to me, such as homework." />
+Working module by module with the support lead, I sorted tiles by what people were actually trying to accomplish, not by how the system happened to file them internally.
 
-<Figure src={img.dashFinalParent} caption="As a parent, I like to find out about my child's academic status and talk to their teacher." />
+That gave me a rough map for three sketches, one per role, same skeleton, different priorities:
+
+<Layout height={371} items={[
+  { img: img.dashWireStudent, x: 16, y: 0, w: 130, h: 333 },
+  { html: "1", x: 114, y: 64, w: 11, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "2", x: 113, y: 138, w: 11, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "3", x: 117, y: 212, w: 11, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "Student view sketch", x: 17, y: 357, w: 136, h: 14, size: 12, weight: 400, align: "center" },
+  { img: img.dashWireTeacher, x: 156, y: 0, w: 131, h: 333 },
+  { html: "5", x: 259, y: 155, w: 11, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "4", x: 259, y: 89, w: 11, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "Teacher view sketch", x: 157, y: 357, w: 138, h: 14, size: 12, weight: 400, align: "center" },
+  { img: img.dashWireParent, x: 297, y: 0, w: 130, h: 333 },
+  { html: "6", x: 400, y: 93, w: 11, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "Parent view sketch", x: 303, y: 357, w: 126, h: 14, size: 12, weight: 400, align: "center" },
+  { html: "1", x: 502, y: 5, w: 15, h: 18, size: 15, weight: 400, align: "center" },
+  { html: "<strong>Tasks & Events</strong> that are close to their deadlines", x: 536, y: 2, w: 401, h: 22, size: 14, weight: 400, align: "left" },
+  { html: "2", x: 502, y: 73, w: 15, h: 18, size: 15, weight: 400, align: "center" },
+  { html: "<strong>Educational game</strong> which is the most important feature of our product", x: 536, y: 70, w: 357, h: 45, size: 14, weight: 400, align: "left" },
+  { html: "3", x: 502, y: 141, w: 15, h: 18, size: 15, weight: 400, align: "center" },
+  { html: "<strong>Calendar</strong> to manage schedules", x: 536, y: 138, w: 401, h: 22, size: 14, weight: 400, align: "left" },
+  { html: "4", x: 502, y: 209, w: 15, h: 18, size: 15, weight: 400, align: "center" },
+  { html: "<strong>Items requiring attention</strong> which must be corrected", x: 536, y: 206, w: 389, h: 45, size: 14, weight: 400, align: "left" },
+  { html: "5", x: 502, y: 277, w: 15, h: 18, size: 15, weight: 400, align: "center" },
+  { html: "<strong>Toolbox</strong> is shortcuts for the actions user wants to take", x: 536, y: 274, w: 410, h: 45, size: 14, weight: 400, align: "left" },
+  { html: "6", x: 502, y: 345, w: 15, h: 18, size: 15, weight: 400, align: "center" },
+  { html: "<strong>Bulletin</strong> to keep parents informed", x: 536, y: 342, w: 401, h: 22, size: 14, weight: 400, align: "left" },
+]} />
+
+<p class="layout-caption" style="font-size: 14px; font-weight: 400; max-width: 660px; margin-inline: auto; text-align: center" set:html={"Student, teacher, and parent wireframes — same layout structure, different priority modules for each role."} />
+
+These sketches weren't polished, they were a conversation starter, walked through with the Product Owner before a single pixel got refined.
+
+<Layout height={387} items={[
+  { img: img.dashGrouping1, x: 196, y: 0, w: 362, h: 337 },
+  { img: img.dashGrouping2, x: 617, y: 8, w: 131, h: 336 },
+  { html: "First-pass categorization, working through the tiles by user intent.", x: 142, y: 368, w: 700, h: 19, size: 16, weight: 400, align: "center" },
+]} />
 
 </Section>
 
-<Section eyebrow="Handoff">
+<PhaseDivider text="DESIGN" />
 
-I handed off fully organized and labeled screens in Figma, then worked live with our frontend developer for the final adjustments — checking components and styles against the code in real time to make sure the shipped product matched the design.
+<Section eyebrow="RAPID PROTOTYPE" heading="The Idea That Got Killed in One Sentence">
 
-</Section>
+My first real attempt at solving this was a **sidebar**, a rough version, shared early instead of perfected alone. The CTO shut it down instantly:
 
-<Section eyebrow="Reflection · Impact" heading="What Changed">
+> "I know this sidebar model is outdated and won't work for us."
 
-The redesigned Hub led to close to a 10% improvement in dashboard performance, measured through Microsoft Clarity.
+No explanation followed. And, in the moment, I didn't ask for one. But not everything in it was wrong. The shortcuts inside the sidebar were approved, so I kept them and just changed where they lived.
 
-Just as tellingly, the same support channel that used to collect complaints started collecting thank-you calls instead.
-
-Three roles, one platform — each now opening on exactly what they came to do. ✨
-
-<TwoImages left={img.dashImpact1} right={img.dashImpact2} />
+<Figure src={img.pic_classeh_dashboard_0} caption="The rejected sidebar prototype — the shortcuts idea survived, but not this layout." />
 
 </Section>
 
-<Section eyebrow="Takeaway" heading="When a Senior Call Comes Without a Clear Reason, Ask">
+<Section eyebrow="ITERATION" heading="Rebuilding, Piece by Piece">
 
-The CTO rejected the sidebar with a one-line judgment call, and I never pushed to understand the reasoning behind it.
+**First, the icons.** I reworked every tile icon with distinct colors and simple, memorable shapes, so a module could be recognized at a glance, no label required.
 
-Since then, I've learned that chasing the why — even from someone senior — leads to faster, more confident decisions down the line.
+<Layout height={559} items={[
+  { img: img.dashNewIcons, x: 152, y: 0, w: 650, h: 559 },
+  { html: "<strong>Reworked icons</strong> — playful, colorful shapes for the <strong>student</strong> side, a more restrained style for <strong>teachers and parents</strong> — all designed with distinct colors and simple, memorable shapes so users can recognize a module at a glance.", x: 142, y: 482, w: 700, h: 67, size: 14, weight: 400, align: "center" },
+]} />
+
+<Layout height={753} items={[
+  { img: img.dashOldIcons1EN, x: 331, y: 0, w: 282, h: 712 },
+  { html: "<strong>The old icons</strong> — similar colors and busy shapes made it hard to tell modules apart without reading the label.", x: 142, y: 519, w: 700, h: 45, size: 14, weight: 400, align: "left" },
+  { html: "<strong>Then, the structure.</strong> I took the sidebar's categorization logic, the one part that had survived, and brought it straight into the dashboard, now renamed <strong>the Hub</strong>. Modules were grouped by purpose instead of scattered as identical tiles, with each role's top priority surfaced first.", x: 1, y: 676, w: 1000, h: 77, size: 16, weight: 400, align: "left" },
+]} />
+
+<Layout height={768} items={[
+  { img: img.dashHub1, x: 203, y: 0, w: 250, h: 768 },
+  { img: img.dashHub2, x: 491, y: 0, w: 250, h: 768 },
+]} />
+
+<p class="layout-caption" style="font-size: 14px; font-weight: 400; max-width: 660px; margin-inline: auto; text-align: center" set:html={"The Hub — modules grouped by purpose instead of scattered as identical tiles, using the same categorization logic from the rejected sidebar."} />
+
+</Section>
+
+<Section eyebrow="FINAL DEDSIGN" heading="Three Roles, One Hub">
+
+Same structure. Same logic. Completely different first impression, depending on who's looking.
+
+<Layout height={1524} items={[
+  { img: img.pic_classeh_dashboard_3, x: 37, y: 0, w: 83, h: 124 },
+  { html: "As a <strong>teacher</strong>, I want to <strong>assign</strong> something to my students then <strong>check</strong> if they’re doing it right.", x: 147, y: 48, w: 305, h: 77, size: 16, weight: 400, align: "left" },
+  { img: img.dashFinalTeacher, x: 435, y: 0, w: 472, h: 508 },
+  { img: img.dashFinalStudent, x: 41, y: 508, w: 471, h: 508 },
+  { img: img.pic_classeh_dashboard_4, x: 512, y: 508, w: 76, h: 113 },
+  { html: "As a <strong>student</strong>, I want to <strong>do</strong> a task assigned to me, such as doing a <strong>homework</strong>.", x: 615, y: 545, w: 305, h: 77, size: 16, weight: 400, align: "left" },
+  { img: img.pic_classeh_dashboard_5, x: 37, y: 1016, w: 83, h: 121 },
+  { html: "As a <strong>parent</strong>, I like to <strong>find out</strong> about my child's <strong>academic status</strong> and talk to their teacher.", x: 147, y: 1061, w: 305, h: 77, size: 16, weight: 400, align: "left" },
+  { img: img.dashFinalParent, x: 435, y: 1016, w: 472, h: 508 },
+]} />
+
+</Section>
+
+<Section eyebrow="HANDOFF" heading="From Figma to Production">
+
+I handed off fully organized, labeled screens in Figma, then sat with our frontend developer for the final stretch, checking components and styles against the live code, screen by screen, until what shipped matched what was designed.
+
+</Section>
+
+<PhaseDivider text="REFLECTION" />
+
+<Section eyebrow="IMPACT" heading="What Changed">
+
+The redesigned Hub drove close to a **10% improvement** in dashboard performance, tracked through Microsoft Clarity.
+
+But the number I care about more is this: the same support channel that used to collect complaints started **collecting thank-you calls** instead.
+
+Three roles, one platform, each one now opening on exactly what they came to do.
+
+<Layout height={325} items={[
+  { img: img.dashImpact2, x: 528, y: 0, w: 301, h: 301 },
+  { img: img.pic_classeh_dashboard_6, x: 375, y: 20, w: 173, h: 249 },
+  { img: img.dashImpact1, x: 139, y: 21, w: 222, h: 304 },
+]} />
+
+</Section>
+
+<Section eyebrow="TAKEAWAY" heading="What I'd Do Differently">
+
+**A rejection without a reason leaves a question open, even when you agree with it.**
+
+I wasn't unhappy with the outcome. I had my own doubts about the sidebar before the CTO said anything, and his rejection **matched what I already felt**. But to this day, I don't know if it was actually wrong, or just not **our taste**. He never said, and I never asked.
+
+Since then, I've learned to **close that gap** before moving on, even when I already agree with the call. Asking *why* isn't about doubting the outcome, it's about not carrying an unresolved question into the next decision.
+
+My **next step** in learning is figuring out how to get the answer to that question without creating tension or bad feelings. Hard human skills! :)
 
 </Section>

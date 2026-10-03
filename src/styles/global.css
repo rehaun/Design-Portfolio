@@ -840,3 +840,60 @@ html { -webkit-tap-highlight-color: transparent; }
   .nav--hidden { transform: none; }
 }
 @media print { .resume-item::before, .nav-progress { display: none; } }
+
+/* ---------- Layout blocks (positions taken from the Framer pages) ---------- */
+.layout {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--layout-ratio);
+  margin: 32px 0;
+  container-type: inline-size;
+}
+.layout-item { position: absolute; }
+.layout-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.layout-text {
+  /* scale text with the block, like the images */
+  font-size: calc(var(--fs) / 944 * 100cqw);
+  line-height: 1.45;
+  color: #191919;
+}
+.layout-text p { margin: 0; }
+.layout-caption { margin: 8px 0 24px; line-height: 1.5; color: #191919; }
+.figure-caption { font-size: 14px; color: #191919; }
+
+/* phones: stack the block's items in reading order instead */
+@media (max-width: 700px) {
+  .layout {
+    aspect-ratio: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .layout-item { position: static; width: auto !important; height: auto !important; }
+  .layout-img { max-width: min(100%, var(--w)); }
+  .layout-img img { height: auto; object-fit: contain; }
+  .layout-text { font-size: 14px; text-align: center !important; }
+}
+
+/* ---------- Case study page: 944px text column, as on the Framer site ---------- */
+.cs { max-width: calc(944px + 48px); }
+.cs .cs-header { padding: 60px 0 20px; }
+.cs .section { padding: 46px 0; }
+.cs .phase-divider { padding: 20px 0; max-width: none; }
+.cs-eyebrow { font-size: 12px; }
+.cs-title { font-size: 32px; color: #2b2b2b; }
+[dir='rtl'] .cs-title { font-size: 38px; }
+.cs-subtitle { font-size: 24px; }
+.cs .section-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: #8f8f8f; }
+.cs .section-heading { font-size: 28px; font-weight: 700; color: #141414; margin-bottom: 16px; }
+.cs .section h3 { font-size: 16px; font-weight: 700; margin: 28px 0 8px; }
+.cs .section p, .cs .section li { font-size: 16px; }
+[dir='rtl'] .cs .section p, [dir='rtl'] .cs .section li { font-size: 18px; }
+.cs .figure { margin: 32px auto; }
+.cs .figure img { margin: 0 auto; }
+@media (max-width: 700px) {
+  .cs-title, [dir='rtl'] .cs-title { font-size: 26px; }
+  .cs-subtitle { font-size: 19px; }
+  .cs .section-heading { font-size: 23px; }
+}

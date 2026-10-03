@@ -15,7 +15,7 @@ npm run build    # static site in dist/
 | --- | --- |
 | Case studies (content) | `src/content/work/en/*.mdx`, `src/content/work/fa/*.mdx` |
 | Case study page layout | `src/layouts/CaseStudy.astro` |
-| Building blocks used inside case studies (`Section`, `Figure`, `TwoImages`, …) | `src/components/` |
+| Building blocks used inside case studies (`Section`, `Figure`, `Layout`, `PhaseDivider`) | `src/components/` |
 | Home page | `src/pages/index.astro` |
 | Shared page shell (head, fonts, scroll-reveal script) | `src/layouts/Base.astro` |
 | Images (files / lookup by name) | `src/assets/images/`, `src/data/images.js` |

@@ -1,0 +1,32 @@
+---
+// A block of images (and short texts) arranged exactly as on the original
+// Framer page: positions and sizes are percentages of the 944px content
+// column, so it scales down proportionally. On narrow screens the items
+// stack in reading order instead, so captions stay readable.
+//
+// items: [{ img, alt, x, y, w, h } | { html, x, y, w, h, size, weight, align }]
+//   x/y/w/h in px relative to the block's top-left, at a 944px column.
+import Reveal from './Reveal.astro';
+import Img from './Img.astro';
+
+const { items, height, width = 944 } = Astro.props;
+const pct = (v, of) => `${((v / of) * 100).toFixed(3)}%`;
+---
+<Reveal class="layout" style={`--layout-ratio: ${width} / ${height}`}>
+  {items.map((it) =>
+    it.img ? (
+      <div
+        class="layout-item layout-img"
+        style={`left: ${pct(it.x, width)}; top: ${pct(it.y, height)}; width: ${pct(it.w, width)}; height: ${pct(it.h, height)}; --w: ${it.w}px`}
+      >
+        <Img src={it.img} alt={it.alt ?? ''} />
+      </div>
+    ) : (
+      <div
+        class="layout-item layout-text"
+        style={`left: ${pct(it.x, width)}; top: ${pct(it.y, height)}; width: ${pct(it.w, width)}; --fs: ${it.size}; font-weight: ${it.weight}; text-align: ${it.align}`}
+        set:html={it.html}
+      />
+    ),
+  )}
+</Reveal>
