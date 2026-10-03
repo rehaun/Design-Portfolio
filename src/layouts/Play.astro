@@ -21,7 +21,7 @@ const copy = {
 const otherLang = lang === 'fa' ? 'en' : 'fa';
 ---
 <Base title={`${ui[lang].play} — ${ui[lang].brand}`} description={copy.text} lang={lang}>
-  <Nav lang={lang} altHref={localePath(otherLang, '/play/')} />
+  <Nav lang={lang} current="play" altHref={localePath(otherLang, '/play/')} />
   <UnderConstruction title={copy.title} text={copy.text}>
     <a href={url('/')} class="hero-cta">{copy.cta}</a>
   </UnderConstruction>

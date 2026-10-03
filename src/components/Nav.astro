@@ -1,15 +1,27 @@
 ---
+import avatar from '../assets/brand/avatar.svg';
 import { ui, url, localePath } from '../lib/i18n';
+
 // `altHref`: the same page in the other language, if it exists.
-const { lang = 'en', altHref } = Astro.props;
+// `current`: which nav item to mark as the current page.
+const { lang = 'en', altHref, current } = Astro.props;
+// There is no Persian home page yet, so "Works" always points at the English one.
+const links = [
+  { key: 'works', href: url('/') },
+  { key: 'about', href: localePath(lang, '/about/') },
+  { key: 'play', href: localePath(lang, '/play/') },
+];
 ---
-<div class="nav">
+<header class="nav">
   <div class="nav-inner">
-    <a href={url('/')} class="nav-brand">{ui[lang].brand}</a>
-    <div class="nav-links">
-      <a href={localePath(lang, '/play/')} class="nav-link">{ui[lang].play}</a>
-      <a href={localePath(lang, '/about/')} class="nav-link">{ui[lang].about}</a>
-      {altHref && <a href={altHref} class="nav-lang">{ui[lang].switchLang}</a>}
-    </div>
+    <a href={url('/')} class="nav-brand" aria-label={ui[lang].name}>
+      <img src={avatar.src} width={avatar.width} height={avatar.height} alt="" class="nav-avatar" />
+    </a>
+    <nav class="nav-links">
+      {links.map((l) => (
+        <a href={l.href} class="nav-link" aria-current={current === l.key ? 'page' : undefined}>{ui[lang][l.key]}</a>
+      ))}
+      {altHref && <a href={altHref} class="nav-lang" lang={lang === 'fa' ? 'en' : 'fa'}>{lang === 'fa' ? 'EN' : 'فا'}</a>}
+    </nav>
   </div>
-</div>
+</header>
