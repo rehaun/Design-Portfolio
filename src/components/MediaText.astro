@@ -1,0 +1,18 @@
+---
+// Image card beside a short text (a user story, a legend…).
+// reverse puts the image first (on the start side). Stacks on phones.
+import Img from './Img.astro';
+import Reveal from './Reveal.astro';
+import { widthFor } from './media.js';
+
+const { src, alt = '', avatar, h = 420, reverse = false } = Astro.props;
+---
+<Reveal class:list={['mediatext', reverse && 'mediatext--reverse']} style={`--h: ${h}px`}>
+  <div class="mediatext-text">
+    {avatar && <Img class="mediatext-avatar" src={avatar} alt="" width={widthFor(avatar, 120)} />}
+    <div class="mediatext-body"><slot /></div>
+  </div>
+  <div class="mediatext-media media-surface">
+    <Img src={src} alt={alt} width={widthFor(src, h)} />
+  </div>
+</Reveal>

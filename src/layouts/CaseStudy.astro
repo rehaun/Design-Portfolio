@@ -7,7 +7,9 @@ import Figure from '../components/Figure.astro';
 import Img from '../components/Img.astro';
 import Section from '../components/Section.astro';
 import PhaseDivider from '../components/PhaseDivider.astro';
-import Layout from '../components/Layout.astro';
+import Compare from '../components/Compare.astro';
+import Gallery from '../components/Gallery.astro';
+import MediaText from '../components/MediaText.astro';
 import { images } from '../data/images';
 import { ui, localePath, parseId } from '../lib/i18n';
 
@@ -20,7 +22,7 @@ const otherLang = lang === 'fa' ? 'en' : 'fa';
 const hasTranslation = (await getCollection('work')).some((e) => e.id === `${otherLang}/${slug}`);
 const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
 
-const components = { Img, Layout, Reveal, Figure, Section, PhaseDivider };
+const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Gallery, MediaText };
 ---
 <Base title={`${title} — ${ui[lang].name}`} description={subtitle} lang={lang} altHref={altHref} image={images[hero]}>
   <Nav lang={lang} current="works" altHref={altHref} progress />
@@ -39,7 +41,7 @@ const components = { Img, Layout, Reveal, Figure, Section, PhaseDivider };
           ))}
         </div>
       </Reveal>
-      <Figure src={images[hero]} />
+      <Figure src={images[hero]} bare />
     </div>
 
     <Content components={components} />
@@ -61,7 +63,7 @@ const components = { Img, Layout, Reveal, Figure, Section, PhaseDivider };
     const big = dialog?.querySelector<HTMLImageElement>('.lightbox-img');
     if (dialog && big) {
       document
-        .querySelectorAll<HTMLImageElement>('.container .figure img, .layout-img img')
+        .querySelectorAll<HTMLImageElement>('.container .media-surface img')
         .forEach((img) => {
           img.classList.add('zoomable');
           img.addEventListener('click', () => {

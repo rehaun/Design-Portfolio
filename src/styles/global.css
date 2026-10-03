@@ -841,39 +841,181 @@ html { -webkit-tap-highlight-color: transparent; }
 }
 @media print { .resume-item::before, .nav-progress { display: none; } }
 
-/* ---------- Layout blocks (positions taken from the Framer pages) ---------- */
-.layout {
-  position: relative;
-  width: 100%;
-  aspect-ratio: var(--layout-ratio);
-  margin: 32px 0;
-  container-type: inline-size;
+/* ---------- Case-study media: every image sits on a card ---------- */
+:root { --surface: #f3f0e7; }
+.media-surface {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 28px;
 }
-.layout-item { position: absolute; }
-.layout-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
-.layout-text {
-  /* scale text with the block, like the images */
-  font-size: calc(var(--fs) / 944 * 100cqw);
-  line-height: 1.45;
-  color: #191919;
+.media-surface img { border-radius: 6px; }
+.media-caption {
+  font-size: 14px;
+  line-height: 1.55;
+  color: #454545;
+  max-width: 52ch;
+  margin: 12px auto 0;
+  text-align: center;
 }
-.layout-text p { margin: 0; }
-.layout-caption { margin: 8px 0 24px; line-height: 1.5; color: #191919; }
-.figure-caption { font-size: 14px; color: #191919; }
+.media-item { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 0 0 auto; }
+.media-item img { height: var(--h); width: auto; max-width: none; object-fit: contain; }
+.media-item-caption { font-size: 13px; color: #454545; text-align: center; }
+.media-frame { position: relative; display: block; }
+.media-mark {
+  position: absolute;
+  translate: -50% -50%;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: #141414;
+  color: #fefcf6;
+  font-size: 12px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+/* wide diagrams: full width on desktop, swipeable at a readable size on phones */
+.media-scroll { width: 100%; }
+.cmp-diagram { width: 100%; height: auto; }
 
-/* phones: stack the block's items in reading order instead */
+/* single figure, sized to a width tier */
+.cs .figure { margin: 32px 0; }
+.figure-surface { display: flex; justify-content: center; }
+.figure-surface > img { width: 100%; height: auto; }
+.figure--240 .figure-surface > img { max-width: 240px; }
+.figure--360 .figure-surface > img { max-width: 360px; }
+.figure--560 .figure-surface > img { max-width: 560px; }
+.figure--720 .figure-surface > img { max-width: 720px; }
+.figure--bare .figure-surface { padding: 0; background: none; }
+.figure--bare .figure-surface > img { border-radius: 20px; }
+
+/* gallery: a row of images at one height */
+.gallery { margin: 32px 0; }
+.gallery-surface {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+/* before → after */
+.cmp {
+  margin: 36px 0;
+  display: grid;
+  grid-template-columns: auto 40px auto;
+  justify-content: center;
+  align-items: center;
+  gap: 0 8px;
+}
+/* sides share rows (chip / card / caption) so both cards line up */
+.cmp { grid-template-rows: auto 1fr auto; }
+.cmp-side { margin: 0; display: grid; grid-row: 1 / span 3; grid-template-rows: subgrid; min-width: 0; }
+@media (min-width: 701px) {
+  .cmp--screens .cmp-side:first-of-type { grid-column: 1; }
+  .cmp--screens .cmp-side:last-of-type { grid-column: 3; }
+}
+.cmp-side > .cmp-chip { grid-row: 1; justify-self: center; }
+.cmp-side > .cmp-surface { grid-row: 2; }
+.cmp-side > .media-caption { grid-row: 3; max-width: 46ch; }
+/* captions wrap to the card's width instead of widening the column */
+.cmp-side .media-caption { width: 0; min-width: min(100%, 46ch); }
+.cmp-arrow { grid-row: 2; grid-column: 2; }
+.cmp-chip {
+  align-self: center;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border: 1.5px solid #141414;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+[dir='rtl'] .cmp-chip { letter-spacing: 0; font-size: 13px; }
+.cmp-chip--after { background: #141414; color: #fefcf6; }
+.cmp-surface {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 16px;
+}
+.cmp-arrow { font-size: 28px; color: #9a9a9a; text-align: center; }
+[dir='rtl'] .cmp-arrow { transform: scaleX(-1); }
+.cmp-caption { grid-column: 1 / -1; grid-row: 4; }
+.cmp--wide { grid-template-columns: 1fr; grid-template-rows: none; gap: 6px; }
+.cmp--wide .cmp-side, .cmp--wide .cmp-arrow, .cmp--wide .cmp-caption { grid-row: auto; grid-column: auto; }
+.cmp--wide .cmp-side { display: flex; flex-direction: column; }
+.cmp--wide .cmp-arrow { transform: rotate(90deg); }
+.cmp--wide .cmp-surface { align-items: center; gap: 28px; }
+.cmp-art { height: 180px; width: auto; flex: 0 0 auto; }
+.cmp--wide .media-scroll { flex: 1; min-width: 0; }
+
+/* image beside text */
+.mediatext {
+  margin: 40px 0;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 40px;
+  align-items: center;
+}
+.mediatext--reverse .mediatext-media { order: -1; }
+.mediatext-media { display: flex; justify-content: center; }
+.mediatext-media img { height: var(--h); width: auto; max-width: 100%; object-fit: contain; }
+.mediatext-text { display: flex; flex-direction: column; gap: 16px; }
+.mediatext-avatar { width: 84px; height: auto; }
+.mediatext-body { font-size: 17px; line-height: 1.6; }
+.mediatext-body p { margin: 0; }
+
+/* white-background sketches and illustrations melt into the card */
+.gallery--blend img, .figure--blend img, .mediatext-avatar { mix-blend-mode: multiply; }
+
+/* sketches + their numbered legend side by side */
+.split {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: center;
+  margin: 32px 0;
+}
+.split .gallery { margin: 0; min-width: 0; }
+.legend { font-size: 15px; }
+.cs .legend li { font-size: 15px; align-items: flex-start; }
+
+/* phones */
 @media (max-width: 700px) {
-  .layout {
-    aspect-ratio: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+  .media-surface { padding: 18px; border-radius: 16px; }
+  .media-item img { height: min(var(--h), 260px); }
+  /* a lone image fits the card instead of scrolling */
+  .cmp-surface .media-item:only-child { flex: 0 1 auto; max-width: 100%; }
+  .cmp-surface .media-item:only-child img { width: auto; height: auto; max-width: 100%; max-height: min(var(--h), 360px); }
+  .gallery-surface { justify-content: safe center; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; }
+  .gallery-surface .media-item { scroll-snap-align: center; }
+  .cmp { grid-template-columns: 1fr; grid-template-rows: none; gap: 6px; }
+  .cmp-side, .cmp-arrow, .cmp-caption { grid-row: auto; grid-column: auto; }
+  .cmp-side { display: flex; flex-direction: column; }
+  .cmp-side .media-caption { width: auto; min-width: 0; }
+  .cmp-arrow { transform: rotate(90deg); }
+  [dir='rtl'] .cmp-arrow { transform: rotate(90deg); }
+  .cmp-surface { justify-content: safe center; overflow-x: auto; }
+  .cmp--wide .cmp-surface { flex-direction: column; align-items: stretch; }
+  .cmp-art { height: 130px; align-self: center; }
+  .media-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .media-scroll .cmp-diagram { width: var(--scroll-w, 760px); max-width: none; }
+  .media-scroll::after {
+    content: '← ' attr(data-hint) ' →';
+    display: block;
+    position: sticky;
+    left: 0;
+    font-size: 12px;
+    color: #8f8f8f;
+    text-align: center;
+    margin-top: 10px;
+    width: min(100%, calc(100vw - 104px));
   }
-  .layout-item { position: static; width: auto !important; height: auto !important; }
-  .layout-img { max-width: min(100%, var(--w)); }
-  .layout-img img { height: auto; object-fit: contain; }
-  .layout-text { font-size: 14px; text-align: center !important; }
+  .mediatext { grid-template-columns: 1fr; gap: 20px; }
+  .split { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .mediatext--reverse .mediatext-media { order: 0; }
+  .mediatext-media img { height: auto; max-height: 420px; }
 }
 
 /* ---------- Case study page: 944px text column, as on the Framer site ---------- */
@@ -890,8 +1032,6 @@ html { -webkit-tap-highlight-color: transparent; }
 .cs .section h3 { font-size: 16px; font-weight: 700; margin: 28px 0 8px; }
 .cs .section p, .cs .section li { font-size: 16px; }
 [dir='rtl'] .cs .section p, [dir='rtl'] .cs .section li { font-size: 18px; }
-.cs .figure { margin: 32px auto; }
-.cs .figure img { margin: 0 auto; }
 @media (max-width: 700px) {
   .cs-title, [dir='rtl'] .cs-title { font-size: 26px; }
   .cs-subtitle { font-size: 19px; }

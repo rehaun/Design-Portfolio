@@ -21,17 +21,11 @@ import { images as img } from '../../../data/images';
 
 هنگامی که به تیم پیوستم، بازی آموزشی Classeh پیش‌تر **راه‌اندازی** شده بود؛ به مدارس **فروخته** شده، دارای محتوا بود و عملکرد خود را انجام می‌داد. مشکلی در کار نبود؛ پروژه در مراحل ابتدایی خود قرار داشت: از نظر عملکردی کارآمد بود، اما فضای قابل‌توجهی برای بهبود داشت. بریف پروژه ساده بیان شده بود اما دامنه‌ی بازی داشت: محصول را **بهتر کن**. هنوز هیچ تشخیص مشخصی ارائه نشده بود؛ یافتن آن بر عهده‌ی من بود.
 
-<Layout height={324} items={[
-  { img: img.gamesFlowBefore, x: 740, y: 0, w: 171, h: 297 },
-  { img: img.gamesFlowDivider, x: 5, y: 117, w: 770, h: 120 },
-  { html: "آنچه بود", x: 446, y: 305, w: 56, h: 19, size: 16, weight: 900, align: "right" },
-]} />
-
-<Layout height={223} items={[
-  { img: img.gamesBefore, x: 732, y: 3, w: 272, h: 193 },
-  { img: img.gamesAfter, x: -7, y: 0, w: 770, h: 151 },
-  { html: "آنچه شد", x: 445, y: 204, w: 58, h: 19, size: 16, weight: 900, align: "right" },
-]} />
+<Compare
+  kind="wide"
+  before={{ label: "آنچه بود", imgs: [{ src: img.gamesFlowBefore, art: true }, { src: img.gamesFlowDivider, alt: "مسیر قدیمی: خانه، انتخاب درس، انتخاب فصل، فهرست بازی‌ها، انتخاب بازی و بعد بازی کردن" }] }}
+  after={{ label: "آنچه شد", imgs: [{ src: img.gamesBefore, art: true }, { src: img.gamesAfter, alt: "مسیر جدید: یک مسیر پیوسته از خانه تا خود بازی" }] }}
+/>
 
 </Section>
 
@@ -39,13 +33,11 @@ import { images as img } from '../../../data/images';
 
 رسیدن به هر یک بازی برای کاربر مستلزم سه تصمیم جداگانه بود که باید به‌ترتیب و درست گرفته می‌شدند: ابتدا **درس**، سپس **فصل**، و در نهایت انتخاب از میان **فهرستی از شماره بازی‌ها**. این نه یک مسیر بازی، که فهرست مطالب کتاب درسی بود. ناوبری بر اساس ساختار برنامه‌ی درسی طراحی شده بود، نه بر اساس شیوه‌ای که یک **کودک** برای **انتخاب بازی** بعدی تصمیم می‌گیرد. و هر یک از این سه تصمیم، نقطه‌ای بود که کودک می‌توانست پیش از رسیدن به چیزی سرگرم‌کننده، دلسرد شود و **رها کند**.
 
-<Layout height={390} items={[
-  { img: img.gamesFlow1, x: 162, y: 0, w: 180, h: 390 },
-  { img: img.gamesFlow2, x: 382, y: 0, w: 180, h: 390 },
-  { img: img.gamesFlow3, x: 602, y: 0, w: 180, h: 390 },
+<Gallery h={390} caption="<strong>مسیر پیشین:</strong> <strong>۱.درس</strong>، سپس <strong>۲.فصل</strong>، سپس <strong>۳.فهرستی از بازی‌ها</strong>. و تنها پس از آن، یک بازی." items={[
+  { src: img.gamesFlow1, alt: "انتخاب درس" },
+  { src: img.gamesFlow2, alt: "انتخاب فصل" },
+  { src: img.gamesFlow3, alt: "فهرست بازی‌ها" },
 ]} />
-
-<p class="layout-caption" style="font-size: 16px; font-weight: 400; max-width: 571px; margin-inline: auto; text-align: center" set:html={"<strong>مسیر پیشین:</strong> <strong>۱.درس</strong>، سپس <strong>۲.فصل</strong>، سپس <strong>۳.فهرستی از بازی‌ها</strong>. و تنها پس از آن، یک بازی."} />
 
 </Section>
 
@@ -55,10 +47,10 @@ import { images as img } from '../../../data/images';
 
 پژوهش هنوز بخشی استاندارد از فرایند کار شرکت ما نبود، بنابراین هر سرنخی که می‌توانستم به‌تنهایی جمع‌آوری کردم. یک ارزیابی اکتشافی(**heuristic evaluation**) سبک روی مسیر موجود انجام دادم و سپس بازی را در اختیار چند نوجوان که می‌شناختم -و بخشی از مخاطب هدف ما هم بودند- گذاشتم و به‌جای آنچه مسیر طراحی‌شده فرض می‌کرد، نحوه‌ی واقعی حرکت آن‌ها در بازی را مشاهده کردم. مشابه **usability testing.سوابق جلسات Clarity** نیز آنچه را که به‌طور زنده مشاهده می‌کردم تأیید کرد: کودکانی که بسیار بیشتر از زمانی که یک منوی دو‌ثانیه‌ای باید طول بکشد، روی یک صفحه معطل می‌ماندند و درس‌ها را جلو و عقب اسکرول می‌کردند، انگار که در حال **بازبینی** چیزی هستند تا انتخاب آن. این، شکل یک ناوبری مطمئن نبود.
 
-<Layout height={291} items={[
-  { img: img.gamesDiscovery1, x: 344, y: 0, w: 271, h: 291 },
-  { img: img.gamesDiscovery2, x: 104, y: 21, w: 272, h: 248 },
-  { img: img.gamesDiscovery3, x: 574, y: 13, w: 265, h: 265 },
+<Gallery h={220} class="gallery--blend" items={[
+  { src: img.gamesDiscovery2 },
+  { src: img.gamesDiscovery1 },
+  { src: img.gamesDiscovery3 },
 ]} />
 
 دو نکته مدام تکرار می‌شد:
@@ -117,17 +109,11 @@ import { images as img } from '../../../data/images';
 
 برای نمایان کردن این تفاوت، **بازی واقعی — یعنی نقطه‌ی شروع بازی — را با یک ستاره (⭐) در هر دو چارت مشخص کردم.** در مسیر قدیمی، آن ستاره در انتهای یک مسیر طولانی و شاخه‌شاخه قرار دارد. در مسیر جدید، **تنها یک قدم فاصله** دارد.
 
-<Layout height={207} items={[
-  { html: "آنچه بود", x: 446, y: 0, w: 56, h: 19, size: 16, weight: 900, align: "right" },
-  { img: img.gamesFlowDivider, x: 87, y: 44, w: 770, h: 120 },
-  { html: "ستاره، خود بازی را نشان می‌دهد، که تنها پس از طی یک مسیر سه‌مرحله‌ای و شاخه‌شاخه به آن می‌رسیم.", x: 154, y: 188, w: 675, h: 19, size: 16, weight: 400, align: "right" },
-]} />
-
-<Layout height={237} items={[
-  { html: "آنچه شد", x: 445, y: 0, w: 58, h: 19, size: 16, weight: 900, align: "right" },
-  { img: img.gamesAfter, x: 87, y: 43, w: 770, h: 151 },
-  { html: "همان ستاره، همان بازی، اما این‌بار تنها یک قدم فاصله دارد.", x: 291, y: 218, w: 385, h: 19, size: 16, weight: 400, align: "right" },
-]} />
+<Compare
+  kind="wide"
+  before={{ label: "آنچه بود", imgs: [{ src: img.gamesFlowDivider, alt: "مسیر قدیمی: خانه، انتخاب درس، انتخاب فصل، فهرست بازی‌ها، انتخاب بازی و بعد بازی کردن" }], caption: "ستاره، خود بازی را نشان می‌دهد، که تنها پس از طی یک مسیر سه‌مرحله‌ای و شاخه‌شاخه به آن می‌رسیم." }}
+  after={{ label: "آنچه شد", imgs: [{ src: img.gamesAfter, alt: "مسیر جدید: یک مسیر پیوسته از خانه تا خود بازی" }], caption: "همان ستاره، همان بازی، اما این‌بار تنها یک قدم فاصله دارد." }}
+/>
 
 بهبودهای کلیدی نسبت به مسیر پیشین:
 
@@ -139,7 +125,7 @@ import { images as img } from '../../../data/images';
 
 طرح‌های اولیه‌ی دستی از صفحاتی که مسیر جدید به آن‌ها نیاز داشت، پیش از هرگونه طراحی نهایی (high-fidelity).
 
-<Figure src={img.gamesSketch} width={712} />
+<Figure src={img.gamesSketch} width={712} blend />
 
 </Section>
 
@@ -173,21 +159,17 @@ import { images as img } from '../../../data/images';
 
 پیش‌تر، کاربران فقط می‌توانستند بازی‌های یک درس را ببینند و باید هر چهار دسته‌ی درس را پشت‌سرهم طی می‌کردند تا بتوانند بازی کنند. اکنون، هر آنچه مربوط به **دوره‌ی یادگیری فعلی‌شان** است در یک نما قابل مشاهده است؛ با استفاده‌ی مجدد از همان ساختارهای صفحه‌ای که پیش‌تر **وجود داشتند**، فقط بازچیده‌شده تا با مسیر جدید هماهنگ باشند.
 
-<Layout height={511} items={[
-  { img: img.gamesFinalBefore1, x: 90, y: 0, w: 203, h: 441 },
-  { html: "<strong>پیش از تغییر</strong>: کاربران باید بین ۴ دسته درس انتخاب می‌کردند", x: 87, y: 466, w: 223, h: 45, size: 14, weight: 400, align: "right" },
-  { html: "→", x: 337, y: 231, w: 42, h: 48, size: 40, weight: 300, align: "right" },
-  { img: img.gamesFinalAfter1, x: 417, y: 0, w: 441, h: 441 },
-  { html: "<strong>پس از تغییر</strong>: اکنون کافی‌ست فقط در یک دسته (که اکنون سطح نام دارد) باشند. و این مورد به صورت خودکار پیش می‌رود (level up)", x: 428, y: 465, w: 443, h: 45, size: 14, weight: 400, align: "right" },
-]} />
+<Compare
+  h={380}
+  before={{ label: "پیش از تغییر", imgs: [{ src: img.gamesFinalBefore1, alt: "صفحه‌ی قدیمی بازی‌ها" }], caption: "کاربران باید بین ۴ دسته درس انتخاب می‌کردند." }}
+  after={{ label: "پس از تغییر", imgs: [{ src: img.gamesFinalAfter1, alt: "صفحه‌ی جدید بازی‌ها" }], caption: "اکنون کافی‌ست فقط در یک دسته (که اکنون سطح نام دارد) باشند. و این مورد به صورت خودکار پیش می‌رود (level up)." }}
+/>
 
-<Layout height={533} items={[
-  { img: img.gamesFinalBefore2, x: 90, y: 0, w: 203, h: 441 },
-  { html: "<strong>پیش از تغییر</strong>: کاربران فقط می‌توانستند بازی‌های یک درس را ببینند.", x: 87, y: 466, w: 223, h: 67, size: 14, weight: 400, align: "right" },
-  { html: "→", x: 337, y: 243, w: 42, h: 48, size: 40, weight: 300, align: "right" },
-  { img: img.gamesFinalAfter2, x: 417, y: 0, w: 441, h: 441 },
-  { html: "<strong>پس از تغییر</strong>: اکنون می‌توانند تمام بازی‌های یک دوره‌ی یادگیری مشخص را مشاهده کنند.", x: 428, y: 465, w: 443, h: 45, size: 14, weight: 400, align: "right" },
-]} />
+<Compare
+  h={380}
+  before={{ label: "پیش از تغییر", imgs: [{ src: img.gamesFinalBefore2, alt: "صفحه‌ی قدیمی بازی‌ها" }], caption: "کاربران فقط می‌توانستند بازی‌های یک درس را ببینند." }}
+  after={{ label: "پس از تغییر", imgs: [{ src: img.gamesFinalAfter2, alt: "صفحه‌ی جدید بازی‌ها" }], caption: "اکنون می‌توانند تمام بازی‌های یک دوره‌ی یادگیری مشخص را مشاهده کنند." }}
+/>
 
 </Section>
 
