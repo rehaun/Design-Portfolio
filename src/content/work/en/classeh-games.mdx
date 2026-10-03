@@ -1,7 +1,7 @@
 ---
 title: "Why Didn't Our Educational Game Feel Like a Game?"
 subtitle: "The story of a game that had everything, except a way in."
-eyebrow: "Product Design Case Study"
+eyebrow: "PRODUCT DESIGN CASE STUDY"
 hero: gamesHero
 order: 1
 cardTitle: "A shorter path, a longer smile from the sales team."
@@ -17,105 +17,145 @@ meta:
 ---
 import { images as img } from '../../../data/images';
 
-<Section eyebrow="Context" heading="Live, and ready to grow">
+<Section eyebrow="CONTEXT" heading="Live, and ready to grow">
 
-By the time I joined, Classeh's educational game was already live — sold to schools, stocked with content, doing its job. It wasn't broken. It was early: functional, but with clear room to grow.
+By the time I joined, Classeh's educational game was **already live**, sold to schools, stocked with content, doing its job. It wasn't broken. It was early: functional, but with clear room to grow.
 
-The brief was simple to say and open to everything: make it better. No one had a diagnosis yet — that part was on me to find.
+The brief was simple to say and open to everything: **make it better**. No one had a diagnosis yet, that part was on me to find.
+
+<Layout height={324} items={[
+  { img: img.gamesFlowBefore, x: 2, y: 0, w: 171, h: 297 },
+  { img: img.gamesFlowDivider, x: 175, y: 117, w: 770, h: 120 },
+  { html: "BEFORE", x: 441, y: 305, w: 66, h: 19, size: 16, weight: 700, align: "left" },
+]} />
+
+<Layout height={223} items={[
+  { img: img.gamesBefore, x: -8, y: 3, w: 272, h: 193 },
+  { img: img.gamesAfter, x: 183, y: 0, w: 770, h: 151 },
+  { html: "AFTER", x: 446, y: 204, w: 55, h: 19, size: 16, weight: 700, align: "left" },
+]} />
 
 </Section>
 
-<Collage aspect={941 / 297} items={[ { src: img.gamesFlowBefore, left: 0, top: 0, width: 18.17, height: 100 }, { src: img.gamesFlowDivider, left: 18.38, top: 39.39, width: 81.83, height: 40.4 }, ]} />
+<Section eyebrow="PROBLEM STATEMENT" heading="A Game? Or a Table of Contents?">
 
-<p style={{ textAlign: 'center', fontWeight: 700, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '30px 0' }}>Before</p>
+Getting to a single game meant three separate decisions, made correctly, in order: subject, then chapter, then finally a list of games to choose from.
 
-<Collage aspect={961 / 196} items={[ { src: img.gamesBefore, left: 0, top: 1.53, width: 28.3, height: 98.47 }, { src: img.gamesAfter, left: 19.87, top: 0, width: 80.13, height: 77.04 }, ]} />
-
-<p style={{ textAlign: 'center', fontWeight: 700, fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase', margin: '30px 0' }}>After</p>
-
-<Section heading="A Game? Or a Table of Contents?">
-
-Getting to a single game meant three separate decisions, made correctly, in order: subject, then chapter, then finally a list of games to choose from. That's not a game flow. That's a table of contents.
+That's not a game flow. That's a table of contents.
 
 The navigation had been built around how a curriculum is structured — not around how a kid decides what to play next. And every one of those three decisions was a place a kid could give up before reaching anything fun.
 
-<ThreeImages a={img.gamesFlow1} b={img.gamesFlow2} c={img.gamesFlow3} />
+<Layout height={390} items={[
+  { img: img.gamesFlow1, x: 162, y: 0, w: 180, h: 390 },
+  { img: img.gamesFlow2, x: 382, y: 0, w: 180, h: 390 },
+  { img: img.gamesFlow3, x: 602, y: 0, w: 180, h: 390 },
+]} />
 
-<p class="figure-caption"> The previous flow: subject, then chapter, then a list of games — and only then, a game. </p>
+<p class="layout-caption" style="font-size: 16px; font-weight: 400; max-width: 664px; margin-inline: auto; text-align: center" set:html={"The previous flow: subject, then chapter, then a list of games. and only then, a game."} />
 
 </Section>
 
-<PhaseDivider text="Discovery" />
+<PhaseDivider text="DISCOVERY" />
 
-<Section eyebrow="Evaluation & Research" heading="Chasing Clues">
+<Section eyebrow="EVALUATION & RESEARCH" heading="Chasing Clues">
 
-Research wasn't yet a standard part of the process there, so I pulled together whatever signal I could get on my own. I ran a lightweight heuristic evaluation against the existing flow, then handed the game to a few teenagers I knew — also part of our target audience — and watched how they actually moved through it, rather than how the flow assumed they would.
+Research wasn't yet a standard part of the process there, so I pulled together whatever signal I could get on my own.
 
-Clarity's session recordings backed up what I was seeing live: kids lingering on the same screen far longer than a two-second menu should take, scrolling lessons back and forth as if they were re-checking something rather than choosing it. That's not what confident navigation looks like.
+I ran a lightweight **heuristic evaluation** against the existing flow, then **handed the game** to a few teenagers I knew -also part of **our target audience**- and watched how they actually moved through it, rather than how the flow assumed they would.
 
-<ThreeImages a={img.gamesDiscovery1} b={img.gamesDiscovery2} c={img.gamesDiscovery3} />
+**Clarity's session recordings** backed up what I was seeing live: kids lingering on the same screen far longer than a two-second menu should take, scrolling lessons back and forth as if they were re-checking something rather than choosing it. That's not what confident navigation looks like.
+
+<Layout height={291} items={[
+  { img: img.gamesDiscovery1, x: 344, y: 0, w: 271, h: 291 },
+  { img: img.gamesDiscovery2, x: 104, y: 21, w: 272, h: 248 },
+  { img: img.gamesDiscovery3, x: 574, y: 13, w: 265, h: 265 },
+]} />
 
 Two things kept surfacing:
 
-- **No intuitive flow:** the path to play was a sequence of independent decisions, made correctly, in order, with no sense of progress in between.
-- **Inconsistent visual language:** pieces of the product didn't feel like they belonged together, which worked against the sense of immersion we wanted.
+— **No intuitive flow**: the path to play was a sequence of independent decisions, made correctly, in order, with no sense of progress in between
+
+— **Inconsistent visual language**: pieces of the product didn't feel like they belonged together, which worked against the sense of immersion we wanted
 
 <Figure src={img.gamesVisualLang} width={400} />
 
 </Section>
 
-<Section eyebrow="Competitive Analysis" heading="The App Should've Thought Ahead">
+<Section eyebrow="COMPETITIVE ANALYSIS" heading="The App Should've Thought Ahead">
 
-I looked at three educational apps to see how they handle the same tension: content that needs structure, but still has to feel like play. The pattern across the two most game-like products was clear: the app should already know what a user is doing next. Every time we made kids decide their own path through three menus, we turned play into a chore.
+I looked at three educational apps to see how they handle the same tension:
 
-<div class="competitor"><Img src={img.gamesDuolingo} alt="" width={56} />Duolingo</div>
+**content** that needs **structure**, but still has to feel like **play**.
 
-Levels are gated — no skipping ahead without clearing what came before. Open the app, and it already knows your next step. No need to remember where you were, it just picks up for you.
+The pattern across the two most game-like products was clear: the app should already know what a user is doing next. Every time we made kids decide their own path through three menus, we turned play into a chore.
+
+<div class="competitor"><Img src={img.gamesDuolingo} alt="" width={64} />Duolingo</div>
+
+**Levels** are **gated**, no skipping ahead without clearing what came before.
+
+Open the app, and it already knows **your next step**.
+
+**No need to remember** where you were, it just picks up for you.
 
 <Figure src={img.gamesBussuScreen} width={539} />
 
-<div class="competitor"><Img src={img.gamesBussuLogo} alt="" width={56} />Bussu</div>
+<div class="competitor"><Img src={img.gamesBussuLogo} alt="" width={64} />Bussu</div>
 
-Units instead of levels, same idea: pick up right where you left off.
+Units instead of levels, same idea: pick up right **where you left off**.
 
 <Figure src={img.gamesKhanScreen} width={558} />
 
-<div class="competitor"><Img src={img.gamesKhanLogo} alt="" width={56} />Khan Academy Kids</div>
+<div class="competitor"><Img src={img.gamesKhanLogo} alt="" width={64} />Khan academy kids</div>
 
-Every game sits visible at once — no category steps stand between the user and what they want to play. Categories are still there, just as a shortcut up top, not a gate.
+Every game sits **visible** at once, **no category steps** stand between the user and what they want to **play**. Categories are still there, just as a shortcut up top, **not a gate**.
 
 <Figure src={img.gamesCompetitive} width={558} />
 
 </Section>
 
-<PhaseDivider text="Ideation" />
+<PhaseDivider text="IDEATION" />
 
 <Section eyebrow="HMW" heading="Finding the Right Question">
 
-Discovery had pointed to a clear cause. The next step was turning that into a question I could actually design against:
+Discovery had pointed to a clear cause, The next step was turning that into a question I could actually design against:
 
-> How might we make the navigation experience simpler and more familiar, aligning with users' mental model?
+> How might we make the **navigation** experience **simpler** and **more familiar**, aligning with users' **mental model**?
 
 </Section>
 
-<Section eyebrow="User Flow" heading="Cutting the Decision, Not Simplifying It">
+<Section eyebrow="USER FLOW" heading="Cutting the Decision, Not Simplifying It">
 
-Mapping the existing flow end-to-end surfaced something I hadn't expected: this three-step decision sequence wasn't a one-time hurdle. It repeated multiple times in a single play session — and each repetition risked landing on a dead end.
+Mapping the existing flow end-to-end surfaced something I hadn't expected:
 
-The fix wasn't to make each decision easier. It was to remove the repeated decision-making altogether. I restructured the flow into a single, continuous path. Instead of subject → chapter → game list as three separate choices, progress became one line the user simply moves along.
+this **three-step decision sequence** wasn't a one-time hurdle. It **repeated** multiple times in a single play session — and each repetition risked landing on a dead end.
 
-To make the difference visible, I marked the actual game — the point of play — with a star (⭐) in both diagrams. In the old flow, that star sits at the end of a long, branching path. In the new one, it's just a step away.
+The fix wasn't to make each decision easier. It was to **remove the repeated decision-making** altogether.
 
-<BeforeAfter before={img.gamesFlowDivider} after={img.gamesAfter} beforeCaption="The star marks the game itself — reached only after a three-step branching path." afterCaption="Same star, same game — now just one step away." />
+I **restructured** the **flow** into a single, **continuous path**. Instead of subject → chapter → game list as three separate choices, **progress** became one line the user **simply** moves along.
+
+To make the difference visible, I marked the actual game — the point of play — with a **star** (⭐) in both diagrams. In the old flow, that star sits at the end of a **long, branching path.** In the new one, it's just **a step away**.
+
+<Layout height={206} items={[
+  { html: "BEFORE", x: 441, y: 0, w: 66, h: 19, size: 16, weight: 700, align: "left" },
+  { img: img.gamesFlowDivider, x: 87, y: 43, w: 770, h: 120 },
+  { html: "The star marks the game itself — reached only after a three-step branching path.", x: 154, y: 187, w: 674, h: 19, size: 16, weight: 400, align: "left" },
+]} />
+
+<Layout height={237} items={[
+  { html: "AFTER", x: 446, y: 0, w: 55, h: 19, size: 16, weight: 700, align: "left" },
+  { img: img.gamesAfter, x: 87, y: 43, w: 770, h: 151 },
+  { html: "Same star, same game — now just one step away.", x: 279, y: 218, w: 410, h: 19, size: 16, weight: 400, align: "left" },
+]} />
 
 Key improvements over the previous flow:
 
-- **Clear overview:** users can now see everything relevant to their current progress in a single glance.
-- **Seamless progression:** finishing a step reveals the next one automatically — no manual navigating required.
+→ **Clear overview**: users can now see everything relevant to their current progress in a single glance
+
+→ **Seamless progression**: finishing a step reveals the next one automatically — no manual navigating required
 
 </Section>
 
-<Section eyebrow="Sketch" heading="Starting With Pen and Paper">
+<Section eyebrow="SKETCH" heading="Starting With Pen and Paper">
 
 Early hand-drawn sketches of the screens the new flow would require, before any high-fidelity design.
 
@@ -123,56 +163,68 @@ Early hand-drawn sketches of the screens the new flow would require, before any 
 
 </Section>
 
-<Section eyebrow="Information Architecture" heading="Stepping on Backend's Turf">
+<Section eyebrow="INFORMATION ARCHITECTURE" heading="Stepping on Backend's Turf">
 
-The new flow needed a content structure to match. Different books had different numbers of lessons, and different content within them — so a fixed rule, like "two lessons per level," wouldn't hold. Lessons would drift out of sync with the school's actual schedule, reaching kids earlier or later than they were meant to.
+The **new flow** needed a **content structure** to match. Different books had different numbers of lessons, and different content within them — so a **fixed rule**, like "two lessons per level," wouldn't hold. Lessons would drift out of sync with the **school's** actual **schedule**, reaching kids earlier or later than they were meant to.
 
-My first instinct was to distribute content around the school's actual curriculum schedule, rather than how lessons happened to be grouped. But making that work meant restructuring the underlying database — and before refining the idea any further, I needed to know that was even possible.
+My first instinct was to distribute content around the school's actual curriculum schedule, rather than how lessons happened to be grouped. But making that work meant **restructuring** the underlying **database** — and before refining the idea any further, I needed to know that was even **possible**.
 
 I brought it to our CTO expecting pushback, or at best a scaled-down compromise. Instead, he told me to go ahead.
 
-That green light was what turned this from a UI exercise into a real structural project — and it's what let me take the idea from a rough direction to something concrete: schools followed a standardized lesson plan set by the Ministry of Education, dividing the year into fixed blocks. I mapped the roadmap to that same rhythm, splitting the year into segments of two and a half weeks each — matching a structure teachers were already following, rather than inventing a new one.
+That green light was what turned this from a UI exercise into a real structural project — and it's what let me take the idea from a rough direction to something concrete: schools followed a **standardized lesson plan** set by the Ministry of Education, dividing the year into fixed blocks. I mapped the roadmap to that same rhythm, **splitting** the year into **segments** of two and a half weeks each — matching a structure teachers were **alreadyfollowing**, rather than inventing a new one.
 
 </Section>
 
-<PhaseDivider text="Design" />
+<PhaseDivider text="DESIGN" />
 
-<Section eyebrow="Visiual Identity" heading="Beezie Takes the Stage">
+<Section eyebrow="VISIUAL IDENTITY" heading="Beezie Takes the Stage">
 
 Beezie wasn't something I inherited — it's something I proposed adding to the game myself, and the work of bringing it to life was assigned to me. I brought on a freelance illustrator to design the character, and stayed closely involved throughout that process. She delivered the base character.
 
-<Figure src={img.gamesBeezie} caption="Beezie, Classeh's mascot." width={602} />
+<Figure src={img.gamesBeezie} width={602} caption="Beezie, Classe's mascot." />
 
-Once the new roadmap structure was in place, the work went beyond the mascot itself. I designed the visual elements for each of the eight segments, and illustrated Beezie in both active and locked states — so kids could always tell, at a glance, where they stood in the journey and what was still ahead.
+Once the **new roadmap** structure was in place, the work went beyond the mascot itself. I designed the **visual elements** for each of the eight segments, and **illustrated Beezie** in both active and locked states — so kids could always tell, at a glance, where they **stood in the journey** and what was still ahead.
 
 <Figure src={img.gamesBeezieSegments} caption="Beezie across the eight segments — active and locked states, so progress is always clear at a glance." />
 
 </Section>
 
-<Section eyebrow="Final Design" heading="Fewer Steps, More Play">
+<Section eyebrow="FINAL DESIGN" heading="Fewer Steps, More Play">
 
-Before, users could only see games from one subject and had to work through all four categories to play. Now, everything from their current learning period is visible in one view — reusing the same screen structures that already existed, just reordered to fit the new flow.
+Before, users could **only** see games from **one subject** and had to work **through all four categories** to play. Now, everything from their current learning period is **visible in one view** — **reusing** the same screen structures that **already existed**, just **reordered** to fit the **new flow**.
 
-<BeforeAfter before={img.gamesFinalBefore1} after={img.gamesFinalAfter1} beforeCaption="Before: users had to go through all four categories to play." afterCaption="After: now, they only need to be in one category (levels) at a time." ratio="203fr 441fr" />
+<Layout height={532} items={[
+  { img: img.gamesFinalBefore1, x: 90, y: 0, w: 203, h: 441 },
+  { html: "<strong>Before</strong>: Users had to go through all four categories to play.", x: 87, y: 465, w: 223, h: 67, size: 14, weight: 400, align: "left" },
+  { html: "→", x: 337, y: 242, w: 42, h: 48, size: 40, weight: 300, align: "left" },
+  { img: img.gamesFinalAfter1, x: 417, y: 0, w: 441, h: 441 },
+  { html: "<strong>After</strong>: Now, they only need to be in one category(which is levels now) at a time.", x: 428, y: 465, w: 443, h: 45, size: 14, weight: 400, align: "left" },
+]} />
 
-<BeforeAfter before={img.gamesFinalBefore2} after={img.gamesFinalAfter2} beforeCaption="Before: users could only see games from one subject." afterCaption="After: now they can view all games from a specific learning period." ratio="203fr 441fr" />
+<Layout height={511} items={[
+  { img: img.gamesFinalBefore2, x: 90, y: 0, w: 203, h: 441 },
+  { html: "<strong>Before</strong>: Users could only see games from one subject.", x: 87, y: 466, w: 223, h: 45, size: 14, weight: 400, align: "left" },
+  { html: "→", x: 337, y: 231, w: 42, h: 48, size: 40, weight: 300, align: "left" },
+  { img: img.gamesFinalAfter2, x: 417, y: 0, w: 441, h: 441 },
+  { html: "<strong>After</strong>: Now they can view all games from a specific learning period.", x: 428, y: 465, w: 443, h: 45, size: 14, weight: 400, align: "left" },
+]} />
 
 </Section>
 
-<PhaseDivider text="Reflection" />
+<PhaseDivider text="REFLECTION" />
 
-<Section eyebrow="Impact" heading="A Happy Sales Team">
+<Section eyebrow="IMPACT" heading="A Happy Sales Team">
 
-We didn't run a formal post-launch study, so what I have isn't a number — it's a consistent signal from the team closest to the customers. Sales reported a noticeable lift in satisfaction from schools and parents, and connected it to the redesign. I can't put a metric next to that, but the signal was clear and repeated.
+We didn't run a formal post-launch study, so what I have isn't a number — it's a consistent signal from the team closest to the customers. **Sales** reported a **noticeable lift in satisfaction** from schools and parents, and connected it to the redesign. I can't put a metric next to that, but the signal was clear and repeated.
 
 <Figure src={img.gamesImpact} width={176} />
 
 </Section>
 
-<Section eyebrow="Takeaway" heading="Great Ideas Need the Whole Team">
+<Section eyebrow="TAKEAWAY" heading="Lesson Learned: Great Ideas Need the Whole Team">
 
-The database restructuring wasn't rejected — the CTO backed it. But I didn't bring our backend developer into the process early enough. I designed the new flow and got it approved before looping him in, and by the time I needed to explain the new structure, it took real effort to get the idea across — he was confused by a structure he hadn't helped shape.
+The **database restructuring** wasn't rejected — the CTO backed it. But I didn't bring our **backend developer** into the process **early enough**. I designed the new flow and got it approved before looping him in, and by the time I needed to explain the new structure, it took real effort to get the idea across — he was confused by a structure he hadn't helped shape.
 
-If I ran this again, the backend developer would be in the room during ideation, not brought in after the flow was already decided. Not because the idea was wrong, but because a structural change like this needed someone who'd live with its technical consequences involved in choosing the structure — not just implementing it after the fact.
+If I ran this again, the backend developer would be in the room **during ideation**, not brought in after the flow was already decided. Not because the idea was wrong, but because a structural change like this needed someone who'd live with its technical consequences involved in choosing the structure — not just implementing it after the fact.
 
 </Section>

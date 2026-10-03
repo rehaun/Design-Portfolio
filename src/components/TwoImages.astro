@@ -1,9 +1,0 @@
----
-import Img from './Img.astro';
-import Reveal from './Reveal.astro';
-const { left, right, leftAlt = '', rightAlt = '' } = Astro.props;
----
-<Reveal class="two-col">
-  <Img src={left} alt={leftAlt} loading="lazy" />
-  <Img src={right} alt={rightAlt} loading="lazy" />
-</Reveal>

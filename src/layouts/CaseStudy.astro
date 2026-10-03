@@ -5,12 +5,9 @@ import Nav from '../components/Nav.astro';
 import Reveal from '../components/Reveal.astro';
 import Figure from '../components/Figure.astro';
 import Img from '../components/Img.astro';
-import Collage from '../components/Collage.astro';
-import TwoImages from '../components/TwoImages.astro';
-import ThreeImages from '../components/ThreeImages.astro';
-import BeforeAfter from '../components/BeforeAfter.astro';
 import Section from '../components/Section.astro';
 import PhaseDivider from '../components/PhaseDivider.astro';
+import Layout from '../components/Layout.astro';
 import { images } from '../data/images';
 import { ui, localePath, parseId } from '../lib/i18n';
 
@@ -23,11 +20,11 @@ const otherLang = lang === 'fa' ? 'en' : 'fa';
 const hasTranslation = (await getCollection('work')).some((e) => e.id === `${otherLang}/${slug}`);
 const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
 
-const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, BeforeAfter, Section, PhaseDivider };
+const components = { Img, Layout, Reveal, Figure, Section, PhaseDivider };
 ---
 <Base title={`${title} — ${ui[lang].name}`} description={subtitle} lang={lang} altHref={altHref} image={images[hero]}>
   <Nav lang={lang} current="works" altHref={altHref} progress />
-  <div class="container">
+  <div class="container cs">
     <div class="cs-header">
       <Reveal>
         <div class="cs-eyebrow">{eyebrow}</div>
@@ -64,7 +61,7 @@ const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, Befor
     const big = dialog?.querySelector<HTMLImageElement>('.lightbox-img');
     if (dialog && big) {
       document
-        .querySelectorAll<HTMLImageElement>('.container .figure img, .two-col img, .three-col img, .arrow-flow img')
+        .querySelectorAll<HTMLImageElement>('.container .figure img, .layout-img img')
         .forEach((img) => {
           img.classList.add('zoomable');
           img.addEventListener('click', () => {
