@@ -601,11 +601,11 @@ blockquote {
   border: 0;
   padding: 0;
   background: transparent;
-  max-width: min(92vw, 900px);
+  max-width: min(96vw, 1400px);
   max-height: 90vh;
 }
 .lightbox::backdrop { background: rgba(20, 20, 20, 0.75); backdrop-filter: blur(4px); }
-.lightbox-img { max-height: 86vh; width: auto; border-radius: 8px; }
+.lightbox-img { max-height: 86vh; width: auto; max-width: 100%; border-radius: 8px; }
 .lightbox-img[hidden] { display: none; }
 .lightbox-close {
   position: fixed;
@@ -731,3 +731,108 @@ blockquote {
   .resume-item li, .resume-skills p { font-size: 11px; line-height: 1.4; }
   @page { margin: 12mm; }
 }
+.notfound-fa { font-family: var(--font-fa); margin-top: 12px !important; color: #575757 !important; }
+.notfound-cta { margin-top: 40px; }
+
+/* =========================================================
+   Motion & micro-interactions
+   - Hover effects only apply on devices that can hover (mouse/trackpad);
+     touch screens get :active "press" feedback instead, so nothing sticks.
+   - Everything calms down under prefers-reduced-motion.
+   ========================================================= */
+:root { --ease-out: cubic-bezier(0.22, 1, 0.36, 1); --press: scale(0.97); }
+html { -webkit-tap-highlight-color: transparent; }
+
+/* Page transitions between pages (cross-document View Transitions;
+   browsers without support simply navigate as before). */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+}
+.nav { view-transition-name: site-nav; }
+::view-transition-old(root) { animation: vt-out 0.22s ease both; }
+::view-transition-new(root) { animation: vt-in 0.38s var(--ease-out) both; }
+@keyframes vt-out { to { opacity: 0; transform: translateY(-8px); } }
+@keyframes vt-in { from { opacity: 0; transform: translateY(12px); } }
+
+/* Nav hides on scroll down, returns on scroll up */
+.nav { transition: transform 0.35s var(--ease-out); }
+.nav--hidden { transform: translateY(-100%); }
+.nav-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+[dir='rtl'] .nav-progress { transform-origin: right; }
+.nav-lang { transition: background 0.2s ease, color 0.2s ease, transform 0.3s var(--ease-out); }
+
+/* Press feedback (touch and mouse) */
+.card, .tile, .hero-cta, .nav-lang, .nav-brand, .resume-print, .contact-link,
+.portrait, .sprite, .back-link, .lightbox-close {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.card:active, .tile:active, .hero-cta:active, .nav-lang:active, .back-link:active,
+.lightbox-close:active, .sprite:active { transform: var(--press); }
+.nav-brand:active .nav-avatar { transform: scaleX(-1) rotate(-12deg) scale(0.92); }
+.portrait:active { transform: rotate(0) scale(0.97); }
+.card, .hero-cta, .back-link, .lightbox-close { transition: transform 0.25s var(--ease-out), background 0.3s ease, box-shadow 0.3s ease; }
+
+/* Hover-only flourishes */
+@media (hover: hover) {
+  .card { transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.35s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(0, 0, 0, 0.07); border-color: #d6d6d6; }
+  .nav-lang:hover { transform: rotate(-10deg); }
+  .back-link:hover { transform: translateX(-4px); }
+  [dir='rtl'] .back-link:hover { transform: translateX(4px); }
+  .contact-link:hover { transform: translateY(-2px); }
+  .zoomable:hover { transform: scale(1.015); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+  .resume-item:hover::before { transform: scaleY(1); }
+}
+/* undo hover-driven transforms on touch screens so they don't stick after a tap */
+@media (hover: none) {
+  .card:hover .card-image img, .sprite:hover { transform: none; }
+  .portrait:hover { transform: none; }
+  .portrait:nth-child(1):hover { transform: rotate(-1.5deg); }
+  .portrait:nth-child(3):hover { transform: rotate(1.5deg); }
+  .portrait:active { transform: scale(0.97); }
+}
+
+.contact-link { display: inline-block; transition: color 0.2s ease, text-underline-offset 0.2s ease, transform 0.3s var(--ease-out); }
+.back-link { display: inline-block; }
+
+/* Zoomable case-study images */
+.zoomable { cursor: zoom-in; transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease; }
+.lightbox[open] { animation: lb-in 0.3s var(--ease-out); }
+.lightbox[open]::backdrop { animation: lb-fade 0.3s ease; }
+@keyframes lb-in { from { opacity: 0; transform: scale(0.94); } }
+@keyframes lb-fade { from { opacity: 0; } }
+
+/* Resume: a thin line draws in beside the role you're reading */
+.resume-item { position: relative; }
+.resume-item::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -16px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: #3d3d3d;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.4s var(--ease-out);
+}
+
+/* Footer wave on hover/tap */
+.site-footer-thanks { display: inline-block; transition: transform 0.3s var(--ease-out); }
+.site-footer-thanks:hover, .site-footer-thanks:active { transform: rotate(-2deg) scale(1.03); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+  .nav--hidden { transform: none; }
+}
+@media print { .resume-item::before, .nav-progress { display: none; } }

@@ -1,21 +1,49 @@
 ---
+import { getImage } from 'astro:assets';
 import '../styles/global.css';
 import Footer from '../components/Footer.astro';
+import { url } from '../lib/i18n';
 
 const {
-  title = 'Davarpanah — Portfolio',
-  description = 'Product design & UX research case studies.',
+  title = 'Reyhane Davarpanah — Product Designer',
+  description = 'Product designer: research-driven, systems-minded, and fun to work with. Case studies, side projects and resume.',
   lang = 'en',
+  // the same page in the other language (used for hreflang), if it exists
+  altHref,
+  // share-preview image: an imported image, or omit for the default card
+  image,
 } = Astro.props;
+
+const site = Astro.site ?? new URL('https://example.com');
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = image
+  ? new URL((await getImage({ src: image, width: 1200, format: 'jpg' })).src, site).href
+  : new URL(url('/og.png'), site).href;
+const otherLang = lang === 'fa' ? 'en' : 'fa';
 ---
 <!doctype html>
 <html lang={lang} dir={lang === 'fa' ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
+    <link rel="icon" type="image/png" sizes="32x32" href={url('/favicon-32.png')} />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href={url("/sitemap-index.xml")} />
+    {altHref && <link rel="alternate" hreflang={lang} href={canonical} />}
+    {altHref && <link rel="alternate" hreflang={otherLang} href={new URL(altHref, site).href} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={lang === 'fa' ? 'ریحانه داورپناه' : 'Reyhane Davarpanah'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fa' ? 'fa_IR' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#fefcf6" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Estedad:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -40,6 +68,35 @@ const {
         { rootMargin: '0px 0px -60px 0px' },
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Nav slides away while scrolling down and comes back on scroll up,
+      // leaving more room to read (especially on phones).
+      // Also drives the reading-progress line on case studies.
+      const nav = document.querySelector<HTMLElement>('.nav');
+      const bar = document.querySelector<HTMLElement>('[data-progress]');
+      let lastY = scrollY;
+      let ticking = false;
+      const onScroll = () => {
+        const y = scrollY;
+        if (nav) {
+          if (y > 120 && y - lastY > 6) nav.classList.add('nav--hidden');
+          else if (lastY - y > 6 || y < 120) nav.classList.remove('nav--hidden');
+        }
+        if (bar) {
+          const max = document.documentElement.scrollHeight - innerHeight;
+          bar.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+        }
+        lastY = y;
+        ticking = false;
+      };
+      addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(onScroll);
+        }
+      }, { passive: true });
+      // keep the nav visible whenever something in it has keyboard focus
+      nav?.addEventListener('focusin', () => nav.classList.remove('nav--hidden'));
     </script>
   </body>
 </html>

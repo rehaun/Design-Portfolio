@@ -25,8 +25,8 @@ const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
 
 const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, BeforeAfter, Section, PhaseDivider };
 ---
-<Base title={`${title} — ${ui[lang].brand}`} description={subtitle} lang={lang}>
-  <Nav lang={lang} current="works" altHref={altHref} />
+<Base title={`${title} — ${ui[lang].name}`} description={subtitle} lang={lang} altHref={altHref} image={images[hero]}>
+  <Nav lang={lang} current="works" altHref={altHref} progress />
   <div class="container">
     <div class="cs-header">
       <Reveal>
@@ -49,7 +49,32 @@ const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, Befor
 
     <hr class="divider" />
     <div class="footer">
-      <a href={url('/')}>{ui[lang].backHome}</a>
+      <a href={url('/')} class="back-link">{ui[lang].backHome}</a>
     </div>
   </div>
+
+  <dialog class="lightbox" aria-label={title}>
+    <button type="button" class="lightbox-close" aria-label={lang === 'fa' ? 'بستن' : 'Close'}>×</button>
+    <img class="lightbox-img" alt="" />
+  </dialog>
+
+  <script>
+    // Click/tap any case-study image to see it large (handy for dense diagrams on phones).
+    const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+    const big = dialog?.querySelector<HTMLImageElement>('.lightbox-img');
+    if (dialog && big) {
+      document
+        .querySelectorAll<HTMLImageElement>('.container .figure img, .two-col img, .three-col img, .arrow-flow img')
+        .forEach((img) => {
+          img.classList.add('zoomable');
+          img.addEventListener('click', () => {
+            big.src = img.currentSrc || img.src;
+            big.alt = img.alt;
+            dialog.showModal();
+          });
+        });
+      dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (e) => e.target === dialog && dialog.close());
+    }
+  </script>
 </Base>
