@@ -7,7 +7,6 @@ export const ui = {
     play: 'Play',
     backHome: '← Back to home',
     switchLang: 'Read in Persian: FA',
-    switchLangShort: 'فا',
   },
   fa: {
     brand: 'داورپناه',
@@ -15,7 +14,6 @@ export const ui = {
     play: 'Play',
     backHome: '→ بازگشت به صفحه اصلی',
     switchLang: 'Read in English EN',
-    switchLangShort: 'EN',
   },
 };
 

@@ -12,7 +12,7 @@ import BeforeAfter from '../components/BeforeAfter.astro';
 import Section from '../components/Section.astro';
 import PhaseDivider from '../components/PhaseDivider.astro';
 import { images } from '../data/images';
-import { ui, localePath, parseId } from '../lib/i18n';
+import { ui, url, localePath, parseId } from '../lib/i18n';
 
 const { entry } = Astro.props;
 const { lang, slug } = parseId(entry.id);
@@ -49,7 +49,7 @@ const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, Befor
 
     <hr class="divider" />
     <div class="footer">
-      <a href={localePath(lang, '/')}>{ui[lang].backHome}</a>
+      <a href={url('/')}>{ui[lang].backHome}</a>
     </div>
   </div>
 </Base>
