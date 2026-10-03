@@ -1,0 +1,8 @@
+---
+// Fades/slides its content in the first time it scrolls into view.
+// The observer lives in layouts/Base.astro; without JS, content just shows.
+const { as: Tag = 'div', class: className, style, delay = 0 } = Astro.props;
+---
+<Tag class:list={['reveal', className]} style={style} data-delay={delay || undefined}>
+  <slot />
+</Tag>

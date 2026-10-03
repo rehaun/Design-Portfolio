@@ -1,58 +1,53 @@
-# Davarpanah — Portfolio (from Framer)
+# Davarpanah — Portfolio
 
-A hand-built React clone of the Framer site at `re-davarpanah.framer.website`,
-made to be hosted for free on GitHub Pages.
-
-## Stack
-- React + Vite
-- react-router-dom (`HashRouter` — works from any repo/subpath with zero config)
-- framer-motion (scroll-reveal animations, similar spirit to Framer's own)
+Personal product-design portfolio, bilingual (English / Persian), built with
+[Astro](https://astro.build) and hosted on GitHub Pages.
 
 ## Run locally
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:4321/Design-Portfolio/
+npm run build    # static site in dist/
 ```
 
-## Deploy to GitHub Pages
+## Where things live
+| What | Where |
+| --- | --- |
+| Case studies (content) | `src/content/work/en/*.mdx`, `src/content/work/fa/*.mdx` |
+| Case study page layout | `src/layouts/CaseStudy.astro` |
+| Building blocks used inside case studies (`Section`, `Figure`, `TwoImages`, …) | `src/components/` |
+| Home page | `src/pages/index.astro` |
+| Shared page shell (head, fonts, scroll-reveal script) | `src/layouts/Base.astro` |
+| Image URLs | `src/data/images.js` |
+| UI strings per language, URL helpers | `src/lib/i18n.js` |
+| Styles | `src/styles/global.css` |
 
-**Option A — automatic (recommended)**
-1. Push this whole folder to your GitHub repo (any name).
-2. In the repo: **Settings → Pages → Source → GitHub Actions**.
-3. Push to `main` — the included workflow (`.github/workflows/deploy.yml`)
-   builds and deploys automatically. Your site will be live at
-   `https://<username>.github.io/<repo-name>/`.
+### URLs
+- English pages: `/<slug>/` (e.g. `/classeh-games/`)
+- Persian pages: `/fa/<slug>/` (e.g. `/fa/classeh-games/`)
 
-**Option B — manual**
-```bash
-npm run build
-```
-Then push the contents of the generated `dist/` folder to a `gh-pages` branch
-(or upload it wherever you're hosting), and point GitHub Pages at it.
+Old hash links from the previous version (`#/classeh-games`, `#/classeh-games/fa`)
+are redirected to the new URLs from the home page.
 
-## About the images
-Right now all images point to Framer's CDN (`framerusercontent.com`), so the
-site currently depends on that staying online. To make it fully independent:
+### Adding or editing a case study
+Each case study is one `.mdx` file per language. The frontmatter at the top holds
+the title, subtitle, meta line, hero image and order on the home page; the body is
+Markdown plus the components from `src/components/`. Using the same file name in
+`en/` and `fa/` links the two as translations (the language switch appears
+automatically).
 
-1. Download each image used in `src/data/images.js`.
-2. Put them in `src/assets/images/`.
-3. In `src/data/images.js`, replace the CDN URL for that image with a local
-   import, e.g.:
-   ```js
-   import gamesHero from '../assets/images/games-hero.png';
-   // then use gamesHero directly instead of img('...')
-   ```
-Because every image reference in the app reads from this one file, you never
-need to touch the page components to do this.
+## Deploy
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds the site and
+publishes it to GitHub Pages (Settings → Pages → Source → GitHub Actions).
 
 ## Custom domain
-If you connect a custom domain later, add a `CNAME` file to the `public/`
-folder containing your domain name, and update your DNS records per GitHub's
-docs. You can also switch `HashRouter` to `BrowserRouter` with a `basename`
-at that point if you want URLs without the `#`.
+When a domain is connected:
+1. In `astro.config.mjs`, set `site` to the domain (e.g. `https://example.com`) and remove `base`.
+2. Add `public/CNAME` containing the domain.
+3. Update DNS records per GitHub's
+   [custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
-## Notes
-- Persian pages (`/fa` routes) are rendered right-to-left automatically.
-- Animations are approximated with framer-motion (fade/slide on scroll) since
-  Framer's own animation engine isn't exportable — closest equivalent, not a
-  pixel-for-pixel match.
+## Images
+Images are still served from Framer's CDN (`framerusercontent.com`), so the site
+depends on it staying online. Every image reference goes through
+`src/data/images.js`, so moving them into the repo only touches that one file.

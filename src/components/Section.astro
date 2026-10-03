@@ -1,0 +1,9 @@
+---
+import Reveal from './Reveal.astro';
+const { eyebrow, heading } = Astro.props;
+---
+<Reveal as="section" class="section">
+  {eyebrow && <div class="section-eyebrow">{eyebrow}</div>}
+  {heading && <h2 class="section-heading">{heading}</h2>}
+  <slot />
+</Reveal>

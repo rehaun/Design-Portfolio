@@ -1,0 +1,11 @@
+---
+// Big centered phase divider (e.g. "DISCOVERY", "IDEATION") with a line on
+// each side, marking a major phase break in the case study.
+import Reveal from './Reveal.astro';
+const { text } = Astro.props;
+---
+<Reveal class="phase-divider">
+  <span class="phase-divider-line"></span>
+  <span class="phase-divider-text">{text}</span>
+  <span class="phase-divider-line"></span>
+</Reveal>

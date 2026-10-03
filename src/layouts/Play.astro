@@ -1,0 +1,28 @@
+---
+// Placeholder until the Play collection (Lottie, video, vibe-coded experiments) is built.
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import UnderConstruction from '../components/UnderConstruction.astro';
+import { ui, url, localePath } from '../lib/i18n';
+
+const { lang } = Astro.props;
+const copy = {
+  en: {
+    title: 'Under construction, for now!',
+    text: 'Experiments, animations and side projects are on their way.',
+    cta: 'See my work meanwhile',
+  },
+  fa: {
+    title: 'فعلاً در دست ساخت!',
+    text: 'آزمایش‌ها، انیمیشن‌ها و پروژه‌های جانبی به‌زودی این‌جا می‌آیند.',
+    cta: 'تا آن موقع، کارهایم را ببینید',
+  },
+}[lang];
+const otherLang = lang === 'fa' ? 'en' : 'fa';
+---
+<Base title={`${ui[lang].play} — ${ui[lang].brand}`} description={copy.text} lang={lang}>
+  <Nav lang={lang} altHref={localePath(otherLang, '/play/')} />
+  <UnderConstruction title={copy.title} text={copy.text}>
+    <a href={url('/')} class="hero-cta">{copy.cta}</a>
+  </UnderConstruction>
+</Base>
