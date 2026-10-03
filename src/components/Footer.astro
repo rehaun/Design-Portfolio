@@ -1,0 +1,14 @@
+---
+import { ui } from '../lib/i18n';
+const { lang = 'en' } = Astro.props;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <p class="site-footer-thanks">{ui[lang].footerThanks}</p>
+    <div class="site-footer-meta">
+      <p>© {year} {ui[lang].name}</p>
+      <p>{ui[lang].footerIteration}</p>
+    </div>
+  </div>
+</footer>

@@ -46,35 +46,75 @@ a { color: inherit; text-decoration: none; }
   padding: 0 24px;
 }
 
-/* ---------- Top nav ---------- */
+/* ---------- Top nav (from the Figma prototype) ---------- */
 .nav {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255,255,255,0.85);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 0.5px solid var(--fg);
 }
 .nav-inner {
-  max-width: var(--maxw);
+  max-width: 1144px;
   margin: 0 auto;
   padding: 14px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
-.nav-brand { font-weight: 700; letter-spacing: -0.02em; }
-.nav-links { display: flex; align-items: center; gap: 16px; }
-.nav-link { font-size: 14px; font-weight: 500; }
-.nav-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+.nav-brand { display: block; flex: 0 0 auto; }
+.nav-avatar {
+  width: 48px;
+  height: auto;
+  border-radius: 0;
+  transform: scaleX(-1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-brand:hover .nav-avatar { transform: scaleX(-1) rotate(-8deg); }
+.nav-links { display: flex; align-items: center; gap: 4px; }
+.nav-link {
+  position: relative;
+  padding: 6px 14px;
+  font-size: 14px;
+  color: var(--fg);
+}
+/* underline grows from the center on hover / marks the current page */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after,
+.nav-link[aria-current='page']::after { transform: scaleX(1); }
 .nav-lang {
+  margin-inline-start: 8px;
+  min-width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 13px;
-  border: 1px solid var(--line);
-  padding: 6px 12px;
+  border: 0.5px solid var(--fg);
   border-radius: 999px;
-  transition: background 0.15s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
-.nav-lang:hover { background: #f4f4f4; }
+.nav-lang:hover { background: var(--fg); color: var(--bg); }
+.nav-lang[lang='fa'] { font-family: var(--font-fa); }
+.nav-lang[lang='en'] { font-family: var(--font-en); }
+@media (max-width: 480px) {
+  .nav-inner { padding: 10px 16px; }
+  .nav-avatar { width: 40px; }
+  .nav-link { padding: 6px 8px; }
+  .nav-link::after { left: 8px; right: 8px; }
+}
 
 /* ---------- Warning ribbons (behind hero, diagonal, crossing) ---------- */
 .hero-wrap {
@@ -385,4 +425,69 @@ blockquote {
   padding: 60px 24px 90px;
   color: var(--muted);
   font-size: 13px;
+}
+
+/* ---------- Site footer (from the Figma prototype) ---------- */
+.site-footer { border-top: 0.5px solid var(--fg); margin-top: 40px; }
+.site-footer-inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 28px 24px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.site-footer-thanks { margin: 0; font-size: 20px; font-weight: 500; }
+.site-footer-meta p { margin: 0; font-size: 13px; color: #757575; }
+
+/* ---------- About (from the Figma prototype) ---------- */
+.about { padding-top: 120px; padding-bottom: 120px; }
+.about-hero { text-align: center; }
+.about-emoji {
+  display: inline-block;
+  font-size: 80px;
+  line-height: 1;
+  animation: sway 4s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+@keyframes sway {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-emoji, .wave { animation: none; }
+}
+.about-hero h1 {
+  font-size: clamp(24px, 3.4vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 32px 0 20px;
+  color: #191919;
+}
+.about-hero p { font-size: clamp(16px, 2vw, 20px); letter-spacing: 0.04em; margin: 0; color: #191919; }
+[dir='rtl'] .about-hero h1, [dir='rtl'] .about-hero p { letter-spacing: 0; }
+.contact-list {
+  display: flex;
+  justify-content: center;
+  gap: 24px 96px;
+  flex-wrap: wrap;
+  margin-top: 96px;
+}
+.contact-label { margin: 0 0 12px; font-size: 18px; font-weight: 600; color: #191919; opacity: 0.5; }
+.contact-link {
+  font-size: clamp(18px, 2.2vw, 24px);
+  color: #4d4d4d;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease, text-underline-offset 0.2s ease;
+  font-family: var(--font-en);
+}
+.contact-link:hover { color: var(--fg); text-underline-offset: 6px; }
+@media (max-width: 640px) {
+  .contact-list { flex-direction: column; align-items: center; margin-top: 64px; }
+  .contact { text-align: center; }
+  .about { padding-top: 72px; padding-bottom: 72px; }
 }

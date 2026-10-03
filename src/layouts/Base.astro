@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
 
 const {
   title = 'Davarpanah — Portfolio',
@@ -22,6 +23,7 @@ const {
   </head>
   <body>
     <slot />
+    <Footer lang={lang} />
     <script>
       // Scroll-reveal: adds .is-visible to each .reveal the first time it enters view.
       const io = new IntersectionObserver(

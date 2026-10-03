@@ -3,17 +3,23 @@ export const LANGS = ['en', 'fa'];
 export const ui = {
   en: {
     brand: 'Davarpanah',
+    name: 'Reyhane Davarpanah',
+    works: 'Works',
     about: 'About',
     play: 'Play',
+    footerThanks: 'Thanks for stopping by :)',
+    footerIteration: 'Iteration no.5',
     backHome: '← Back to home',
-    switchLang: 'Read in Persian: FA',
   },
   fa: {
     brand: 'داورپناه',
+    name: 'ریحانه داورپناه',
+    works: 'کارها',
     about: 'درباره من',
     play: 'Play',
+    footerThanks: 'ممنون که سر زدی :)',
+    footerIteration: 'نسخه‌ی ۵',
     backHome: '→ بازگشت به صفحه اصلی',
-    switchLang: 'Read in English EN',
   },
 };
 

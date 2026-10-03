@@ -24,7 +24,7 @@ const work = (await getCollection('work', (e) => parseId(e.id).lang === 'en')).s
     })();
   </script>
 
-  <Nav lang="en" />
+  <Nav lang="en" current="works" />
 
   <UnderConstruction title="Under construction, for now!" text="Explore what's already up:" />
 
@@ -46,5 +46,4 @@ const work = (await getCollection('work', (e) => parseId(e.id).lang === 'en')).s
     ))}
   </div>
 
-  <div class="footer">Made by Davarpanah</div>
 </Base>
