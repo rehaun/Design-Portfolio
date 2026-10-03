@@ -19,16 +19,13 @@ import { images as img } from '../../../data/images';
 
 It's 11pm. A grad student is staring at a bug that won't die. The honest choice is three days of documentation, or one prompt into a chat window, and an answer in minutes.
 
-<Figure src={img.uxChat} />
+<Figure src={img.uxChat} bare />
 
 They pick the chat window. This time, it works.
 
 Next time, the same **confidenttone** hands them a completely **wrong answer**, and they don't catch it until it's too late.
 
-<Layout height={243} items={[
-  { img: img.pic_ux_research_0, x: 0, y: 0, w: 944, h: 243 },
-  { img: img.uxConfident, x: 124, y: 0, w: 724, h: 243 },
-]} />
+<Figure src={img.pic_ux_research_0} bare />
 
 That gap — between **getting help** and **getting fooled** — is exactly where this research lives. Not whether grad students use AI. They all do. But **what's actually happening** in that invisible space in between.
 
@@ -38,7 +35,7 @@ This started as a class project on how AI is reshaping different fields — each
 
 It turned out to be a good draw. This group is close to a best-case scenario for AI adoption — technically fluent, research-heavy workloads, constant daily exposure to AI for both academic and applied work. If anyone had a clear, lived sense of where AI genuinely helps and where it quietly fails them, it would be this group.
 
-<Figure src={img.uxContext} />
+<Figure src={img.uxContext} bare />
 
 </Section>
 
@@ -52,19 +49,18 @@ It's worth mentioning the framework for choosing a research method that my UX Re
 
 I started with a set of research questions I needed to answer, then worked backward from there: what data would actually answer them, what method would get me that data, and finally, what I could actually ask a person to get at their experience instead of a yes or no. Every question went through several rounds of review with my instructor before I asked it to a single student.
 
-<Layout height={247} items={[
-  { img: img.uxQuestionsA_EN, x: 132, y: 0, w: 215, h: 241 },
-  { html: "→", x: 395, y: 113, w: 17, h: 19, size: 16, weight: 400, align: "left" },
-  { img: img.uxQuestionsB_EN, x: 459, y: 0, w: 353, h: 247 },
-]} />
-
-<p class="layout-caption" style="font-size: 13px; font-weight: 400; max-width: 943px; margin-inline: auto; text-align: center" set:html={"Turn <strong>research</strong> questions into <strong>interview</strong> question list"} />
+<Compare
+  h={260}
+  before={{ label: "Research", imgs: [{ src: img.uxQuestionsA_EN, alt: "Research questions" }] }}
+  after={{ label: "Interview", imgs: [{ src: img.uxQuestionsB_EN, alt: "Interview question list" }] }}
+  caption="Turn <strong>research</strong> questions into <strong>interview</strong> question list"
+/>
 
 Once the questions held up, I ran the interviews with six students I already knew, which came with its own challenge: staying neutral with people you're close to takes more discipline, not less.
 
 I went through the transcripts twice. Once with an Affinity Diagram, letting patterns surface from the raw data on their own. Once going back through, question by question, to make sure every original research question actually had an answer in what people told me. By the sixth interview, the patterns had stopped changing. That was the clearest sign it was time to stop and start synthesizing.
 
-<Figure src={img.uxAffinity} />
+<Figure src={img.uxAffinity} wide scrollWidth={1800} />
 
 affinity diagram - you can open this photo in a new tab to fully see the details
 
@@ -151,7 +147,7 @@ Take all six findings together, and the opportunity splits into three buckets: m
 - **An "explain it back" check.** Before moving to the next question, ask the student to summarize the answer in their own words, a quick way to catch whether they actually understood it or just copied it.
 - **Progress tracking over time.** Show which concepts a student still leans on AI for, versus which ones they've genuinely picked up.
 
-<Figure src={img.uxOpportunities} />
+<Figure src={img.uxOpportunities} bare />
 
 The through line stays the same here too. None of this is about AI doing more of the thinking. It's about AI getting out of the way faster, so the thinking stays where it belongs.
 
@@ -173,9 +169,9 @@ The through line stays the same here too. None of this is about AI doing more of
 
 A few months after this research wrapped, one worry actually got an answer. OpenAI released **Study Mode**, a version of ChatGPT that asks guiding questions instead of handing over the answer. Not long after, Google released **NotebookLM**, built around the same idea: understanding the material, not just getting through it faster.
 
-<Layout height={330} items={[
-  { img: img.uxStudyMode, x: 0, y: 0, w: 330, h: 330 },
-  { img: img.uxNotebookLM, x: 359, y: 0, w: 585, h: 330 },
+<Gallery h={300} items={[
+  { src: img.uxStudyMode, alt: "ChatGPT study mode" },
+  { src: img.uxNotebookLM, alt: "NotebookLM" },
 ]} />
 
 Neither was built because of this study, but they're aimed at exactly what participants were worried about: that leaning on AI for quick answers was quietly costing them their own understanding.

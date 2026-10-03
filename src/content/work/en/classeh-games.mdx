@@ -23,17 +23,11 @@ By the time I joined, Classeh's educational game was **already live**, sold to s
 
 The brief was simple to say and open to everything: **make it better**. No one had a diagnosis yet, that part was on me to find.
 
-<Layout height={324} items={[
-  { img: img.gamesFlowBefore, x: 2, y: 0, w: 171, h: 297 },
-  { img: img.gamesFlowDivider, x: 175, y: 117, w: 770, h: 120 },
-  { html: "BEFORE", x: 441, y: 305, w: 66, h: 19, size: 16, weight: 700, align: "left" },
-]} />
-
-<Layout height={223} items={[
-  { img: img.gamesBefore, x: -8, y: 3, w: 272, h: 193 },
-  { img: img.gamesAfter, x: 183, y: 0, w: 770, h: 151 },
-  { html: "AFTER", x: 446, y: 204, w: 55, h: 19, size: 16, weight: 700, align: "left" },
-]} />
+<Compare
+  kind="wide"
+  before={{ label: "Before", imgs: [{ src: img.gamesFlowBefore, art: true }, { src: img.gamesFlowDivider, alt: "Old flow: home, select course, select subject, the subject’s games, select a game, then play" }] }}
+  after={{ label: "After", imgs: [{ src: img.gamesBefore, art: true }, { src: img.gamesAfter, alt: "New flow: one continuous path from home straight to the game" }] }}
+/>
 
 </Section>
 
@@ -45,13 +39,11 @@ That's not a game flow. That's a table of contents.
 
 The navigation had been built around how a curriculum is structured — not around how a kid decides what to play next. And every one of those three decisions was a place a kid could give up before reaching anything fun.
 
-<Layout height={390} items={[
-  { img: img.gamesFlow1, x: 162, y: 0, w: 180, h: 390 },
-  { img: img.gamesFlow2, x: 382, y: 0, w: 180, h: 390 },
-  { img: img.gamesFlow3, x: 602, y: 0, w: 180, h: 390 },
+<Gallery h={390} caption="The previous flow: subject, then chapter, then a list of games. And only then, a game." items={[
+  { src: img.gamesFlow1, alt: "Choosing a subject" },
+  { src: img.gamesFlow2, alt: "Choosing a chapter" },
+  { src: img.gamesFlow3, alt: "The list of games" },
 ]} />
-
-<p class="layout-caption" style="font-size: 16px; font-weight: 400; max-width: 664px; margin-inline: auto; text-align: center" set:html={"The previous flow: subject, then chapter, then a list of games. and only then, a game."} />
 
 </Section>
 
@@ -65,10 +57,10 @@ I ran a lightweight **heuristic evaluation** against the existing flow, then **h
 
 **Clarity's session recordings** backed up what I was seeing live: kids lingering on the same screen far longer than a two-second menu should take, scrolling lessons back and forth as if they were re-checking something rather than choosing it. That's not what confident navigation looks like.
 
-<Layout height={291} items={[
-  { img: img.gamesDiscovery1, x: 344, y: 0, w: 271, h: 291 },
-  { img: img.gamesDiscovery2, x: 104, y: 21, w: 272, h: 248 },
-  { img: img.gamesDiscovery3, x: 574, y: 13, w: 265, h: 265 },
+<Gallery h={220} class="gallery--blend" items={[
+  { src: img.gamesDiscovery2 },
+  { src: img.gamesDiscovery1 },
+  { src: img.gamesDiscovery3 },
 ]} />
 
 Two things kept surfacing:
@@ -135,17 +127,11 @@ I **restructured** the **flow** into a single, **continuous path**. Instead of s
 
 To make the difference visible, I marked the actual game — the point of play — with a **star** (⭐) in both diagrams. In the old flow, that star sits at the end of a **long, branching path.** In the new one, it's just **a step away**.
 
-<Layout height={206} items={[
-  { html: "BEFORE", x: 441, y: 0, w: 66, h: 19, size: 16, weight: 700, align: "left" },
-  { img: img.gamesFlowDivider, x: 87, y: 43, w: 770, h: 120 },
-  { html: "The star marks the game itself — reached only after a three-step branching path.", x: 154, y: 187, w: 674, h: 19, size: 16, weight: 400, align: "left" },
-]} />
-
-<Layout height={237} items={[
-  { html: "AFTER", x: 446, y: 0, w: 55, h: 19, size: 16, weight: 700, align: "left" },
-  { img: img.gamesAfter, x: 87, y: 43, w: 770, h: 151 },
-  { html: "Same star, same game — now just one step away.", x: 279, y: 218, w: 410, h: 19, size: 16, weight: 400, align: "left" },
-]} />
+<Compare
+  kind="wide"
+  before={{ label: "Before", imgs: [{ src: img.gamesFlowDivider, alt: "Old flow: home, select course, select subject, the subject’s games, select a game, then play" }], caption: "The star marks the game itself — reached only after a three-step branching path." }}
+  after={{ label: "After", imgs: [{ src: img.gamesAfter, alt: "New flow: one continuous path from home straight to the game" }], caption: "Same star, same game — now just one step away." }}
+/>
 
 Key improvements over the previous flow:
 
@@ -159,7 +145,7 @@ Key improvements over the previous flow:
 
 Early hand-drawn sketches of the screens the new flow would require, before any high-fidelity design.
 
-<Figure src={img.gamesSketch} width={712} />
+<Figure src={img.gamesSketch} width={712} blend />
 
 </Section>
 
@@ -193,21 +179,17 @@ Once the **new roadmap** structure was in place, the work went beyond the mascot
 
 Before, users could **only** see games from **one subject** and had to work **through all four categories** to play. Now, everything from their current learning period is **visible in one view** — **reusing** the same screen structures that **already existed**, just **reordered** to fit the **new flow**.
 
-<Layout height={532} items={[
-  { img: img.gamesFinalBefore1, x: 90, y: 0, w: 203, h: 441 },
-  { html: "<strong>Before</strong>: Users had to go through all four categories to play.", x: 87, y: 465, w: 223, h: 67, size: 14, weight: 400, align: "left" },
-  { html: "→", x: 337, y: 242, w: 42, h: 48, size: 40, weight: 300, align: "left" },
-  { img: img.gamesFinalAfter1, x: 417, y: 0, w: 441, h: 441 },
-  { html: "<strong>After</strong>: Now, they only need to be in one category(which is levels now) at a time.", x: 428, y: 465, w: 443, h: 45, size: 14, weight: 400, align: "left" },
-]} />
+<Compare
+  h={380}
+  before={{ label: "Before", imgs: [{ src: img.gamesFinalBefore1, alt: "Old games screen" }], caption: "Users had to go through all four categories to play." }}
+  after={{ label: "After", imgs: [{ src: img.gamesFinalAfter1, alt: "New games screen" }], caption: "Now, they only need to be in one category (which is levels now) at a time." }}
+/>
 
-<Layout height={511} items={[
-  { img: img.gamesFinalBefore2, x: 90, y: 0, w: 203, h: 441 },
-  { html: "<strong>Before</strong>: Users could only see games from one subject.", x: 87, y: 466, w: 223, h: 45, size: 14, weight: 400, align: "left" },
-  { html: "→", x: 337, y: 231, w: 42, h: 48, size: 40, weight: 300, align: "left" },
-  { img: img.gamesFinalAfter2, x: 417, y: 0, w: 441, h: 441 },
-  { html: "<strong>After</strong>: Now they can view all games from a specific learning period.", x: 428, y: 465, w: 443, h: 45, size: 14, weight: 400, align: "left" },
-]} />
+<Compare
+  h={380}
+  before={{ label: "Before", imgs: [{ src: img.gamesFinalBefore2, alt: "Old games screen" }], caption: "Users could only see games from one subject." }}
+  after={{ label: "After", imgs: [{ src: img.gamesFinalAfter2, alt: "New games screen" }], caption: "Now they can view all games from a specific learning period." }}
+/>
 
 </Section>
 

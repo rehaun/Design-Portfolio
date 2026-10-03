@@ -1,10 +1,24 @@
 ---
+// A single image on a card. The image is sized to one of a few width tiers
+// (360 / 560 / 720 / full column) so the page keeps a steady rhythm.
+// wide: a diagram that should keep its size and scroll sideways on phones.
+// bare: the image already has its own background, so skip the card padding.
 import Img from './Img.astro';
 import Reveal from './Reveal.astro';
-const { src, alt = '', label, caption, width } = Astro.props;
+import { swipeHint } from './media.js';
+
+const { src, alt = '', label, caption, width, wide = false, bare = false, blend = false, scrollWidth, hint = swipeHint(Astro.currentLocale) } = Astro.props;
+const TIERS = [240, 360, 560, 720];
+const tier = width ? (TIERS.find((t) => width <= t) ?? 'full') : 'full';
 ---
-<Reveal class="figure" style={width ? `max-width: ${width}px; margin-left: auto; margin-right: auto` : undefined}>
+<Reveal as="figure" class:list={['figure', `figure--${tier}`, bare && 'figure--bare', blend && 'figure--blend']}>
   {label && <span class="figure-label">{label}</span>}
-  <Img src={src} alt={alt} loading="lazy" />
-  {caption && <div class="figure-caption" set:html={caption} />}
+  <div class="figure-surface media-surface">
+    {wide ? (
+      <div class="media-scroll" data-hint={hint} style={scrollWidth ? `--scroll-w: ${scrollWidth}px` : undefined}><Img class="cmp-diagram" src={src} alt={alt} /></div>
+    ) : (
+      <Img src={src} alt={alt} />
+    )}
+  </div>
+  {caption && <figcaption class="figure-caption media-caption" set:html={caption} />}
 </Reveal>

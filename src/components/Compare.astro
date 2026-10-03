@@ -1,0 +1,40 @@
+---
+// Before → after pair on one card. kind="screens" puts the two sides next to
+// each other (equal image heights); kind="wide" stacks them for wide diagrams,
+// which become swipeable on phones.
+// before/after: { label?, caption?, imgs: [{ src, alt?, caption?, art? }] }
+import Img from './Img.astro';
+import Reveal from './Reveal.astro';
+import { widthFor, swipeHint } from './media.js';
+
+const { before, after, kind = 'screens', h = 380, caption, hint = swipeHint(Astro.currentLocale) } = Astro.props;
+const sides = [before, after];
+---
+<Reveal class:list={['cmp', `cmp--${kind}`]} style={`--h: ${h}px`}>
+  {sides.map((side, i) => (
+    <Fragment>
+      {i === 1 && <span class="cmp-arrow" aria-hidden="true">→</span>}
+      <figure class="cmp-side">
+        {side.label && <span class:list={['cmp-chip', i === 1 && 'cmp-chip--after']}>{side.label}</span>}
+        <div class="cmp-surface media-surface">
+          {side.imgs.map((im) =>
+            im.art ? (
+              <Img class="cmp-art" src={im.src} alt={im.alt ?? ''} width={widthFor(im.src, 180)} />
+            ) : kind === 'wide' ? (
+              <div class="media-scroll" data-hint={hint}>
+                <Img class="cmp-diagram" src={im.src} alt={im.alt ?? ''} />
+              </div>
+            ) : (
+              <span class="media-item">
+                <Img src={im.src} alt={im.alt ?? ''} width={widthFor(im.src, h)} />
+                {im.caption && <span class="media-item-caption" set:html={im.caption} />}
+              </span>
+            ),
+          )}
+        </div>
+        {side.caption && <figcaption class="media-caption" set:html={side.caption} />}
+      </figure>
+    </Fragment>
+  ))}
+  {caption && <p class="media-caption cmp-caption" set:html={caption} />}
+</Reveal>

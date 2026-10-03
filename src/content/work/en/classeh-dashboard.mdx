@@ -25,18 +25,11 @@ Three completely different reasons to log in. One identical dashboard greeted al
 
 That grid is where this story starts.
 
-<Layout height={345} items={[
-  { html: "BEFORE", x: 49, y: 0, w: 66, h: 19, size: 16, weight: 700, align: "left" },
-  { img: img.dashBefore, x: 2, y: 44, w: 156, h: 279 },
-  { html: "All Roles", x: 53, y: 323, w: 58, h: 22, size: 14, weight: 400, align: "left" },
-  { html: "AFTER", x: 574, y: 0, w: 55, h: 19, size: 16, weight: 700, align: "left" },
-  { img: img.dashAfterStudent, x: 258, y: 44, w: 228, h: 280 },
-  { html: "Student View", x: 326, y: 323, w: 98, h: 22, size: 14, weight: 400, align: "left" },
-  { img: img.dashAfterTeacher, x: 486, y: 44, w: 228, h: 280 },
-  { html: "Teacher View", x: 553, y: 323, w: 101, h: 22, size: 14, weight: 400, align: "left" },
-  { img: img.dashAfterParent, x: 714, y: 44, w: 228, h: 280 },
-  { html: "Parent View", x: 787, y: 323, w: 87, h: 22, size: 14, weight: 400, align: "left" },
-]} />
+<Compare
+  h={250}
+  before={{ label: "Before", imgs: [{ src: img.dashBefore, alt: "Old dashboard", caption: "All roles" }] }}
+  after={{ label: "After", imgs: [{ src: img.dashAfterStudent, alt: "Student dashboard", caption: "Student view" }, { src: img.dashAfterTeacher, alt: "Teacher dashboard", caption: "Teacher view" }, { src: img.dashAfterParent, alt: "Parent dashboard", caption: "Parent view" }] }}
+/>
 
 </Section>
 
@@ -68,10 +61,9 @@ Assumptions aren't research, though. I needed something to check them against.
 
 Then I found a better proxy than any dataset: the **head of the support team**. She hears user frustration every single day, secondhand from the people I couldn't reach directly. I sat down with her, walked through my assumptions one by one, and let her tell me where I was right, and where I wasn't.
 
-<Layout height={377} items={[
-  { img: img.dashSupportNotes1, x: 179, y: 0, w: 476, h: 210 },
-  { img: img.dashSupportNotes2, x: 545, y: 105, w: 220, h: 203 },
-  { html: "Raw notes from a call with the support team lead, comparing my assumptions against real user complaints", x: 142, y: 332, w: 700, h: 45, size: 14, weight: 400, align: "center" },
+<Gallery h={220} caption="Raw notes from a call with the support team lead, comparing my assumptions against real user complaints" items={[
+  { src: img.dashSupportNotes1, alt: "Call notes" },
+  { src: img.dashSupportNotes2, alt: "Call notes" },
 ]} />
 
 Two very different sources, a behavioral dataset and a human on the front lines, and they pointed at the exact same thing. That's when I knew I had solid ground to design on.
@@ -88,41 +80,30 @@ Working module by module with the support lead, I sorted tiles by what people we
 
 That gave me a rough map for three sketches, one per role, same skeleton, different priorities:
 
-<Layout height={371} items={[
-  { img: img.dashWireStudent, x: 16, y: 0, w: 130, h: 333 },
-  { html: "1", x: 114, y: 64, w: 11, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "2", x: 113, y: 138, w: 11, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "3", x: 117, y: 212, w: 11, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "Student view sketch", x: 17, y: 357, w: 136, h: 14, size: 12, weight: 400, align: "center" },
-  { img: img.dashWireTeacher, x: 156, y: 0, w: 131, h: 333 },
-  { html: "5", x: 259, y: 155, w: 11, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "4", x: 259, y: 89, w: 11, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "Teacher view sketch", x: 157, y: 357, w: 138, h: 14, size: 12, weight: 400, align: "center" },
-  { img: img.dashWireParent, x: 297, y: 0, w: 130, h: 333 },
-  { html: "6", x: 400, y: 93, w: 11, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "Parent view sketch", x: 303, y: 357, w: 126, h: 14, size: 12, weight: 400, align: "center" },
-  { html: "1", x: 502, y: 5, w: 15, h: 18, size: 15, weight: 400, align: "center" },
-  { html: "<strong>Tasks & Events</strong> that are close to their deadlines", x: 536, y: 2, w: 401, h: 22, size: 14, weight: 400, align: "left" },
-  { html: "2", x: 502, y: 73, w: 15, h: 18, size: 15, weight: 400, align: "center" },
-  { html: "<strong>Educational game</strong> which is the most important feature of our product", x: 536, y: 70, w: 357, h: 45, size: 14, weight: 400, align: "left" },
-  { html: "3", x: 502, y: 141, w: 15, h: 18, size: 15, weight: 400, align: "center" },
-  { html: "<strong>Calendar</strong> to manage schedules", x: 536, y: 138, w: 401, h: 22, size: 14, weight: 400, align: "left" },
-  { html: "4", x: 502, y: 209, w: 15, h: 18, size: 15, weight: 400, align: "center" },
-  { html: "<strong>Items requiring attention</strong> which must be corrected", x: 536, y: 206, w: 389, h: 45, size: 14, weight: 400, align: "left" },
-  { html: "5", x: 502, y: 277, w: 15, h: 18, size: 15, weight: 400, align: "center" },
-  { html: "<strong>Toolbox</strong> is shortcuts for the actions user wants to take", x: 536, y: 274, w: 410, h: 45, size: 14, weight: 400, align: "left" },
-  { html: "6", x: 502, y: 345, w: 15, h: 18, size: 15, weight: 400, align: "center" },
-  { html: "<strong>Bulletin</strong> to keep parents informed", x: 536, y: 342, w: 401, h: 22, size: 14, weight: 400, align: "left" },
+<div class="split">
+
+<Gallery h={300} caption="Student, teacher, and parent wireframes — same layout structure, different priority modules for each role." class="gallery--blend" items={[
+  { src: img.dashWireStudent, alt: "Student view sketch", caption: "Student view sketch", marks: [{n: 1, x: 75, y: 21}, {n: 2, x: 75, y: 43}, {n: 3, x: 78, y: 66}] },
+  { src: img.dashWireTeacher, alt: "Teacher view sketch", caption: "Teacher view sketch", marks: [{n: 4, x: 79, y: 29}, {n: 5, x: 79, y: 49}] },
+  { src: img.dashWireParent, alt: "Parent view sketch", caption: "Parent view sketch", marks: [{n: 6, x: 79, y: 30}] },
 ]} />
 
-<p class="layout-caption" style="font-size: 14px; font-weight: 400; max-width: 660px; margin-inline: auto; text-align: center" set:html={"Student, teacher, and parent wireframes — same layout structure, different priority modules for each role."} />
+<ol class="numbered-list legend">
+  <li><span set:html={"<strong>Tasks & Events</strong> that are close to their deadlines"} /></li>
+  <li><span set:html={"<strong>Educational game</strong> which is the most important feature of our product"} /></li>
+  <li><span set:html={"<strong>Calendar</strong> to manage schedules"} /></li>
+  <li><span set:html={"<strong>Items requiring attention</strong> which must be corrected"} /></li>
+  <li><span set:html={"<strong>Toolbox</strong> is shortcuts for the actions user wants to take"} /></li>
+  <li><span set:html={"<strong>Bulletin</strong> to keep parents informed"} /></li>
+</ol>
+
+</div>
 
 These sketches weren't polished, they were a conversation starter, walked through with the Product Owner before a single pixel got refined.
 
-<Layout height={387} items={[
-  { img: img.dashGrouping1, x: 196, y: 0, w: 362, h: 337 },
-  { img: img.dashGrouping2, x: 617, y: 8, w: 131, h: 336 },
-  { html: "First-pass categorization, working through the tiles by user intent.", x: 142, y: 368, w: 700, h: 19, size: 16, weight: 400, align: "center" },
+<Gallery h={300} caption="First-pass categorization, working through the tiles by user intent." class="gallery--blend" items={[
+  { src: img.dashGrouping1, alt: "Tiles grouped by intent" },
+  { src: img.dashGrouping2, alt: "Grouped list" },
 ]} />
 
 </Section>
@@ -145,23 +126,18 @@ No explanation followed. And, in the moment, I didn't ask for one. But not every
 
 **First, the icons.** I reworked every tile icon with distinct colors and simple, memorable shapes, so a module could be recognized at a glance, no label required.
 
-<Layout height={559} items={[
-  { img: img.dashNewIcons, x: 152, y: 0, w: 650, h: 559 },
-  { html: "<strong>Reworked icons</strong> — playful, colorful shapes for the <strong>student</strong> side, a more restrained style for <strong>teachers and parents</strong> — all designed with distinct colors and simple, memorable shapes so users can recognize a module at a glance.", x: 142, y: 482, w: 700, h: 67, size: 14, weight: 400, align: "center" },
-]} />
+<Compare
+  h={420}
+  before={{ label: "Before", imgs: [{ src: img.dashOldIcons1EN, alt: "Old dashboard icons" }], caption: "<strong>The old icons</strong> — similar colors and busy shapes made it hard to tell modules apart without reading the label." }}
+  after={{ label: "After", imgs: [{ src: img.dashNewIcons, alt: "Reworked icons for students and for teachers and parents" }], caption: "<strong>Reworked icons</strong> — playful, colorful shapes for the <strong>student</strong> side, a more restrained style for <strong>teachers and parents</strong>, so users can recognize a module at a glance." }}
+/>
 
-<Layout height={753} items={[
-  { img: img.dashOldIcons1EN, x: 331, y: 0, w: 282, h: 712 },
-  { html: "<strong>The old icons</strong> — similar colors and busy shapes made it hard to tell modules apart without reading the label.", x: 142, y: 519, w: 700, h: 45, size: 14, weight: 400, align: "left" },
-  { html: "<strong>Then, the structure.</strong> I took the sidebar's categorization logic, the one part that had survived, and brought it straight into the dashboard, now renamed <strong>the Hub</strong>. Modules were grouped by purpose instead of scattered as identical tiles, with each role's top priority surfaced first.", x: 1, y: 676, w: 1000, h: 77, size: 16, weight: 400, align: "left" },
-]} />
+**Then, the structure.** I took the sidebar's categorization logic, the one part that had survived, and brought it straight into the dashboard, now renamed **the Hub**. Modules were grouped by purpose instead of scattered as identical tiles, with each role's top priority surfaced first.
 
-<Layout height={768} items={[
-  { img: img.dashHub1, x: 203, y: 0, w: 250, h: 768 },
-  { img: img.dashHub2, x: 491, y: 0, w: 250, h: 768 },
+<Gallery h={520} caption="The Hub — modules grouped by purpose instead of scattered as identical tiles, using the same categorization logic from the rejected sidebar." items={[
+  { src: img.dashHub1, alt: "The Hub, student" },
+  { src: img.dashHub2, alt: "The Hub, teacher" },
 ]} />
-
-<p class="layout-caption" style="font-size: 14px; font-weight: 400; max-width: 660px; margin-inline: auto; text-align: center" set:html={"The Hub — modules grouped by purpose instead of scattered as identical tiles, using the same categorization logic from the rejected sidebar."} />
 
 </Section>
 
@@ -169,17 +145,23 @@ No explanation followed. And, in the moment, I didn't ask for one. But not every
 
 Same structure. Same logic. Completely different first impression, depending on who's looking.
 
-<Layout height={1524} items={[
-  { img: img.pic_classeh_dashboard_3, x: 37, y: 0, w: 83, h: 124 },
-  { html: "As a <strong>teacher</strong>, I want to <strong>assign</strong> something to my students then <strong>check</strong> if they’re doing it right.", x: 147, y: 48, w: 305, h: 77, size: 16, weight: 400, align: "left" },
-  { img: img.dashFinalTeacher, x: 435, y: 0, w: 472, h: 508 },
-  { img: img.dashFinalStudent, x: 41, y: 508, w: 471, h: 508 },
-  { img: img.pic_classeh_dashboard_4, x: 512, y: 508, w: 76, h: 113 },
-  { html: "As a <strong>student</strong>, I want to <strong>do</strong> a task assigned to me, such as doing a <strong>homework</strong>.", x: 615, y: 545, w: 305, h: 77, size: 16, weight: 400, align: "left" },
-  { img: img.pic_classeh_dashboard_5, x: 37, y: 1016, w: 83, h: 121 },
-  { html: "As a <strong>parent</strong>, I like to <strong>find out</strong> about my child's <strong>academic status</strong> and talk to their teacher.", x: 147, y: 1061, w: 305, h: 77, size: 16, weight: 400, align: "left" },
-  { img: img.dashFinalParent, x: 435, y: 1016, w: 472, h: 508 },
-]} />
+<MediaText src={img.dashFinalTeacher} avatar={img.pic_classeh_dashboard_3} alt="Final teacher dashboard">
+
+As a **teacher**, I want to **assign** something to my students then **check** if they’re doing it right.
+
+</MediaText>
+
+<MediaText src={img.dashFinalStudent} avatar={img.pic_classeh_dashboard_4} alt="Final student dashboard" reverse>
+
+As a **student**, I want to **do** a task assigned to me, such as doing a **homework**.
+
+</MediaText>
+
+<MediaText src={img.dashFinalParent} avatar={img.pic_classeh_dashboard_5} alt="Final parent dashboard">
+
+As a **parent**, I like to **find out** about my child's **academic status** and talk to their teacher.
+
+</MediaText>
 
 </Section>
 
@@ -199,10 +181,10 @@ But the number I care about more is this: the same support channel that used to 
 
 Three roles, one platform, each one now opening on exactly what they came to do.
 
-<Layout height={325} items={[
-  { img: img.dashImpact2, x: 528, y: 0, w: 301, h: 301 },
-  { img: img.pic_classeh_dashboard_6, x: 375, y: 20, w: 173, h: 249 },
-  { img: img.dashImpact1, x: 139, y: 21, w: 222, h: 304 },
+<Gallery h={240} class="gallery--blend" items={[
+  { src: img.dashImpact1 },
+  { src: img.pic_classeh_dashboard_6 },
+  { src: img.dashImpact2 },
 ]} />
 
 </Section>
