@@ -1,0 +1,9 @@
+---
+import Reveal from './Reveal.astro';
+const { src, alt = '', label, caption, width } = Astro.props;
+---
+<Reveal class="figure" style={width ? `max-width: ${width}px; margin-left: auto; margin-right: auto` : undefined}>
+  {label && <span class="figure-label">{label}</span>}
+  <img src={src} alt={alt} loading="lazy" />
+  {caption && <div class="figure-caption">{caption}</div>}
+</Reveal>

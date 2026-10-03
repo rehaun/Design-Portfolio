@@ -1,0 +1,11 @@
+---
+import { ui, url } from '../lib/i18n';
+// `altHref`: the same page in the other language, if it exists.
+const { lang = 'en', altHref } = Astro.props;
+---
+<div class="nav">
+  <div class="nav-inner">
+    <a href={url('/')} class="nav-brand">{ui[lang].brand}</a>
+    {altHref && <a href={altHref} class="nav-lang">{ui[lang].switchLang}</a>}
+  </div>
+</div>

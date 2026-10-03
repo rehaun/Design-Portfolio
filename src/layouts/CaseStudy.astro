@@ -1,0 +1,54 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Reveal from '../components/Reveal.astro';
+import Figure from '../components/Figure.astro';
+import Collage from '../components/Collage.astro';
+import TwoImages from '../components/TwoImages.astro';
+import ThreeImages from '../components/ThreeImages.astro';
+import BeforeAfter from '../components/BeforeAfter.astro';
+import Section from '../components/Section.astro';
+import PhaseDivider from '../components/PhaseDivider.astro';
+import { images } from '../data/images';
+import { ui, url, localePath, parseId } from '../lib/i18n';
+
+const { entry } = Astro.props;
+const { lang, slug } = parseId(entry.id);
+const { title, subtitle, eyebrow, hero, meta } = entry.data;
+const { Content } = await render(entry);
+
+const otherLang = lang === 'fa' ? 'en' : 'fa';
+const hasTranslation = (await getCollection('work')).some((e) => e.id === `${otherLang}/${slug}`);
+const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
+
+const components = { Reveal, Figure, Collage, TwoImages, ThreeImages, BeforeAfter, Section, PhaseDivider };
+---
+<Base title={`${title} — ${ui[lang].brand}`} description={subtitle} lang={lang}>
+  <Nav lang={lang} altHref={altHref} />
+  <div class="container">
+    <div class="cs-header">
+      <Reveal>
+        <div class="cs-eyebrow">{eyebrow}</div>
+        <h1 class="cs-title">{title}</h1>
+        <p class="cs-subtitle">{subtitle}</p>
+        <div class="meta-box">
+          {meta.map((m, i) => (
+            <>
+              {i > 0 && <Fragment set:html="&nbsp;·&nbsp; " />}
+              <strong>{m.label}:</strong> {m.value}{' '}
+            </>
+          ))}
+        </div>
+      </Reveal>
+      <Figure src={images[hero]} />
+    </div>
+
+    <Content components={components} />
+
+    <hr class="divider" />
+    <div class="footer">
+      <a href={url('/')}>{ui[lang].backHome}</a>
+    </div>
+  </div>
+</Base>

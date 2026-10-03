@@ -21,8 +21,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-body[dir='rtl'] {
+[dir='rtl'] body {
   font-family: var(--font-fa);
+}
+
+/* ---------- Scroll reveal (see layouts/Base.astro) ---------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 img { max-width: 100%; display: block; border-radius: 8px; }

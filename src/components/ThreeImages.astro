@@ -1,0 +1,9 @@
+---
+import Reveal from './Reveal.astro';
+const { a, b, c, altA = '', altB = '', altC = '' } = Astro.props;
+---
+<Reveal class="three-col">
+  <img src={a} alt={altA} loading="lazy" />
+  <img src={b} alt={altB} loading="lazy" />
+  <img src={c} alt={altC} loading="lazy" />
+</Reveal>
