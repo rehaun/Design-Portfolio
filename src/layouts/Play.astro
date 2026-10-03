@@ -58,7 +58,7 @@ const portraits = [
   { src: portrait3, bg: '#ffffff', crop: 'left: -34.53%; top: -53.67%; width: 169.06%; height: 207.35%' },
 ];
 ---
-<Base title={`${ui[lang].play} — ${ui[lang].name}`} description={copy.motionText} lang={lang}>
+<Base title={`${ui[lang].play} — ${ui[lang].name}`} description={copy.motionText} lang={lang} altHref={localePath(otherLang, '/play/')}>
   <Nav lang={lang} current="play" altHref={localePath(otherLang, '/play/')} />
 
   <main class="play">

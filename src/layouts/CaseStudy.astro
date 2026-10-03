@@ -25,7 +25,7 @@ const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
 
 const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, BeforeAfter, Section, PhaseDivider };
 ---
-<Base title={`${title} — ${ui[lang].brand}`} description={subtitle} lang={lang}>
+<Base title={`${title} — ${ui[lang].name}`} description={subtitle} lang={lang} altHref={altHref} image={images[hero]}>
   <Nav lang={lang} current="works" altHref={altHref} />
   <div class="container">
     <div class="cs-header">

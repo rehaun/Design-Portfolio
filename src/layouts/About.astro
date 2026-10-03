@@ -27,7 +27,7 @@ const contacts = [
   { label: copy.linkedin, href: 'https://www.linkedin.com/in/reyhane-davarpanah/', text: '/in/reyhane-davarpanah', external: true },
 ];
 ---
-<Base title={`${ui[lang].about} — ${ui[lang].name}`} description={copy.text} lang={lang}>
+<Base title={`${ui[lang].about} — ${ui[lang].name}`} description={copy.text} lang={lang} altHref={localePath(otherLang, '/about/')}>
   <Nav lang={lang} current="about" altHref={localePath(otherLang, '/about/')} />
   <main class="about container">
     <Reveal class="about-hero">

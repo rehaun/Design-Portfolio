@@ -1,10 +1,18 @@
 ---
+// GitHub Pages serves this for any unknown URL, so it speaks both languages.
 import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
 import { url } from '../lib/i18n';
 ---
-<Base title="Not found — Davarpanah">
-  <div class="hero">
-    <h1>This page doesn't exist.</h1>
-    <p><a href={url('/')}>← Back to home</a></p>
-  </div>
+<Base title="Page not found — Reyhane Davarpanah">
+  <Nav lang="en" />
+  <main class="about container">
+    <div class="about-hero">
+      <span class="about-emoji" aria-hidden="true">🐝</span>
+      <h1>Oops, this page flew away!</h1>
+      <p>The link might be old or mistyped. Let’s get you back on track.</p>
+      <p lang="fa" dir="rtl" class="notfound-fa">اوه، این صفحه پرید و رفت! شاید لینک قدیمی یا اشتباه باشد.</p>
+      <a href={url('/')} class="hero-cta notfound-cta">← Back to home</a>
+    </div>
+  </main>
 </Base>

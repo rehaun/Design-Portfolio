@@ -20,7 +20,7 @@ const blocks = [
   { title: r.sections.courses, items: r.courses },
 ];
 ---
-<Base title={`${lang === 'fa' ? 'رزومه' : 'Resume'} — ${r.name}`} description={`${r.name}, ${r.role}`} lang={lang}>
+<Base title={`${lang === 'fa' ? 'رزومه' : 'Resume'} — ${r.name}`} description={`${r.name}, ${r.role}`} lang={lang} altHref={localePath(otherLang, '/resume/')}>
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&display=swap" rel="stylesheet" />
   <Nav lang={lang} current="resume" altHref={localePath(otherLang, '/resume/')} />
 

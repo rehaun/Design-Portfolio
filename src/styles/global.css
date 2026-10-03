@@ -731,3 +731,5 @@ blockquote {
   .resume-item li, .resume-skills p { font-size: 11px; line-height: 1.4; }
   @page { margin: 12mm; }
 }
+.notfound-fa { font-family: var(--font-fa); margin-top: 12px !important; color: #575757 !important; }
+.notfound-cta { margin-top: 40px; }
