@@ -68,6 +68,35 @@ const otherLang = lang === 'fa' ? 'en' : 'fa';
         { rootMargin: '0px 0px -60px 0px' },
       );
       document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // Nav slides away while scrolling down and comes back on scroll up,
+      // leaving more room to read (especially on phones).
+      // Also drives the reading-progress line on case studies.
+      const nav = document.querySelector<HTMLElement>('.nav');
+      const bar = document.querySelector<HTMLElement>('[data-progress]');
+      let lastY = scrollY;
+      let ticking = false;
+      const onScroll = () => {
+        const y = scrollY;
+        if (nav) {
+          if (y > 120 && y - lastY > 6) nav.classList.add('nav--hidden');
+          else if (lastY - y > 6 || y < 120) nav.classList.remove('nav--hidden');
+        }
+        if (bar) {
+          const max = document.documentElement.scrollHeight - innerHeight;
+          bar.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+        }
+        lastY = y;
+        ticking = false;
+      };
+      addEventListener('scroll', () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(onScroll);
+        }
+      }, { passive: true });
+      // keep the nav visible whenever something in it has keyboard focus
+      nav?.addEventListener('focusin', () => nav.classList.remove('nav--hidden'));
     </script>
   </body>
 </html>

@@ -4,7 +4,8 @@ import { ui, url, localePath } from '../lib/i18n';
 
 // `altHref`: the same page in the other language, if it exists.
 // `current`: which nav item to mark as the current page.
-const { lang = 'en', altHref, current } = Astro.props;
+// `progress`: show a reading-progress line along the bottom edge (case studies).
+const { lang = 'en', altHref, current, progress = false } = Astro.props;
 // There is no Persian home page yet, so "Works" always points at the English one.
 const links = [
   { key: 'works', href: url('/') },
@@ -25,4 +26,5 @@ const links = [
       {altHref && <a href={altHref} class="nav-lang" lang={lang === 'fa' ? 'en' : 'fa'}>{lang === 'fa' ? 'EN' : 'فا'}</a>}
     </nav>
   </div>
+  {progress && <span class="nav-progress" data-progress aria-hidden="true"></span>}
 </header>
