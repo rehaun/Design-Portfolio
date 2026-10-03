@@ -3,11 +3,13 @@ export const LANGS = ['en', 'fa'];
 export const ui = {
   en: {
     brand: 'Davarpanah',
+    about: 'About',
     backHome: '← Back to home',
     switchLang: 'Read in Persian: FA',
   },
   fa: {
     brand: 'داورپناه',
+    about: 'درباره من',
     backHome: '→ بازگشت به صفحه اصلی',
     switchLang: 'Read in English EN',
   },

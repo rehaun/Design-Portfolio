@@ -19,4 +19,13 @@ const work = defineCollection({
   }),
 });
 
-export const collections = { work };
+// About page text, one file per language: src/content/about/<lang>.mdx
+const about = defineCollection({
+  loader: glob({ pattern: '*.mdx', base: './src/content/about' }),
+  schema: z.object({
+    title: z.string(),
+    intro: z.string(),
+  }),
+});
+
+export const collections = { work, about };
