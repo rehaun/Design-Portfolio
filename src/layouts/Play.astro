@@ -1,28 +1,137 @@
 ---
-// Placeholder until the Play collection (Lottie, video, vibe-coded experiments) is built.
+// Play page, based on the "Play" frame of the Figma prototype.
+// Motion section shows the exported GIFs for now; swap in the Lottie files when available.
 import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
-import UnderConstruction from '../components/UnderConstruction.astro';
-import { ui, url, localePath } from '../lib/i18n';
+import Reveal from '../components/Reveal.astro';
+import Img from '../components/Img.astro';
+import zeeIdle from '../assets/play/zee-idle.gif';
+import zeeTalking from '../assets/play/zee-talking.gif';
+import hammer from '../assets/play/hammer.gif';
+import loginScreen from '../assets/play/login-screen.png';
+import frame from '../assets/play/frame.svg';
+import portrait1 from '../assets/play/portrait-1.png';
+import portrait2 from '../assets/play/portrait-2.png';
+import portrait3 from '../assets/play/portrait-3.png';
+import { ui, localePath } from '../lib/i18n';
 
 const { lang } = Astro.props;
+const otherLang = lang === 'fa' ? 'en' : 'fa';
+
 const copy = {
   en: {
-    title: 'Under construction, for now!',
-    text: 'Experiments, animations and side projects are on their way.',
-    cta: 'See my work meanwhile',
+    motionTitle: 'Motion Designs in Action',
+    motionText:
+      'I created these animations myself since we didn’t have a motion designer on the team. The final animations were delivered to developers as JSON (Lottie) for smooth implementation.',
+    loginTitle: 'Interactive Login Page Design',
+    loginText: 'I designed this interactive login page and collaborated with the frontend developer to bring it to life.',
+    loginAlt: 'Login page with Beezie the bee mascot above the username and password fields',
+    artTitle: 'Minimalist Portrait Illustrations',
+    artText: 'These portraits were created for fun, but eventually, they found a place in people’s homes and sold.',
+    artOpen: 'View portrait',
+    close: 'Close',
   },
   fa: {
-    title: 'فعلاً در دست ساخت!',
-    text: 'آزمایش‌ها، انیمیشن‌ها و پروژه‌های جانبی به‌زودی این‌جا می‌آیند.',
-    cta: 'تا آن موقع، کارهایم را ببینید',
+    motionTitle: 'موشن دیزاین در عمل',
+    motionText:
+      'چون تیم موشن‌دیزاینر نداشت، این انیمیشن‌ها را خودم ساختم. نسخه‌ی نهایی به‌صورت JSON (Lottie) به برنامه‌نویس‌ها تحویل داده شد تا روان و سبک پیاده‌سازی شوند.',
+    loginTitle: 'طراحی صفحه‌ی لاگین تعاملی',
+    loginText: 'این صفحه‌ی لاگین تعاملی را طراحی کردم و همراه برنامه‌نویس فرانت‌اند آن را زنده کردیم.',
+    loginAlt: 'صفحه‌ی لاگین با Beezie، زنبور کلاسه، بالای فیلدهای نام کاربری و رمز عبور',
+    artTitle: 'پرتره‌های مینیمال',
+    artText: 'این پرتره‌ها را برای دل خودم کشیدم، ولی کم‌کم راهشان به خانه‌ی آدم‌ها باز شد و فروش رفتند.',
+    artOpen: 'دیدن پرتره',
+    close: 'بستن',
   },
 }[lang];
-const otherLang = lang === 'fa' ? 'en' : 'fa';
+
+const sprites = [
+  { src: zeeIdle, width: 49 },
+  { src: zeeTalking, width: 48 },
+  { src: hammer, width: 38 },
+];
+
+// Crop of each portrait inside its frame, taken from the Figma layers.
+const portraits = [
+  { src: portrait1, bg: '#ffffff', crop: 'left: -0.17%; top: 4.5%; width: 100.33%; height: 92.36%' },
+  { src: portrait2, bg: '#f4f1ee', crop: 'left: -1.74%; top: 4.15%; width: 103.83%; height: 91.69%' },
+  { src: portrait3, bg: '#ffffff', crop: 'left: -34.53%; top: -53.67%; width: 169.06%; height: 207.35%' },
+];
 ---
-<Base title={`${ui[lang].play} — ${ui[lang].brand}`} description={copy.text} lang={lang}>
+<Base title={`${ui[lang].play} — ${ui[lang].name}`} description={copy.motionText} lang={lang}>
   <Nav lang={lang} current="play" altHref={localePath(otherLang, '/play/')} />
-  <UnderConstruction title={copy.title} text={copy.text}>
-    <a href={url('/')} class="hero-cta">{copy.cta}</a>
-  </UnderConstruction>
+
+  <main class="play">
+    <section class="play-section">
+      <Reveal class="play-head">
+        <h2>{copy.motionTitle}</h2>
+        <p>{copy.motionText}</p>
+      </Reveal>
+      <Reveal class="sprites" delay={0.1}>
+        {sprites.map((s, i) => (
+          <span class="sprite" style={`--i: ${i}`}>
+            {/* plain <img>: animated GIFs must not go through the image optimizer */}
+            <img src={s.src.src} width={s.width * 1.6} alt="" loading="lazy" />
+          </span>
+        ))}
+      </Reveal>
+    </section>
+
+    <section class="play-section">
+      <Reveal class="play-head">
+        <h2>{copy.loginTitle}</h2>
+        <p>{copy.loginText}</p>
+      </Reveal>
+      <Reveal class="laptop" delay={0.1}>
+        <div class="laptop-lid">
+          <span class="laptop-camera" aria-hidden="true"></span>
+          <div class="laptop-screen">
+            <Img src={loginScreen} alt={copy.loginAlt} />
+          </div>
+        </div>
+        <div class="laptop-base" aria-hidden="true"><span></span></div>
+      </Reveal>
+    </section>
+
+    <section class="play-section">
+      <Reveal class="play-head">
+        <h2>{copy.artTitle}</h2>
+        <p>{copy.artText}</p>
+      </Reveal>
+      <Reveal class="portraits" delay={0.1}>
+        {portraits.map((p, i) => (
+          <button type="button" class="portrait" data-portrait={i} aria-label={`${copy.artOpen} ${i + 1}`}>
+            <span class="portrait-canvas" style={`background: ${p.bg}`}>
+              <Img src={p.src} alt="" style={p.crop} />
+            </span>
+            <img src={frame.src} width={frame.width} height={frame.height} alt="" class="portrait-frame" />
+          </button>
+        ))}
+      </Reveal>
+    </section>
+  </main>
+
+  <dialog class="lightbox" aria-label={copy.artTitle}>
+    <button type="button" class="lightbox-close" aria-label={copy.close}>×</button>
+    {portraits.map((p, i) => (
+      <Img src={p.src} alt="" class="lightbox-img" data-lightbox={i} hidden width={1200} />
+    ))}
+  </dialog>
+
+  <script>
+    // Portrait lightbox: click a framed portrait to see it large.
+    const dialog = document.querySelector<HTMLDialogElement>('.lightbox');
+    if (dialog) {
+      const imgs = [...dialog.querySelectorAll<HTMLImageElement>('[data-lightbox]')];
+      document.querySelectorAll<HTMLButtonElement>('[data-portrait]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          imgs.forEach((img) => (img.hidden = img.dataset.lightbox !== btn.dataset.portrait));
+          dialog.showModal();
+        });
+      });
+      dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
+      // click on the backdrop closes it too
+      dialog.addEventListener('click', (e) => e.target === dialog && dialog.close());
+    }
+  </script>
 </Base>
