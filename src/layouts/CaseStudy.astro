@@ -4,6 +4,7 @@ import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
 import Reveal from '../components/Reveal.astro';
 import Figure from '../components/Figure.astro';
+import Img from '../components/Img.astro';
 import Collage from '../components/Collage.astro';
 import TwoImages from '../components/TwoImages.astro';
 import ThreeImages from '../components/ThreeImages.astro';
@@ -22,7 +23,7 @@ const otherLang = lang === 'fa' ? 'en' : 'fa';
 const hasTranslation = (await getCollection('work')).some((e) => e.id === `${otherLang}/${slug}`);
 const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
 
-const components = { Reveal, Figure, Collage, TwoImages, ThreeImages, BeforeAfter, Section, PhaseDivider };
+const components = { Img, Reveal, Figure, Collage, TwoImages, ThreeImages, BeforeAfter, Section, PhaseDivider };
 ---
 <Base title={`${title} — ${ui[lang].brand}`} description={subtitle} lang={lang}>
   <Nav lang={lang} altHref={altHref} />

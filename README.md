@@ -18,7 +18,7 @@ npm run build    # static site in dist/
 | Building blocks used inside case studies (`Section`, `Figure`, `TwoImages`, …) | `src/components/` |
 | Home page | `src/pages/index.astro` |
 | Shared page shell (head, fonts, scroll-reveal script) | `src/layouts/Base.astro` |
-| Image URLs | `src/data/images.js` |
+| Images (files / lookup by name) | `src/assets/images/`, `src/data/images.js` |
 | UI strings per language, URL helpers | `src/lib/i18n.js` |
 | Styles | `src/styles/global.css` |
 
@@ -48,6 +48,7 @@ When a domain is connected:
    [custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
 ## Images
-Images are still served from Framer's CDN (`framerusercontent.com`), so the site
-depends on it staying online. Every image reference goes through
-`src/data/images.js`, so moving them into the repo only touches that one file.
+All images live in `src/assets/images/` and are looked up by file name through
+`src/data/images.js` (`gamesHero.png` → `images.gamesHero`). Astro converts them
+to WebP and resizes large ones at build time. To add an image, drop the file into
+that folder and reference it by name.

@@ -1,14 +1,15 @@
 ---
+import Img from './Img.astro';
 import Reveal from './Reveal.astro';
 const { before, after, beforeCaption, afterCaption, beforeAlt = '', afterAlt = '', ratio = '1fr 1fr' } = Astro.props;
 ---
 <Reveal class="arrow-flow" style={`grid-template-columns: ${ratio}`}>
   <div>
-    <img src={before} alt={beforeAlt} loading="lazy" />
+    <Img src={before} alt={beforeAlt} loading="lazy" />
     {beforeCaption && <div class="figure-caption">{beforeCaption}</div>}
   </div>
   <div>
-    <img src={after} alt={afterAlt} loading="lazy" />
+    <Img src={after} alt={afterAlt} loading="lazy" />
     {afterCaption && <div class="figure-caption">{afterCaption}</div>}
   </div>
 </Reveal>

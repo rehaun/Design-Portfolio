@@ -1,4 +1,5 @@
 ---
+import Img from './Img.astro';
 // A freeform collage of overlapping/adjacent images, positioned by exact
 // percentages measured from the original Framer site.
 // `aspect` = container width/height ratio (e.g. 941/297).
@@ -9,7 +10,7 @@ const { aspect, items } = Astro.props;
 <Reveal class="figure">
   <div class="collage" style={`aspect-ratio: ${aspect}`}>
     {items.map((it) => (
-      <img
+      <Img
         src={it.src}
         alt={it.alt || ''}
         loading="lazy"
