@@ -80,12 +80,12 @@ a { color: inherit; text-decoration: none; }
   border-radius: 0;
   transition: opacity 0.18s ease;
 }
+/* the happy face fades in over the normal one, which stays put underneath;
+   fading both at once let the page show through mid-way (a pale flash) */
 .avatar-happy { opacity: 0; }
 .nav-brand.is-happy .avatar-happy { opacity: 1; }
-.nav-brand.is-happy .avatar-face:not(.avatar-happy) { opacity: 0; }
 @media (hover: hover) {
   .nav-brand:hover .avatar-happy, .nav-brand:focus-visible .avatar-happy { opacity: 1; }
-  .nav-brand:hover .avatar-face:not(.avatar-happy), .nav-brand:focus-visible .avatar-face:not(.avatar-happy) { opacity: 0; }
 }
 .nav-links { display: flex; align-items: center; gap: 4px; }
 .nav-link {
