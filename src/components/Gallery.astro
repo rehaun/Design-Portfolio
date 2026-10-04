@@ -5,7 +5,7 @@
 // pins placed in % of the image (used to tie sketches to a legend).
 import Img from './Img.astro';
 import Reveal from './Reveal.astro';
-import { widthFor } from './media.js';
+import { widthFor, sizesFor } from './media.js';
 
 const { items, h = 380, caption, class: className } = Astro.props;
 ---
@@ -14,7 +14,7 @@ const { items, h = 380, caption, class: className } = Astro.props;
     {items.map((im) => (
       <span class="media-item">
         <span class="media-frame">
-          <Img src={im.src} alt={im.alt ?? ''} width={widthFor(im.src, h)} />
+          <Img src={im.src} alt={im.alt ?? ''} width={widthFor(im.src, h)} sizes={sizesFor(im.src, h)} />
           {im.marks?.map((m) => (
             <span class="media-mark" style={`left: ${m.x}%; top: ${m.y}%`}>{m.n}</span>
           ))}

@@ -96,7 +96,9 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
         .forEach((img) => {
           img.classList.add('zoomable');
           img.addEventListener('click', () => {
-            big.src = img.currentSrc || img.src;
+            // the largest version from srcset, so the zoomed image stays sharp
+            const largest = img.srcset ? img.srcset.split(',').pop()!.trim().split(' ')[0] : '';
+            big.src = largest || img.currentSrc || img.src;
             big.alt = img.alt;
             dialog.showModal();
           });

@@ -1,7 +1,7 @@
 :root {
   --bg: #fefcf6;
   --fg: #141414;
-  --muted: #8f8f8f;
+  --muted: #6e6e6e;
   --line: #e6e6e6;
   --accent: #ffcc00;
   --maxw: 860px;
@@ -317,7 +317,7 @@ a { color: inherit; text-decoration: none; }
   flex: 0 0 auto;
   font-size: 32px;
   font-weight: 300;
-  color: #aaa;
+  color: #8a8a8a;
 }
 .section-eyebrow {
   font-size: 11px;
@@ -445,7 +445,7 @@ blockquote {
   flex-wrap: wrap;
 }
 .site-footer-thanks { margin: 0; font-size: 20px; font-weight: 500; }
-.site-footer-meta p { margin: 0; font-size: 13px; color: #757575; }
+.site-footer-meta p { margin: 0; font-size: 13px; color: var(--muted); }
 
 /* ---------- About (from the Figma prototype) ---------- */
 .about { padding-top: 120px; padding-bottom: 120px; }
@@ -480,7 +480,7 @@ blockquote {
   flex-wrap: wrap;
   margin-top: 96px;
 }
-.contact-label { margin: 0 0 12px; font-size: 18px; font-weight: 600; color: #191919; opacity: 0.5; }
+.contact-label { margin: 0 0 12px; font-size: 18px; font-weight: 600; color: var(--muted); }
 .contact-link {
   font-size: clamp(18px, 2.2vw, 24px);
   color: #4d4d4d;
@@ -700,8 +700,7 @@ blockquote {
   gap: 4px 16px;
   margin: 0;
   font-size: 16px;
-  color: #5d5d5d;
-  opacity: 0.8;
+  color: #666;
 }
 .resume-meta span:first-child { font-weight: 600; }
 .resume-item ul { margin: 16px 0 0; padding-inline-start: 24px; }
@@ -1008,7 +1007,7 @@ html { -webkit-tap-highlight-color: transparent; }
     position: sticky;
     left: 0;
     font-size: 12px;
-    color: #8f8f8f;
+    color: var(--muted);
     text-align: center;
     margin-top: 10px;
     width: min(100%, calc(100vw - 104px));
@@ -1028,7 +1027,7 @@ html { -webkit-tap-highlight-color: transparent; }
 .cs-title { font-size: 32px; color: #2b2b2b; }
 [dir='rtl'] .cs-title { font-size: 38px; }
 .cs-subtitle { font-size: 24px; }
-.cs .section-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: #8f8f8f; }
+.cs .section-eyebrow { font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
 .cs .section-heading { font-size: 28px; font-weight: 700; color: #141414; margin-bottom: 16px; }
 .cs .section h3 { font-size: 16px; font-weight: 700; margin: 28px 0 8px; }
 .cs .section p, .cs .section li { font-size: 16px; }
@@ -1063,7 +1062,7 @@ html { -webkit-tap-highlight-color: transparent; }
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #b3b3b3;
+  color: var(--muted);
 }
 .toc-list .toc-phase:first-child a { margin-top: 0; }
 .toc-list .toc-phase a.is-active { color: var(--fg); border-color: transparent; }
@@ -1179,7 +1178,7 @@ html { -webkit-tap-highlight-color: transparent; }
   transition: scale 0.6s var(--ease-out);
 }
 .next-card-body { display: flex; flex-direction: column; gap: 10px; padding: 32px; justify-content: center; }
-.next-card-label { font-size: 13px; font-weight: 500; color: var(--muted); }
+.next-card-label { font-size: 13px; font-weight: 500; color: #5f5f5f; }
 .next-card-title { font-size: 24px; font-weight: 700; line-height: 1.3; }
 .next-card-text { font-size: 15px; color: #454545; line-height: 1.5; }
 .next-card-arrow {
