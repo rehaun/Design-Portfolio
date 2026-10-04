@@ -1,12 +1,17 @@
 ---
 // Renders an image from src/data/images.js through Astro's optimizer
 // (WebP, width/height set). Raster images are capped at 2x the content
-// column so large originals don't ship at full size.
+// column so large originals don't ship at full size, and come with smaller
+// versions (srcset) so phones download only what they can show.
 import { Image } from 'astro:assets';
 
-const { src, alt = '', width, loading = 'lazy', ...rest } = Astro.props;
+const { src, alt = '', width, loading = 'lazy', sizes = '(max-width: 700px) 100vw, 944px', ...rest } = Astro.props;
 if (!src) throw new Error('Img: missing src (unknown key in src/data/images.js?)');
 const MAX_WIDTH = 1720;
-const w = width ?? (src.format === 'svg' ? undefined : Math.min(src.width, MAX_WIDTH));
+const svg = src.format === 'svg';
+const w = width ?? (svg ? undefined : Math.min(src.width, MAX_WIDTH));
+const widths = svg || !w ? undefined : [...[480, 800, 1200].filter((x) => x < w * 0.9), w];
 ---
-<Image src={src} alt={alt} width={w} loading={loading} {...rest} />
+{widths && widths.length > 1
+  ? <Image src={src} alt={alt} width={w} widths={widths} sizes={sizes} loading={loading} {...rest} />
+  : <Image src={src} alt={alt} width={w} loading={loading} {...rest} />}

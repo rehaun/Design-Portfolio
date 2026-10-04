@@ -41,3 +41,11 @@ export function parseId(id) {
   const [lang, ...rest] = id.split('/');
   return { lang, slug: rest.join('/') };
 }
+
+// Anchor id for a case-study section, from its heading (works for Persian too).
+export function sectionId(text) {
+  return text
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, '-')
+    .replace(/^-+|-+$/g, '');
+}

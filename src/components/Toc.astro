@@ -1,0 +1,81 @@
+---
+// "Jump to section" for long case studies. Wide screens get a rail beside the
+// text column that tracks where you are; smaller screens get a floating button
+// that opens the same list as a bottom sheet.
+// items: [{ phase: true, label, id } | { label, id }]
+const { items, lang } = Astro.props;
+const t = lang === 'fa'
+  ? { title: 'بخش‌ها', open: 'فهرست بخش‌ها', close: 'بستن' }
+  : { title: 'Sections', open: 'Jump to a section', close: 'Close' };
+
+const list = (cls) => (
+  `<ol class="${cls}">` +
+  items.map((it) => it.phase
+    ? `<li class="toc-phase"><a href="#${it.id}" data-toc-link="${it.id}">${it.label}</a></li>`
+    : `<li><a href="#${it.id}" data-toc-link="${it.id}">${it.label}</a></li>`).join('') +
+  '</ol>'
+);
+---
+<nav class="toc-rail" aria-label={t.title} data-toc-rail>
+  <Fragment set:html={list('toc-list')} />
+</nav>
+
+<button type="button" class="toc-fab" aria-label={t.open} data-toc-open>
+  <span class="toc-fab-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+  {t.title}
+</button>
+<dialog class="toc-sheet" aria-label={t.title} data-toc-sheet>
+  <div class="toc-sheet-head">
+    <strong>{t.title}</strong>
+    <button type="button" class="toc-sheet-close" aria-label={t.close} data-toc-close>×</button>
+  </div>
+  <Fragment set:html={list('toc-list')} />
+</dialog>
+
+<script>
+  const rail = document.querySelector<HTMLElement>('[data-toc-rail]');
+  const fab = document.querySelector<HTMLButtonElement>('[data-toc-open]');
+  const sheet = document.querySelector<HTMLDialogElement>('[data-toc-sheet]');
+  const header = document.querySelector('.cs-header');
+  const footer = document.querySelector('.cs-next');
+  if (rail && fab && sheet && header) {
+    // show the rail/button once the reader is past the title and hero,
+    // and tuck them away again at the end of the page
+    let pastHeader = false, atEnd = false;
+    const sync = () => document.documentElement.classList.toggle('toc-on', pastHeader && !atEnd);
+    new IntersectionObserver(([e]) => { pastHeader = !e.isIntersecting && e.boundingClientRect.top < 0; sync(); }).observe(header);
+    if (footer) new IntersectionObserver(([e]) => { atEnd = e.isIntersecting; sync(); }).observe(footer);
+
+    // highlight the section being read
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')];
+    const targets = [...new Set(links.map((a) => a.dataset.tocLink))]
+      .map((id) => document.getElementById(id!))
+      .filter(Boolean) as HTMLElement[];
+    const setActive = (id: string) => {
+      links.forEach((a) => a.classList.toggle('is-active', a.dataset.tocLink === id));
+      rail.querySelector('.is-active')?.scrollIntoView({ block: 'nearest' });
+    };
+    const onScroll = () => {
+      const line = innerHeight * 0.3;
+      let current = targets[0];
+      for (const el of targets) if (el.getBoundingClientRect().top <= line) current = el;
+      if (current) setActive(current.id);
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    fab.addEventListener('click', () => sheet.showModal());
+    sheet.querySelector('[data-toc-close]')?.addEventListener('click', () => sheet.close());
+    sheet.addEventListener('click', (e) => {
+      if (e.target === sheet) return sheet.close();
+      const a = (e.target as HTMLElement).closest('a');
+      if (!a) return;
+      // close first, then scroll: closing a dialog moves focus and would cancel the jump
+      e.preventDefault();
+      sheet.close();
+      const target = document.getElementById(a.dataset.tocLink!);
+      requestAnimationFrame(() => target?.scrollIntoView());
+      history.replaceState(null, '', `#${a.dataset.tocLink}`);
+    });
+  }
+</script>

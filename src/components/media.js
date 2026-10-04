@@ -5,3 +5,6 @@ export const widthFor = (src, h) =>
 
 export const swipeHint = (locale) =>
   locale === 'fa' ? 'برای دیدن همه، بکشید' : 'Swipe to see it all';
+
+// Displayed width of an image shown at height h, for the `sizes` attribute.
+export const sizesFor = (src, h) => `${Math.round((h * src.width) / src.height)}px`;
