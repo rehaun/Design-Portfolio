@@ -10,8 +10,9 @@ import PhaseDivider from '../components/PhaseDivider.astro';
 import Compare from '../components/Compare.astro';
 import Gallery from '../components/Gallery.astro';
 import MediaText from '../components/MediaText.astro';
+import Toc from '../components/Toc.astro';
 import { images } from '../data/images';
-import { ui, localePath, parseId } from '../lib/i18n';
+import { ui, localePath, parseId, sectionId } from '../lib/i18n';
 
 const { entry } = Astro.props;
 const { lang, slug } = parseId(entry.id);
@@ -21,6 +22,22 @@ const { Content } = await render(entry);
 const otherLang = lang === 'fa' ? 'en' : 'fa';
 const hasTranslation = (await getCollection('work')).some((e) => e.id === `${otherLang}/${slug}`);
 const altHref = hasTranslation ? localePath(otherLang, `/${slug}/`) : undefined;
+
+// Section list for the table of contents, read from the MDX source in order.
+const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// "EVALUATION & RESEARCH" -> "Evaluation & Research"; acronyms such as HMW stay as they are
+const nice = (t) => (lang === 'fa' ? t : t.toLowerCase().replace(/\p{L}+/gu, (w) => (/[aeiouy]/.test(w) ? w[0].toUpperCase() + w.slice(1) : w.toUpperCase())));
+const toc = [];
+for (const m of entry.body.matchAll(/<(PhaseDivider|Section)\b([^>]*)>/g)) {
+  const attrs = Object.fromEntries([...m[2].matchAll(/(\w+)=("(?:[^"\\]|\\.)*")/g)].map(([, k, v]) => [k, JSON.parse(v)]));
+  if (m[1] === 'PhaseDivider') toc.push({ phase: true, label: esc(nice(attrs.text)), id: `phase-${sectionId(attrs.text)}` });
+  else if (attrs.heading) toc.push({ label: esc(nice(attrs.eyebrow || attrs.heading)), id: sectionId(attrs.heading) });
+}
+
+// The next case study in the same language (wraps around to the first).
+const all = (await getCollection('work')).filter((e) => parseId(e.id).lang === lang).sort((a, b) => a.data.order - b.data.order);
+const next = all.length > 1 ? all[(all.findIndex((e) => e.id === entry.id) + 1) % all.length] : undefined;
+const nextSlug = next && parseId(next.id).slug;
 
 const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Gallery, MediaText };
 ---
@@ -46,11 +63,23 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
 
     <Content components={components} />
 
-    <hr class="divider" />
-    <div class="footer">
+    <div class="cs-next">
+      {next && (
+        <a href={localePath(lang, `/${nextSlug}/`)} class="next-card">
+          <span class="next-card-media"><Img src={images[next.data.hero]} alt="" width={720} /></span>
+          <span class="next-card-body">
+            <span class="next-card-label">{lang === 'fa' ? 'کیس‌استادی بعدی' : 'Next case study'}</span>
+            <span class="next-card-title">{next.data.title}</span>
+            {next.data.cardTitle && <span class="next-card-text">{next.data.cardTitle}</span>}
+            <span class="next-card-arrow" aria-hidden="true">→</span>
+          </span>
+        </a>
+      )}
       <a href={localePath(lang, '/')} class="back-link">{ui[lang].backHome}</a>
     </div>
   </div>
+
+  {toc.length > 2 && <Toc items={toc} lang={lang} />}
 
   <dialog class="lightbox" aria-label={title}>
     <button type="button" class="lightbox-close" aria-label={lang === 'fa' ? 'بستن' : 'Close'}>×</button>

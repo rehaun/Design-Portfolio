@@ -1,8 +1,10 @@
 ---
 import Reveal from './Reveal.astro';
+import { sectionId } from '../lib/i18n';
 const { eyebrow, heading } = Astro.props;
+const id = heading ? sectionId(heading) : undefined;
 ---
-<Reveal as="section" class="section">
+<Reveal as="section" class="section" id={id}>
   {eyebrow && <div class="section-eyebrow">{eyebrow}</div>}
   {heading && <h2 class="section-heading">{heading}</h2>}
   <slot />
