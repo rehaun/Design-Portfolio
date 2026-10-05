@@ -880,12 +880,15 @@ html { -webkit-tap-highlight-color: transparent; }
 .cs .figure { margin: 32px 0; }
 .figure-surface { display: flex; justify-content: center; }
 .figure-surface > img { width: 100%; height: auto; }
+.figure--180 .figure-surface > img { max-width: 180px; }
 .figure--240 .figure-surface > img { max-width: 240px; }
 .figure--360 .figure-surface > img { max-width: 360px; }
 .figure--560 .figure-surface > img { max-width: 560px; }
 .figure--720 .figure-surface > img { max-width: 720px; }
 .figure--bare .figure-surface { padding: 0; background: none; }
 .figure--bare .figure-surface > img { border-radius: 20px; }
+.figure--decor .figure-surface > img { border-radius: 0; pointer-events: none; }
+.figure--decor { margin-block: 40px; }
 
 /* gallery: a row of images at one height */
 .gallery { margin: 32px 0; }
@@ -1012,7 +1015,8 @@ html { -webkit-tap-highlight-color: transparent; }
   .cmp-surface .media-item:only-child img { width: 100%; height: auto; max-height: min(var(--h), 360px); object-fit: contain; }
   .gallery-surface { justify-content: safe center; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; }
   .gallery--decor .gallery-surface { overflow: visible; scroll-snap-type: none; gap: 14px; }
-  .gallery--decor .media-item img { height: 22vw; }
+  .gallery--decor .media-item img { height: 17vw; }
+  .figure--decor .figure-surface > img { max-width: 70%; }
   .gallery-surface .media-item { scroll-snap-align: center; }
   .cmp { grid-template-columns: 1fr; grid-template-rows: none; gap: 6px; }
   .cmp-side, .cmp-arrow, .cmp-caption { grid-row: auto; grid-column: auto; }
@@ -1063,7 +1067,7 @@ html { -webkit-tap-highlight-color: transparent; }
 }
 
 /* ---------- Case study: jump-to-section ---------- */
-.cs .section, .cs .phase-divider { scroll-margin-top: 84px; }
+.cs .section, .cs .phase-divider { scroll-margin-top: 140px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
 .toc-list { list-style: none; margin: 0; padding: 0; }
@@ -1228,3 +1232,42 @@ html { -webkit-tap-highlight-color: transparent; }
   .next-card-body { padding: 22px; }
   .next-card-title { font-size: 20px; }
 }
+
+/* ---------- Case study: the current phase stays in view ---------- */
+.phase-bar {
+  position: fixed;
+  inset-inline: 0;
+  top: var(--nav-h, 80px);
+  z-index: 19; /* just under the nav, so it slides out from beneath it */
+  height: 40px;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 0.5px solid var(--line);
+  opacity: 0;
+  translate: 0 -100%;
+  pointer-events: none;
+  transition: opacity 0.3s ease, translate 0.4s var(--ease-out), top 0.35s var(--ease-out);
+}
+.phase-bar.is-on { opacity: 1; translate: 0 0; }
+/* when the nav slides away the bar moves up to the top edge */
+body:has(.nav--hidden) .phase-bar { top: 0; }
+.phase-bar-inner {
+  max-width: calc(944px + 48px);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.phase-bar-line { flex: 1; height: 1px; background: var(--line); }
+.phase-bar-text {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+[dir='rtl'] .phase-bar-text { font-size: 15px; letter-spacing: 0; }
+@media (prefers-reduced-motion: reduce) { .phase-bar { transition: opacity 0.2s ease; translate: 0 0; } }
+@media print { .phase-bar { display: none; } }

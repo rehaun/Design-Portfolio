@@ -11,6 +11,7 @@ import Compare from '../components/Compare.astro';
 import Gallery from '../components/Gallery.astro';
 import MediaText from '../components/MediaText.astro';
 import Toc from '../components/Toc.astro';
+import PhaseBar from '../components/PhaseBar.astro';
 import { images } from '../data/images';
 import { ui, localePath, parseId, sectionId } from '../lib/i18n';
 
@@ -80,6 +81,7 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
   </div>
 
   {toc.length > 2 && <Toc items={toc} lang={lang} />}
+  {toc.some((t) => t.phase) && <PhaseBar />}
 
   <dialog class="lightbox" aria-label={title}>
     <button type="button" class="lightbox-close" aria-label={lang === 'fa' ? 'بستن' : 'Close'}>×</button>

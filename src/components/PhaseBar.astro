@@ -1,0 +1,56 @@
+---
+// Keeps the current phase (Discovery, Ideation, …) in view while reading.
+// A slim bar under the nav shows the phase whose divider the reader has
+// scrolled past; it slides up when the nav hides, swaps its text when the next
+// phase starts, and disappears again at the end of the case study.
+---
+<div class="phase-bar" aria-hidden="true" data-phase-bar>
+  <div class="phase-bar-inner">
+    <span class="phase-bar-line"></span>
+    <span class="phase-bar-text" data-phase-text></span>
+    <span class="phase-bar-line"></span>
+  </div>
+</div>
+
+<script>
+  const bar = document.querySelector<HTMLElement>('[data-phase-bar]');
+  const label = bar?.querySelector<HTMLElement>('[data-phase-text]');
+  const nav = document.querySelector<HTMLElement>('.nav');
+  const dividers = [...document.querySelectorAll<HTMLElement>('.phase-divider')];
+  const end = document.querySelector('.cs-next');
+  if (bar && label && dividers.length) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const setNavHeight = () => document.documentElement.style.setProperty('--nav-h', `${nav?.offsetHeight ?? 80}px`);
+    setNavHeight();
+    addEventListener('resize', setNavHeight);
+
+    let current = -1;
+    let on = false;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      // the phase of the last divider whose middle has scrolled under the top edge
+      let idx = -1;
+      dividers.forEach((d, i) => {
+        const r = d.getBoundingClientRect();
+        if (r.top + r.height / 2 <= 60) idx = i;
+      });
+      const atEnd = end ? end.getBoundingClientRect().top < 140 : false;
+      const show = idx >= 0 && !atEnd;
+      if (show !== on) { on = show; bar.classList.toggle('is-on', on); }
+      if (idx >= 0 && idx !== current) {
+        const text = dividers[idx].querySelector('.phase-divider-text')?.textContent ?? '';
+        label.textContent = text;
+        if (!reduce && current >= 0) {
+          label.animate(
+            [{ opacity: 0, transform: `translateY(${idx > current ? 12 : -12}px)` }, { opacity: 1, transform: 'none' }],
+            { duration: 380, easing: 'cubic-bezier(0.2, 0.7, 0.2, 1)' },
+          );
+        }
+        current = idx;
+      }
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+</script>
