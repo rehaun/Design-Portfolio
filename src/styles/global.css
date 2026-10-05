@@ -1282,7 +1282,7 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 :root {
   --cursor: #e68a4e; /* a warm, not-too-loud orange */
   --cursor-yellow: #f6c445; /* Beezie's yellow: links and the discs over images */
-  --cursor-ink: #8c3d12; /* warm terracotta for the icons on the yellow */
+  --cursor-ink: rgb(254 252 246 / 0.5); /* the icons on the yellow: cream at 50%, just a whisper */
 }
 .cursor {
   position: fixed;
