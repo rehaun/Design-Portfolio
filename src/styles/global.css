@@ -886,6 +886,8 @@ html { -webkit-tap-highlight-color: transparent; }
 .figure--720 .figure-surface > img { max-width: 720px; }
 .figure--bare .figure-surface { padding: 0; background: none; }
 .figure--bare .figure-surface > img { border-radius: 20px; }
+.figure--decor .figure-surface > img { border-radius: 0; pointer-events: none; }
+.figure--decor { margin-block: 40px; }
 
 /* gallery: a row of images at one height */
 .gallery { margin: 32px 0; }
@@ -1012,7 +1014,8 @@ html { -webkit-tap-highlight-color: transparent; }
   .cmp-surface .media-item:only-child img { width: 100%; height: auto; max-height: min(var(--h), 360px); object-fit: contain; }
   .gallery-surface { justify-content: safe center; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; }
   .gallery--decor .gallery-surface { overflow: visible; scroll-snap-type: none; gap: 14px; }
-  .gallery--decor .media-item img { height: 22vw; }
+  .gallery--decor .media-item img { height: 17vw; }
+  .figure--decor .figure-surface > img { max-width: 70%; }
   .gallery-surface .media-item { scroll-snap-align: center; }
   .cmp { grid-template-columns: 1fr; grid-template-rows: none; gap: 6px; }
   .cmp-side, .cmp-arrow, .cmp-caption { grid-row: auto; grid-column: auto; }
