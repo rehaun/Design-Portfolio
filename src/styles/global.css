@@ -1279,7 +1279,10 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 @media print { .phase-bar { display: none; } }
 
 /* ---------- Custom cursor (see components/Cursor.astro) ---------- */
-:root { --cursor: #e68a4e; /* a warm, not-too-loud orange */ }
+:root {
+  --cursor: #e68a4e; /* a warm, not-too-loud orange */
+  --cursor-yellow: #f6c445; /* Beezie's yellow, for the discs over images */
+}
 .cursor {
   position: fixed;
   inset: 0;
@@ -1321,7 +1324,7 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .cursor[data-state='link'] .cursor-ring { width: 44px; height: 44px; background: rgb(230 138 78 / 0.2); box-shadow: none; }
 /* images and the next-case card: a disc with a word in it */
 .cursor[data-state='media'] .cursor-ring,
-.cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor); box-shadow: 0 0 0 1.5px rgb(254 252 246 / 0.75); }
+.cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor-yellow); box-shadow: 0 0 0 1.5px rgb(254 252 246 / 0.75); }
 .cursor[data-state='media'] .cursor-label,
 .cursor[data-state='next'] .cursor-label { opacity: 1; }
 .cursor[data-state='media'] .cursor-dot,
