@@ -9,7 +9,7 @@ import Reveal from './Reveal.astro';
 import { swipeHint } from './media.js';
 
 const { src, alt = '', label, caption, width, wide = false, bare = false, blend = false, decor = false, scrollWidth, hint = swipeHint(Astro.currentLocale) } = Astro.props;
-const TIERS = [240, 360, 560, 720];
+const TIERS = [180, 240, 360, 560, 720];
 const tier = width ? (TIERS.find((t) => width <= t) ?? 'full') : 'full';
 ---
 <Reveal as="figure" class:list={['figure', `figure--${tier}`, bare && 'figure--bare', blend && 'figure--blend', decor && 'figure--decor']}>

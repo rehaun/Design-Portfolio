@@ -880,6 +880,7 @@ html { -webkit-tap-highlight-color: transparent; }
 .cs .figure { margin: 32px 0; }
 .figure-surface { display: flex; justify-content: center; }
 .figure-surface > img { width: 100%; height: auto; }
+.figure--180 .figure-surface > img { max-width: 180px; }
 .figure--240 .figure-surface > img { max-width: 240px; }
 .figure--360 .figure-surface > img { max-width: 360px; }
 .figure--560 .figure-surface > img { max-width: 560px; }
