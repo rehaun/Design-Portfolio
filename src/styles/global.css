@@ -1281,7 +1281,8 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 /* ---------- Custom cursor (see components/Cursor.astro) ---------- */
 :root {
   --cursor: #e68a4e; /* a warm, not-too-loud orange */
-  --cursor-yellow: #f6c445; /* Beezie's yellow, for the discs over images */
+  --cursor-yellow: #f6c445; /* Beezie's yellow: links and the discs over images */
+  --cursor-ink: #4a3513; /* a warm dark brown for the words on the yellow, softer than black */
 }
 .cursor {
   position: fixed;
@@ -1311,7 +1312,7 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .cursor-label {
   font-size: 12px;
   font-weight: 600;
-  color: #141414;
+  color: var(--cursor-ink);
   opacity: 0;
   transition: opacity 0.2s ease;
   white-space: nowrap;
@@ -1321,10 +1322,12 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .cursor[data-state='text'] .cursor-dot { width: 2px; height: var(--bar-h, 22px); border-radius: 1px; }
 .cursor[data-state='text'] .cursor-ring { opacity: 0; scale: 0.4; }
 /* links and buttons: the ring grows softly */
-.cursor[data-state='link'] .cursor-ring { width: 44px; height: 44px; background: rgb(230 138 78 / 0.2); box-shadow: none; }
+/* links: the dot grows a little and turns yellow; its trailing shadow never gets bigger than it */
+.cursor[data-state='link'] .cursor-dot { width: 15px; height: 15px; background: var(--cursor-yellow); box-shadow: 0 0 0 1px rgb(200 140 30 / 0.3); }
+.cursor[data-state='link'] .cursor-ring { width: 15px; height: 15px; background: rgb(246 196 69 / 0.4); box-shadow: none; }
 /* images and the next-case card: a disc with a word in it */
 .cursor[data-state='media'] .cursor-ring,
-.cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor-yellow); box-shadow: 0 0 0 1.5px rgb(254 252 246 / 0.75); }
+.cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor-yellow); box-shadow: none; }
 .cursor[data-state='media'] .cursor-label,
 .cursor[data-state='next'] .cursor-label { opacity: 1; }
 .cursor[data-state='media'] .cursor-dot,
