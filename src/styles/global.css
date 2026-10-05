@@ -880,9 +880,12 @@ html { -webkit-tap-highlight-color: transparent; }
 .cs .figure { margin: 32px 0; }
 .figure-surface { display: flex; justify-content: center; }
 .figure-surface > img { width: 100%; height: auto; }
+.figure--140 .figure-surface > img { max-width: 140px; }
 .figure--180 .figure-surface > img { max-width: 180px; }
+.figure--end .figure-surface { justify-content: flex-end; }
 .figure--240 .figure-surface > img { max-width: 240px; }
 .figure--360 .figure-surface > img { max-width: 360px; }
+.figure--460 .figure-surface > img { max-width: 460px; }
 .figure--560 .figure-surface > img { max-width: 560px; }
 .figure--720 .figure-surface > img { max-width: 720px; }
 .figure--bare .figure-surface { padding: 0; background: none; }
@@ -1193,9 +1196,11 @@ html { -webkit-tap-highlight-color: transparent; }
   border-radius: 20px;
   overflow: hidden;
   background: var(--surface);
+  /* a very soft edge: some hero images share the page color and would melt into it */
+  border: 1px solid rgb(20 20 20 / 0.09);
   color: var(--fg);
   text-decoration: none;
-  transition: translate 0.35s var(--ease-out), box-shadow 0.35s ease;
+  transition: translate 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 .next-card-media { overflow: hidden; aspect-ratio: 16 / 10; }
 .next-card-media img {
@@ -1221,7 +1226,7 @@ html { -webkit-tap-highlight-color: transparent; }
 }
 [dir='rtl'] .next-card-arrow { transform: scaleX(-1); }
 @media (hover: hover) {
-  .next-card:hover { translate: 0 -4px; box-shadow: 0 14px 34px rgb(0 0 0 / 0.08); }
+  .next-card:hover { translate: 0 -4px; box-shadow: 0 14px 34px rgb(0 0 0 / 0.08); border-color: rgb(20 20 20 / 0.16); }
   .next-card:hover .next-card-media img { scale: 1.04; }
   .next-card:hover .next-card-arrow { background: var(--fg); color: var(--bg); translate: 6px 0; }
   [dir='rtl'] .next-card:hover .next-card-arrow { translate: -6px 0; }
@@ -1263,11 +1268,85 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .phase-bar-line { flex: 1; height: 1px; background: var(--line); }
 .phase-bar-text {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--fg);
+  /* the same soft grey as the big divider, so the bar doesn't jump out */
+  color: var(--muted);
 }
 [dir='rtl'] .phase-bar-text { font-size: 15px; letter-spacing: 0; }
 @media (prefers-reduced-motion: reduce) { .phase-bar { transition: opacity 0.2s ease; translate: 0 0; } }
 @media print { .phase-bar { display: none; } }
+
+/* ---------- Custom cursor (see components/Cursor.astro) ---------- */
+.cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: difference; /* white here shows as dark on cream and light on dark images */
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.cursor.is-ready:not(.is-away) { opacity: 1; }
+.cursor-pos { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
+.cursor-dot, .cursor-ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -50% -50%;
+  border-radius: 50%;
+  transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), border-radius 0.3s var(--ease-out),
+    background 0.25s ease, opacity 0.25s ease, scale 0.2s var(--ease-out);
+}
+.cursor-dot { width: 9px; height: 9px; background: #fff; }
+.cursor-ring { width: 34px; height: 34px; border: 1.5px solid #fff; opacity: 0.55; display: grid; place-items: center; }
+.cursor-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #000; /* black inside the white disc cuts the letters out of it */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+/* text: the dot turns into a bar as tall as the text, the ring steps aside */
+.cursor[data-state='text'] .cursor-dot { width: 2px; height: var(--bar-h, 22px); border-radius: 1px; }
+.cursor[data-state='text'] .cursor-ring { opacity: 0; scale: 0.4; }
+/* links and buttons: the ring grows softly */
+.cursor[data-state='link'] .cursor-ring { width: 58px; height: 58px; border-color: transparent; background: rgb(255 255 255 / 0.2); opacity: 1; }
+/* images and the next-case card: a disc with a word in it */
+.cursor[data-state='media'] .cursor-ring,
+.cursor[data-state='next'] .cursor-ring { width: 88px; height: 88px; border-color: transparent; background: #fff; opacity: 1; }
+.cursor[data-state='media'] .cursor-label,
+.cursor[data-state='next'] .cursor-label { opacity: 1; }
+.cursor[data-state='media'] .cursor-dot,
+.cursor[data-state='next'] .cursor-dot { opacity: 0; }
+[dir='rtl'] .cursor-label { font-size: 13px; }
+/* pressing */
+.cursor.is-down .cursor-ring { scale: 0.82; }
+.cursor.is-down .cursor-dot { scale: 0.7; }
+
+/* hide the system cursor once ours is running, except over dialogs (they sit above it) */
+html.has-cursor, html.has-cursor * { cursor: none !important; }
+html.has-cursor:has(dialog[open]), html.has-cursor:has(dialog[open]) * { cursor: auto !important; }
+html:has(dialog[open]) .cursor { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring, .cursor-label, .cursor { transition: none; }
+}
+@media (hover: none), print { .cursor { display: none; } }
+
+/* touch screens: a ripple under the finger */
+.tap-ripple {
+  position: fixed;
+  z-index: 9998;
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border-radius: 50%;
+  background: rgb(20 20 20 / 0.14);
+  pointer-events: none;
+  animation: tap-ripple 0.55s var(--ease-out) forwards;
+}
+@keyframes tap-ripple { from { scale: 0.2; opacity: 1; } to { scale: 1; opacity: 0; } }

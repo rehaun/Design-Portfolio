@@ -1,0 +1,128 @@
+---
+// A custom cursor for mouse users: a small dot that follows the pointer exactly
+// and a thin ring that trails it. It changes with what is underneath:
+//   text   -> the dot becomes a thin bar the height of the text
+//   links  -> the ring grows (and leans toward nav items)
+//   images -> a filled ring with "Zoom"; next-case card -> "Next"
+//   press  -> everything shrinks a little
+// The avatar keeps the plain dot (it has its own motion). The cursor uses
+// mix-blend-mode: difference, so it stays visible on light and dark images.
+// On touch screens there is no cursor; a small ripple shows where you tapped.
+---
+<div class="cursor" data-cursor-root data-state="default" aria-hidden="true">
+  <div class="cursor-pos" data-cursor-dot><span class="cursor-dot"></span></div>
+  <div class="cursor-pos" data-cursor-ring>
+    <span class="cursor-ring"><span class="cursor-label" data-cursor-label></span></span>
+  </div>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-cursor-root]');
+  const dotPos = root?.querySelector<HTMLElement>('[data-cursor-dot]');
+  const ringPos = root?.querySelector<HTMLElement>('[data-cursor-ring]');
+  const label = root?.querySelector<HTMLElement>('[data-cursor-label]');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (root && dotPos && ringPos && label && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const words = document.documentElement.lang === 'fa'
+      ? { zoom: 'بزرگ‌نمایی', next: 'بعدی' }
+      : { zoom: 'Zoom', next: 'Next' };
+    let x = 0, y = 0, tx = 0, ty = 0, rx = 0, ry = 0; // dot, ring target, ring
+    let active = false;
+    let raf = 0;
+    let lastTarget: Element | null = null;
+    let state = 'default';
+
+    const draw = () => {
+      raf = 0;
+      const k = reduce ? 1 : 0.2;
+      rx += (tx - rx) * k;
+      ry += (ty - ry) * k;
+      dotPos.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      ringPos.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
+      if (Math.abs(tx - rx) > 0.1 || Math.abs(ty - ry) > 0.1) raf = requestAnimationFrame(draw);
+    };
+    const schedule = () => { if (!raf) raf = requestAnimationFrame(draw); };
+
+    const setState = (next: string, text = '') => {
+      if (next !== state) { state = next; root.dataset.state = next; }
+      label.textContent = text;
+    };
+
+    // what is under the pointer decides the shape
+    let magnet: Element | null = null;
+    const pick = (t: Element | null) => {
+      magnet = null;
+      if (!t || t.closest('.nav-brand, [data-cursor="off"]')) return setState('default');
+      if (t.closest('.zoomable, .portrait')) return setState('media', words.zoom);
+      if (t.closest('.next-card')) return setState('next', words.next);
+      const link = t.closest('a, button, summary, [role="button"], .card');
+      if (link) {
+        if (link.matches('.nav-link, .nav-lang')) magnet = link;
+        return setState('link');
+      }
+      const text = t.closest('p, li, h1, h2, h3, h4, h5, h6, blockquote, figcaption, dt, dd');
+      if (text) {
+        const fs = parseFloat(getComputedStyle(text).fontSize) || 16;
+        root.style.setProperty('--bar-h', `${Math.round(fs * 1.3)}px`);
+        return setState('text');
+      }
+      setState('default');
+    };
+
+    const aim = () => {
+      tx = x; ty = y;
+      if (magnet) { // nav items pull the ring toward their centre
+        const r = magnet.getBoundingClientRect();
+        tx = x + (r.left + r.width / 2 - x) * 0.3;
+        ty = y + (r.top + r.height / 2 - y) * 0.3;
+      }
+    };
+
+    const activate = (px: number, py: number) => {
+      active = true;
+      x = tx = rx = px; y = ty = ry = py;
+      document.documentElement.classList.add('has-cursor');
+      root.classList.remove('is-away');
+      root.classList.add('is-ready');
+      draw();
+    };
+
+    addEventListener('pointermove', (e) => {
+      if (e.pointerType === 'touch') return;
+      if (!active) activate(e.clientX, e.clientY);
+      x = e.clientX; y = e.clientY;
+      if (e.target !== lastTarget) { lastTarget = e.target as Element; pick(lastTarget); }
+      aim();
+      root.classList.remove('is-away');
+      schedule();
+    }, { passive: true });
+    addEventListener('pointerdown', (e) => { if (e.pointerType !== 'touch') root.classList.add('is-down'); }, { passive: true });
+    addEventListener('pointerup', () => root.classList.remove('is-down'), { passive: true });
+    addEventListener('dragend', () => root.classList.remove('is-down'));
+    document.documentElement.addEventListener('mouseleave', () => root.classList.add('is-away'));
+    document.documentElement.addEventListener('mouseenter', () => root.classList.remove('is-away'));
+    // the element under a still pointer changes while scrolling
+    addEventListener('scroll', () => { lastTarget = null; }, { passive: true });
+
+    // carry the position across page changes so the cursor doesn't blink out
+    addEventListener('pagehide', () => { if (active) sessionStorage.setItem('cursor-pos', `${x},${y}`); });
+    try {
+      const saved = sessionStorage.getItem('cursor-pos')?.split(',').map(Number);
+      if (saved && saved.length === 2 && saved.every(Number.isFinite)) activate(saved[0], saved[1]);
+    } catch {}
+  }
+
+  // touch screens: a soft ripple where the finger lands
+  if (matchMedia('(hover: none)').matches && !reduce) {
+    addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'touch') return;
+      const r = document.createElement('span');
+      r.className = 'tap-ripple';
+      r.style.left = `${e.clientX}px`;
+      r.style.top = `${e.clientY}px`;
+      r.addEventListener('animationend', () => r.remove());
+      document.body.append(r);
+    }, { passive: true });
+  }
+</script>

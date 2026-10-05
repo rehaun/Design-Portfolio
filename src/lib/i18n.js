@@ -19,7 +19,7 @@ export const ui = {
     about: 'درباره من',
     play: 'Play',
     resume: 'رزومه',
-    footerThanks: 'ممنون که سر زدی :)',
+    footerThanks: 'ممنون که تشریف آوردید :)',
     footerIteration: 'نسخه‌ی ۵',
     backHome: '→ بازگشت به صفحه اصلی',
   },
