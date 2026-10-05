@@ -1282,7 +1282,7 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 :root {
   --cursor: #e68a4e; /* a warm, not-too-loud orange */
   --cursor-yellow: #f6c445; /* Beezie's yellow: links and the discs over images */
-  --cursor-ink: #4a3513; /* a warm dark brown for the words on the yellow, softer than black */
+  --cursor-ink: #8c3d12; /* warm terracotta for the icons on the yellow */
 }
 .cursor {
   position: fixed;
@@ -1309,13 +1309,17 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
    when the pointer moves, it lags behind as a paler orange "child" of the dot */
 .cursor-ring { width: 9px; height: 9px; background: rgb(230 138 78 / 0.38); box-shadow: 0 0 0 1px rgb(254 252 246 / 0.3); /* a faint light edge so it also shows on dark art */ display: grid; place-items: center; }
 
-.cursor-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--cursor-ink);
+.cursor-icon {
+  grid-area: 1 / 1;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: var(--cursor-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   opacity: 0;
   transition: opacity 0.2s ease;
-  white-space: nowrap;
 }
 
 /* text: the dot turns into a bar as tall as the text, the ring steps aside */
@@ -1328,11 +1332,11 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 /* images and the next-case card: a disc with a word in it */
 .cursor[data-state='media'] .cursor-ring,
 .cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor-yellow); box-shadow: none; }
-.cursor[data-state='media'] .cursor-label,
-.cursor[data-state='next'] .cursor-label { opacity: 1; }
+.cursor[data-state='media'] .cursor-icon--zoom,
+.cursor[data-state='next'] .cursor-icon--next { opacity: 1; }
+[dir='rtl'] .cursor-icon--next { transform: scaleX(-1); } /* the arrow points the way the page reads */
 .cursor[data-state='media'] .cursor-dot,
 .cursor[data-state='next'] .cursor-dot { opacity: 0; }
-[dir='rtl'] .cursor-label { font-size: 13px; }
 /* pressing */
 .cursor.is-down .cursor-ring { scale: 0.82; }
 .cursor.is-down .cursor-dot { scale: 0.7; }
@@ -1343,7 +1347,7 @@ html.has-cursor:has(dialog[open]), html.has-cursor:has(dialog[open]) * { cursor:
 html:has(dialog[open]) .cursor { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .cursor-dot, .cursor-ring, .cursor-label, .cursor { transition: none; }
+  .cursor-dot, .cursor-ring, .cursor-icon, .cursor { transition: none; }
 }
 @media (hover: none), print { .cursor { display: none; } }
 
