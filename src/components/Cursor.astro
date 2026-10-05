@@ -35,7 +35,7 @@
 
     const draw = () => {
       raf = 0;
-      const k = reduce ? 1 : 0.2;
+      const k = reduce ? 1 : 0.16;
       rx += (tx - rx) * k;
       ry += (ty - ry) * k;
       dotPos.style.transform = `translate3d(${x}px, ${y}px, 0)`;
