@@ -1196,13 +1196,14 @@ html { -webkit-tap-highlight-color: transparent; }
   border-radius: 20px;
   overflow: hidden;
   background: var(--surface);
-  /* a very soft edge: some hero images share the page color and would melt into it */
-  border: 1px solid rgb(20 20 20 / 0.09);
   color: var(--fg);
   text-decoration: none;
-  transition: translate 0.35s var(--ease-out), box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: translate 0.35s var(--ease-out), box-shadow 0.35s ease;
 }
 .next-card-media { overflow: hidden; aspect-ratio: 16 / 10; }
+.next-card--tint .next-card-media { background: var(--surface); }
+/* the picture's white backdrop takes on the card's warm beige, so it stands apart from the page */
+.next-card--tint .next-card-media img { mix-blend-mode: multiply; }
 .next-card-media img {
   width: 100%;
   height: 100%;
@@ -1226,8 +1227,11 @@ html { -webkit-tap-highlight-color: transparent; }
 }
 [dir='rtl'] .next-card-arrow { transform: scaleX(-1); }
 @media (hover: hover) {
-  .next-card:hover { translate: 0 -4px; box-shadow: 0 14px 34px rgb(0 0 0 / 0.08); border-color: rgb(20 20 20 / 0.16); }
-  .next-card:hover .next-card-media img { scale: 1.04; }
+  .next-card:hover { translate: 0 -4px; box-shadow: 0 14px 34px rgb(0 0 0 / 0.08); }
+  .next-card:hover .next-card--tint .next-card-media { background: var(--surface); }
+/* the picture's white backdrop takes on the card's warm beige, so it stands apart from the page */
+.next-card--tint .next-card-media img { mix-blend-mode: multiply; }
+.next-card-media img { scale: 1.04; }
   .next-card:hover .next-card-arrow { background: var(--fg); color: var(--bg); translate: 6px 0; }
   [dir='rtl'] .next-card:hover .next-card-arrow { translate: -6px 0; }
 }
@@ -1331,7 +1335,14 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .cursor[data-state='link'] .cursor-ring { width: 15px; height: 15px; background: rgb(246 196 69 / 0.4); box-shadow: none; }
 /* images and the next-case card: a disc with a word in it */
 .cursor[data-state='media'] .cursor-ring,
-.cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor-yellow); box-shadow: none; }
+.cursor[data-state='next'] .cursor-ring {
+  width: 76px;
+  height: 76px;
+  /* frosted yellow glass: the picture shows through, softly blurred */
+  background: linear-gradient(160deg, rgb(250 212 96 / 0.74), rgb(240 182 52 / 0.6));
+  backdrop-filter: blur(9px) saturate(1.25);
+  box-shadow: none;
+}
 .cursor[data-state='media'] .cursor-icon--zoom,
 .cursor[data-state='next'] .cursor-icon--next { opacity: 1; }
 [dir='rtl'] .cursor-icon--next { transform: scaleX(-1); } /* the arrow points the way the page reads */

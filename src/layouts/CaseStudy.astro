@@ -66,7 +66,7 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
 
     <div class="cs-next">
       {next && (
-        <a href={localePath(lang, `/${nextSlug}/`)} class="next-card">
+        <a href={localePath(lang, `/${nextSlug}/`)} class:list={['next-card', next.data.nextTint && 'next-card--tint']}>
           <span class="next-card-media"><Img src={images[next.data.hero]} alt="" width={720} /></span>
           <span class="next-card-body">
             <span class="next-card-label">{lang === 'fa' ? 'کیس‌استادی بعدی' : 'Next case study'}</span>
