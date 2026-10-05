@@ -4,15 +4,16 @@
 // wide: a diagram that should keep its size and scroll sideways on phones.
 // bare: the image already has its own background, so skip the card padding.
 // decor: a loose illustration with no card; small and not zoomable.
+// end: sit at the end of the line (right in English, left in Persian) instead of the middle.
 import Img from './Img.astro';
 import Reveal from './Reveal.astro';
 import { swipeHint } from './media.js';
 
-const { src, alt = '', label, caption, width, wide = false, bare = false, blend = false, decor = false, scrollWidth, hint = swipeHint(Astro.currentLocale) } = Astro.props;
-const TIERS = [180, 240, 360, 560, 720];
+const { src, alt = '', label, caption, width, wide = false, bare = false, blend = false, decor = false, end = false, scrollWidth, hint = swipeHint(Astro.currentLocale) } = Astro.props;
+const TIERS = [140, 180, 240, 360, 460, 560, 720];
 const tier = width ? (TIERS.find((t) => width <= t) ?? 'full') : 'full';
 ---
-<Reveal as="figure" class:list={['figure', `figure--${tier}`, bare && 'figure--bare', blend && 'figure--blend', decor && 'figure--decor']}>
+<Reveal as="figure" class:list={['figure', `figure--${tier}`, bare && 'figure--bare', blend && 'figure--blend', decor && 'figure--decor', end && 'figure--end']}>
   {label && <span class="figure-label">{label}</span>}
   <div class:list={['figure-surface', !decor && 'media-surface']}>
     {wide ? (
