@@ -3,16 +3,18 @@
 // On phones the row scrolls sideways instead of shrinking the images.
 // items: [{ src, alt?, caption?, marks?: [{ n, x, y }] }] — marks are numbered
 // pins placed in % of the image (used to tie sketches to a legend).
+// decor: loose illustrations with no card, small, that rise in one by one from
+// the bottom (left to right) as they scroll into view. Not zoomable.
 import Img from './Img.astro';
 import Reveal from './Reveal.astro';
 import { widthFor, sizesFor } from './media.js';
 
-const { items, h = 380, caption, class: className } = Astro.props;
+const { items, h = 380, caption, decor = false, class: className } = Astro.props;
 ---
-<Reveal as="figure" class:list={['gallery', className]} style={`--h: ${h}px`}>
-  <div class="gallery-surface media-surface">
-    {items.map((im) => (
-      <span class="media-item">
+<Reveal as="figure" class:list={['gallery', decor && 'gallery--decor', className]} style={`--h: ${h}px`}>
+  <div class:list={['gallery-surface', !decor && 'media-surface']}>
+    {items.map((im, i) => (
+      <span class="media-item" style={decor ? `--i: ${i}` : undefined}>
         <span class="media-frame">
           <Img src={im.src} alt={im.alt ?? ''} width={widthFor(im.src, h)} sizes={sizesFor(im.src, h)} />
           {im.marks?.map((m) => (

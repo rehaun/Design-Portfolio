@@ -968,6 +968,28 @@ html { -webkit-tap-highlight-color: transparent; }
 /* white-background sketches and illustrations melt into the card */
 .gallery--blend img, .figure--blend img, .mediatext-avatar { mix-blend-mode: multiply; }
 
+/* loose illustrations: no card, small, rising in one by one (left to right) */
+.gallery--decor { margin: 40px 0; }
+.gallery--decor .gallery-surface {
+  direction: ltr; /* same order and the same left-to-right entrance in both languages */
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+  padding: 0;
+}
+.gallery--decor .media-item img { height: var(--h); pointer-events: none; }
+.js .gallery--decor.reveal { opacity: 1; transform: none; transition: none; }
+.js .gallery--decor .media-item {
+  opacity: 0;
+  transform: translateY(56px);
+  transition: opacity 0.7s ease, transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--i) * 0.2s);
+}
+.js .gallery--decor.is-visible .media-item { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .gallery--decor .media-item { opacity: 1; transform: none; transition: none; }
+}
+
 /* sketches + their numbered legend side by side */
 .split {
   display: grid;
@@ -989,6 +1011,8 @@ html { -webkit-tap-highlight-color: transparent; }
   /* width + aspect ratio from the attributes reserve the space before the image loads */
   .cmp-surface .media-item:only-child img { width: 100%; height: auto; max-height: min(var(--h), 360px); object-fit: contain; }
   .gallery-surface { justify-content: safe center; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; }
+  .gallery--decor .gallery-surface { overflow: visible; scroll-snap-type: none; gap: 14px; }
+  .gallery--decor .media-item img { height: 22vw; }
   .gallery-surface .media-item { scroll-snap-align: center; }
   .cmp { grid-template-columns: 1fr; grid-template-rows: none; gap: 6px; }
   .cmp-side, .cmp-arrow, .cmp-caption { grid-row: auto; grid-column: auto; }
