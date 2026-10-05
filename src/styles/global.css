@@ -1331,7 +1331,14 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .cursor[data-state='link'] .cursor-ring { width: 15px; height: 15px; background: rgb(246 196 69 / 0.4); box-shadow: none; }
 /* images and the next-case card: a disc with a word in it */
 .cursor[data-state='media'] .cursor-ring,
-.cursor[data-state='next'] .cursor-ring { width: 76px; height: 76px; background: var(--cursor-yellow); box-shadow: none; }
+.cursor[data-state='next'] .cursor-ring {
+  width: 76px;
+  height: 76px;
+  /* frosted yellow glass: the picture shows through, softly blurred */
+  background: linear-gradient(160deg, rgb(250 212 96 / 0.74), rgb(240 182 52 / 0.6));
+  backdrop-filter: blur(9px) saturate(1.25);
+  box-shadow: none;
+}
 .cursor[data-state='media'] .cursor-icon--zoom,
 .cursor[data-state='next'] .cursor-icon--next { opacity: 1; }
 [dir='rtl'] .cursor-icon--next { transform: scaleX(-1); } /* the arrow points the way the page reads */
