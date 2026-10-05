@@ -3,7 +3,7 @@
 // and a thin ring that trails it. It changes with what is underneath:
 //   text   -> the dot becomes a thin bar the height of the text
 //   links  -> the ring grows (and leans toward nav items)
-//   images -> a filled ring with "Zoom"; next-case card -> "Next"
+//   images -> a yellow disc with a magnifier; next-case card -> an arrow
 //   press  -> everything shrinks a little
 // The avatar keeps the plain dot (it has its own motion). Colour: --cursor,
 // a warm orange, with a thin cream edge so it also reads on orange-ish art.
@@ -12,7 +12,10 @@
 <div class="cursor" data-cursor-root data-state="default" aria-hidden="true">
   <div class="cursor-pos" data-cursor-dot><span class="cursor-dot"></span></div>
   <div class="cursor-pos" data-cursor-ring>
-    <span class="cursor-ring"><span class="cursor-label" data-cursor-label></span></span>
+    <span class="cursor-ring">
+      <svg class="cursor-icon cursor-icon--zoom" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" /><path d="M15 15l5 5M10.5 8v5M8 10.5h5" /></svg>
+      <svg class="cursor-icon cursor-icon--next" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+    </span>
   </div>
 </div>
 
@@ -20,13 +23,9 @@
   const root = document.querySelector<HTMLElement>('[data-cursor-root]');
   const dotPos = root?.querySelector<HTMLElement>('[data-cursor-dot]');
   const ringPos = root?.querySelector<HTMLElement>('[data-cursor-ring]');
-  const label = root?.querySelector<HTMLElement>('[data-cursor-label]');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (root && dotPos && ringPos && label && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const words = document.documentElement.lang === 'fa'
-      ? { zoom: 'بزرگ‌نمایی', next: 'بعدی' }
-      : { zoom: 'Zoom', next: 'Next' };
+  if (root && dotPos && ringPos && matchMedia('(hover: hover) and (pointer: fine)').matches) {
     let x = 0, y = 0, tx = 0, ty = 0, rx = 0, ry = 0; // dot, ring target, ring
     let active = false;
     let raf = 0;
@@ -44,9 +43,8 @@
     };
     const schedule = () => { if (!raf) raf = requestAnimationFrame(draw); };
 
-    const setState = (next: string, text = '') => {
+    const setState = (next: string) => {
       if (next !== state) { state = next; root.dataset.state = next; }
-      label.textContent = text;
     };
 
     // what is under the pointer decides the shape
@@ -54,8 +52,8 @@
     const pick = (t: Element | null) => {
       magnet = null;
       if (!t || t.closest('.nav-brand, [data-cursor="off"]')) return setState('default');
-      if (t.closest('.zoomable, .portrait')) return setState('media', words.zoom);
-      if (t.closest('.next-card')) return setState('next', words.next);
+      if (t.closest('.zoomable, .portrait')) return setState('media');
+      if (t.closest('.next-card')) return setState('next');
       const link = t.closest('a, button, summary, [role="button"], .card');
       if (link) {
         if (link.matches('.nav-link, .nav-lang')) magnet = link;
