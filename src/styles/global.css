@@ -1279,12 +1279,12 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 @media print { .phase-bar { display: none; } }
 
 /* ---------- Custom cursor (see components/Cursor.astro) ---------- */
+:root { --cursor: #e68a4e; /* a warm, not-too-loud orange */ }
 .cursor {
   position: fixed;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
-  mix-blend-mode: difference; /* white here shows as dark on cream and light on dark images */
   opacity: 0;
   transition: opacity 0.25s ease;
 }
@@ -1299,12 +1299,12 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
   transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), border-radius 0.3s var(--ease-out),
     background 0.25s ease, opacity 0.25s ease, scale 0.2s var(--ease-out);
 }
-.cursor-dot { width: 9px; height: 9px; background: #fff; }
-.cursor-ring { width: 34px; height: 34px; border: 1.5px solid #fff; opacity: 0.55; display: grid; place-items: center; }
+.cursor-dot { width: 9px; height: 9px; background: var(--cursor); box-shadow: 0 0 0 1.5px rgb(254 252 246 / 0.75); /* keeps it visible on orange-ish art */ }
+.cursor-ring { width: 34px; height: 34px; border: 1.5px solid var(--cursor); opacity: 0.7; display: grid; place-items: center; }
 .cursor-label {
   font-size: 12px;
   font-weight: 600;
-  color: #000; /* black inside the white disc cuts the letters out of it */
+  color: #141414;
   opacity: 0;
   transition: opacity 0.2s ease;
   white-space: nowrap;
@@ -1314,10 +1314,10 @@ body:has(.nav--hidden) .phase-bar { top: 0; }
 .cursor[data-state='text'] .cursor-dot { width: 2px; height: var(--bar-h, 22px); border-radius: 1px; }
 .cursor[data-state='text'] .cursor-ring { opacity: 0; scale: 0.4; }
 /* links and buttons: the ring grows softly */
-.cursor[data-state='link'] .cursor-ring { width: 58px; height: 58px; border-color: transparent; background: rgb(255 255 255 / 0.2); opacity: 1; }
+.cursor[data-state='link'] .cursor-ring { width: 58px; height: 58px; border-color: transparent; background: rgb(230 138 78 / 0.28); opacity: 1; }
 /* images and the next-case card: a disc with a word in it */
 .cursor[data-state='media'] .cursor-ring,
-.cursor[data-state='next'] .cursor-ring { width: 88px; height: 88px; border-color: transparent; background: #fff; opacity: 1; }
+.cursor[data-state='next'] .cursor-ring { width: 88px; height: 88px; border-color: transparent; background: var(--cursor); box-shadow: 0 0 0 1.5px rgb(254 252 246 / 0.75); opacity: 1; }
 .cursor[data-state='media'] .cursor-label,
 .cursor[data-state='next'] .cursor-label { opacity: 1; }
 .cursor[data-state='media'] .cursor-dot,
@@ -1345,7 +1345,7 @@ html:has(dialog[open]) .cursor { display: none; }
   height: 84px;
   margin: -42px 0 0 -42px;
   border-radius: 50%;
-  background: rgb(20 20 20 / 0.14);
+  background: rgb(230 138 78 / 0.28);
   pointer-events: none;
   animation: tap-ripple 0.55s var(--ease-out) forwards;
 }
