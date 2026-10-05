@@ -15,6 +15,8 @@ const work = defineCollection({
     order: z.number(),
     // short line shown on the home page card
     cardTitle: z.string().optional(),
+    // the hero's backdrop is (nearly) the page colour: tint it when shown on the next-case card
+    nextTint: z.boolean().optional(),
     meta: z.array(z.object({ label: z.string(), value: z.string() })),
   }),
 });
