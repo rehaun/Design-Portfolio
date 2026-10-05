@@ -793,7 +793,7 @@ html { -webkit-tap-highlight-color: transparent; }
   .back-link:hover { transform: translateX(-4px); }
   [dir='rtl'] .back-link:hover { transform: translateX(4px); }
   .contact-link:hover { transform: translateY(-2px); }
-  .zoomable:hover { transform: scale(1.015); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+  .zoomable:hover { transform: scale(1.015); }
   .resume-item:hover::before { transform: scaleY(1); }
 }
 /* undo hover-driven transforms on touch screens so they don't stick after a tap */
@@ -809,7 +809,7 @@ html { -webkit-tap-highlight-color: transparent; }
 .back-link { display: inline-block; }
 
 /* Zoomable case-study images */
-.zoomable { cursor: zoom-in; transition: transform 0.35s var(--ease-out), box-shadow 0.35s ease; }
+.zoomable { cursor: zoom-in; transition: transform 0.35s var(--ease-out); }
 .lightbox[open] { animation: lb-in 0.3s var(--ease-out); }
 .lightbox[open]::backdrop { animation: lb-fade 0.3s ease; }
 @keyframes lb-in { from { opacity: 0; transform: scale(0.94); } }
