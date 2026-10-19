@@ -7,10 +7,10 @@ import Img from './Img.astro';
 import Reveal from './Reveal.astro';
 import { widthFor, sizesFor, swipeHint } from './media.js';
 
-const { before, after, kind = 'screens', h = 380, caption, hint = swipeHint(Astro.currentLocale) } = Astro.props;
+const { before, after, kind = 'screens', melt = false, h = 380, caption, hint = swipeHint(Astro.currentLocale) } = Astro.props;
 const sides = [before, after];
 ---
-<Reveal class:list={['cmp', `cmp--${kind}`]} style={`--h: ${h}px`}>
+<Reveal class:list={['cmp', `cmp--${kind}`, melt && 'melt']} style={`--h: ${h}px`}>
   {sides.map((side, i) => (
     <Fragment>
       {i === 1 && <span class="cmp-arrow" aria-hidden="true">→</span>}

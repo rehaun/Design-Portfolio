@@ -298,6 +298,26 @@ a { color: inherit; text-decoration: none; }
   color: #454545;
 }
 .meta-box strong { color: var(--fg); }
+/* opening paragraph: first word set large, like a magazine drop cap */
+.lead-para { overflow: hidden; }
+.lead-word {
+  float: inline-start;
+  margin-inline-end: 12px;
+  font-size: 2.9em;
+  font-weight: 400;
+  line-height: 1;
+  margin-top: 0.12em;
+  color: var(--fg);
+}
+.meta-box--stack {
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.meta-box--stack .meta-line { padding: 12px 0; }
+.meta-box--stack .meta-line + .meta-line { border-top: 1px solid var(--line); }
 
 .section { padding: 46px 24px; }
 .phase-divider {
@@ -390,6 +410,12 @@ blockquote {
   font-style: italic;
   color: #333;
 }
+
+/* interview quote: centred, small mark above, a short rule below; quieter than the body text */
+.quote { margin: 32px auto 38px; max-width: 420px; padding: 0 12px; text-align: center; }
+.quote-mark { display: block; font-size: 30px; line-height: 0.8; height: 16px; color: var(--cursor, #e68a4e); opacity: 0.75; }
+.quote .quote-text { border: 0; margin: 10px 0 0; padding: 0; font-size: 15px; font-style: normal; font-weight: 400; line-height: 1.85; color: #6e6e6e; text-wrap: balance; }
+.quote::after { content: ''; display: block; width: 22px; height: 2px; margin: 14px auto 0; background: var(--cursor, #e68a4e); opacity: 0.6; }
 
 .quotelist { list-style: none; margin: 0; padding: 0; }
 .quotelist li { margin-bottom: 10px; }
@@ -612,6 +638,8 @@ blockquote {
 .lightbox::backdrop { background: rgba(20, 20, 20, 0.75); backdrop-filter: blur(4px); }
 .lightbox-img { max-height: 86vh; width: auto; max-width: 100%; border-radius: 8px; }
 .lightbox-img[hidden] { display: none; }
+.lightbox--wide { max-width: 96vw; overflow-x: auto; overflow-y: hidden; }
+.lightbox--wide .lightbox-img { height: 80vh; width: auto; max-width: none; max-height: none; display: block; }
 .lightbox-close {
   position: fixed;
   top: 16px;
@@ -848,6 +876,8 @@ html { -webkit-tap-highlight-color: transparent; }
   padding: 28px;
 }
 .media-surface img { border-radius: 6px; }
+/* melt: the image backdrop (white or off-white) turns into the card colour */
+.melt .media-surface img { mix-blend-mode: darken; }
 .media-caption {
   font-size: 14px;
   line-height: 1.55;
@@ -947,6 +977,8 @@ html { -webkit-tap-highlight-color: transparent; }
 .cmp-arrow { font-size: 28px; color: #9a9a9a; text-align: center; }
 [dir='rtl'] .cmp-arrow { transform: scaleX(-1); }
 .cmp-caption { grid-column: 1 / -1; grid-row: 4; }
+/* a <p>, so the page paragraph margin would otherwise beat the centred caption margin */
+.cmp > .cmp-caption { margin: 12px auto 0; }
 .cmp--wide { grid-template-columns: 1fr; grid-template-rows: none; gap: 6px; }
 .cmp--wide .cmp-side, .cmp--wide .cmp-arrow, .cmp--wide .cmp-caption { grid-row: auto; grid-column: auto; }
 .cmp--wide .cmp-side { display: flex; flex-direction: column; }
