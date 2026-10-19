@@ -10,6 +10,7 @@ import PhaseDivider from '../components/PhaseDivider.astro';
 import Compare from '../components/Compare.astro';
 import Gallery from '../components/Gallery.astro';
 import MediaText from '../components/MediaText.astro';
+import Quote from '../components/Quote.astro';
 import Toc from '../components/Toc.astro';
 import PhaseBar from '../components/PhaseBar.astro';
 import { images } from '../data/images';
@@ -17,7 +18,7 @@ import { ui, localePath, parseId, sectionId } from '../lib/i18n';
 
 const { entry } = Astro.props;
 const { lang, slug } = parseId(entry.id);
-const { title, subtitle, eyebrow, hero, meta } = entry.data;
+const { title, subtitle, eyebrow, hero, meta, metaStack } = entry.data;
 const { Content } = await render(entry);
 
 const otherLang = lang === 'fa' ? 'en' : 'fa';
@@ -40,7 +41,7 @@ const all = (await getCollection('work')).filter((e) => parseId(e.id).lang === l
 const next = all.length > 1 ? all[(all.findIndex((e) => e.id === entry.id) + 1) % all.length] : undefined;
 const nextSlug = next && parseId(next.id).slug;
 
-const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Gallery, MediaText };
+const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Gallery, MediaText, Quote };
 ---
 <Base title={`${title} — ${ui[lang].name}`} description={subtitle} lang={lang} altHref={altHref} image={images[hero]}>
   <Nav lang={lang} current="works" altHref={altHref} progress />
@@ -50,8 +51,10 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
         <div class="cs-eyebrow">{eyebrow}</div>
         <h1 class="cs-title">{title}</h1>
         <p class="cs-subtitle">{subtitle}</p>
-        <div class="meta-box">
-          {meta.map((m, i) => (
+        <div class:list={['meta-box', metaStack && 'meta-box--stack']}>
+          {meta.map((m, i) => metaStack ? (
+            <div class="meta-line"><strong>{m.label}:</strong> {m.value}</div>
+          ) : (
             <>
               {i > 0 && <Fragment set:html="&nbsp;·&nbsp; " />}
               <strong>{m.label}:</strong> {m.value}{' '}
@@ -59,7 +62,7 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
           ))}
         </div>
       </Reveal>
-      <Figure src={images[hero]} bare />
+      <Figure src={images[hero]} bare nozoom />
     </div>
 
     <Content components={components} />
@@ -100,11 +103,21 @@ const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Galler
           img.addEventListener('click', () => {
             // the largest version from srcset, so the zoomed image stays sharp
             const largest = img.srcset ? img.srcset.split(',').pop()!.trim().split(' ')[0] : '';
-            big.src = largest || img.currentSrc || img.src;
+            big.src = img.dataset.zoom || largest || img.currentSrc || img.src;
             big.alt = img.alt;
+            // a very wide diagram opens tall and scrolls sideways instead of shrinking to a sliver
+            dialog.classList.toggle('lightbox--wide', img.naturalWidth / img.naturalHeight > 3);
             dialog.showModal();
+            dialog.scrollLeft = 0; // start at the reading start (right edge on Persian pages)
           });
         });
+      // mouse wheel scrolls a wide diagram sideways
+      dialog.addEventListener('wheel', (e) => {
+        if (dialog.classList.contains('lightbox--wide') && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          dialog.scrollLeft += getComputedStyle(dialog).direction === 'rtl' ? -e.deltaY : e.deltaY;
+          e.preventDefault();
+        }
+      }, { passive: false });
       dialog.querySelector('.lightbox-close')?.addEventListener('click', () => dialog.close());
       dialog.addEventListener('click', (e) => e.target === dialog && dialog.close());
     }

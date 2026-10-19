@@ -1,0 +1,9 @@
+---
+// A direct quote from an interviewee: centred, with a large quote mark above.
+// Put the quote text inside, without quote marks: <Quote>…</Quote>
+import Reveal from './Reveal.astro';
+---
+<Reveal as="figure" class="quote">
+  <span class="quote-mark" aria-hidden="true">❝</span>
+  <blockquote class="quote-text"><slot /></blockquote>
+</Reveal>
