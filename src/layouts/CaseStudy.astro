@@ -43,7 +43,7 @@ const nextSlug = next && parseId(next.id).slug;
 const components = { Img, Reveal, Figure, Section, PhaseDivider, Compare, Gallery, MediaText };
 ---
 <Base title={`${title} — ${ui[lang].name}`} description={subtitle} lang={lang} altHref={altHref} image={images[hero]}>
-  <Nav lang={lang} current="works" altHref={altHref} progress />
+  <Nav lang={lang} altHref={altHref} progress />
   <div class="container cs">
     <div class="cs-header">
       <Reveal>
