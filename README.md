@@ -3,6 +3,8 @@
 Personal product-design portfolio, bilingual (English / Persian), built with
 [Astro](https://astro.build) and hosted on GitHub Pages.
 
+> Working with Claude on this repo? Start with [`CLAUDE.md`](CLAUDE.md).
+
 ## Run locally
 ```bash
 npm install
@@ -15,7 +17,7 @@ npm run build    # static site in dist/
 | --- | --- |
 | Case studies (content) | `src/content/work/en/*.mdx`, `src/content/work/fa/*.mdx` |
 | Case study page layout | `src/layouts/CaseStudy.astro` |
-| Building blocks used inside case studies (`Section`, `Figure`, `Layout`, `PhaseDivider`) | `src/components/` |
+| Building blocks used inside case studies (`Section`, `PhaseDivider`, `Figure`, `Compare`, `Gallery`, `MediaText`) | `src/components/` |
 | Home page | `src/pages/index.astro` |
 | Shared page shell (head, fonts, scroll-reveal script) | `src/layouts/Base.astro` |
 | Images (files / lookup by name) | `src/assets/images/`, `src/data/images.js` |
